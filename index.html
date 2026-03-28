@@ -8,7 +8,8 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Gochi+Hand&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
@@ -19,10 +20,12 @@
       --graphite: #1e1e1e;
       --graphite-mid: #2c2c2c;
       --white:    #f5f5f5;
-      --gold:     #ecd867;
-      --gold-dim: #c9b840;
+      --gold:     #ffc700;
+      --gold-dim: #e6b300;
+      --royal: #1f1be4;
+      --royal-dim: #1815c7;
 
-      --font-display: 'Playfair Display', Georgia, serif;
+      --font-display: 'Times New Roman', Times, serif;
       --font-script:  'Gochi Hand', cursive;
       --font-casual:  'Courier New', monospace;
       --font-body:    'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -50,8 +53,9 @@
       color: var(--white);
       font-family: var(--font-body);
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
@@ -86,7 +90,7 @@
     }
     .label--script {
       font-family: var(--font-script);
-      font-size: 22px;
+      font-size: 20px;
       letter-spacing: 0;
       text-transform: none;
       color: var(--gold);
@@ -107,6 +111,7 @@
     /* Button */
     .btn {
       display: inline-block;
+      touch-action: manipulation;
       font-family: var(--font-casual);
       font-size: 12px;
       letter-spacing: 0.15em;
@@ -142,6 +147,7 @@
     }
     .btn--outline::after { background: var(--gold); }
     .btn--outline:hover { color: var(--black); }
+    .btn:active { transform: scale(0.97); transition: transform 0.1s ease; }
 
     /* Tag / chip */
     .tag {
@@ -152,7 +158,7 @@
       text-transform: uppercase;
       border: var(--border);
       padding: 6px 14px;
-      color: #666;
+      color: #aaa;
     }
 
     /* Divider */
@@ -205,7 +211,7 @@
       position: absolute;
       bottom: -1px; left: 0;
       height: 2px;
-      background: var(--gold);
+      background: var(--royal);
       width: 0%;
       transition: width 0.1s linear;
     }
@@ -214,7 +220,7 @@
        HERO
     ============================================================ */
     .hero {
-      min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -293,7 +299,7 @@
       font-family: var(--font-display);
       font-style: italic;
       font-size: 36px;
-      color: var(--gold);
+      color: var(--royal);
       line-height: 1;
     }
     .hero__stat-label {
@@ -401,7 +407,7 @@
       transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
     }
     .opcao:hover::before { transform: scaleX(1); }
-    .opcao:hover { background: rgba(236,216,103,0.03); }
+    .opcao:hover { background: rgba(255,199,0,0.03); }
     .opcao:hover .opcao__num { color: var(--gold); }
     .opcao__header {
       padding: var(--space-md);
@@ -434,7 +440,7 @@
     }
     .opcao__desc {
       font-size: 13px;
-      color: #666;
+      color: #aaa;
       margin-top: 6px;
       line-height: 1.5;
     }
@@ -485,7 +491,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(236,216,103,0.18) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(255,199,0,0.18) 1px, transparent 1px);
       background-size: 28px 28px;
       pointer-events: none;
       z-index: 0;
@@ -553,6 +559,7 @@
     }
     .form-option {
       border: var(--border);
+      touch-action: manipulation;
       padding: 14px var(--space-sm);
       cursor: pointer;
       transition: border-color 0.2s, background 0.2s;
@@ -562,7 +569,7 @@
     }
     .form-option:hover { border-color: #888; background: rgba(255,255,255,0.04); transform: translateX(3px); }
     .form-option { transition: border-color 0.2s, background 0.2s, transform 0.2s; }
-    .form-option.selected { border-color: var(--gold); background: rgba(236,216,103,0.06); }
+    .form-option.selected { border-color: var(--gold); background: rgba(255,199,0,0.06); }
     .form-option input { display: none; }
     .form-option__check {
       width: 16px; height: 16px;
@@ -601,7 +608,7 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #666;
+      color: #aaa;
       display: block;
       margin-bottom: 8px;
     }
@@ -612,11 +619,14 @@
       border: var(--border);
       color: var(--white);
       font-family: var(--font-body);
-      font-size: 15px;
+      font-size: 16px;
+      min-height: 48px;
       padding: 14px var(--space-sm);
       outline: none;
       resize: vertical;
       transition: border-color 0.2s;
+      touch-action: manipulation;
+      -webkit-appearance: none;
     }
     .form-input-wrap input:focus,
     .form-input-wrap textarea:focus { border-color: #555; }
@@ -654,20 +664,14 @@
       font-size: 10px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #666;
+      color: #aaa;
       margin-bottom: var(--space-xs);
     }
-    .resumo-valor__num {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 48px;
-      color: var(--gold);
-      line-height: 1;
-    }
+.resumo-valor__num { display: none; }
     .resumo-valor__itens {
       margin-top: var(--space-sm);
       font-size: 13px;
-      color: #777;
+      color: #999;
       line-height: 1.7;
     }
 
@@ -768,8 +772,9 @@
       padding: var(--space-md) var(--space-md) var(--space-lg);
       transition: background 0.2s;
     }
-    .paraquem-item:hover { background: rgba(236,216,103,0.03); }
-    .paraquem-item:hover .paraquem-item__icon { border-color: var(--gold); background: rgba(236,216,103,0.08); }
+    .paraquem-item:hover { background: rgba(31,27,228,0.04); }
+    .paraquem-item:hover .paraquem-item__icon { border-color: var(--royal); background: rgba(31,27,228,0.1); }
+    .paraquem-item:hover .paraquem-item__icon svg { stroke: var(--royal); }
     .paraquem-item__icon {
       width: 40px;
       height: 40px;
@@ -783,7 +788,7 @@
     .paraquem-item__icon svg {
       width: 18px;
       height: 18px;
-      stroke: var(--gold);
+      stroke: var(--royal);
       fill: none;
       stroke-width: 1.5;
     }
@@ -795,7 +800,7 @@
     }
     .paraquem-item p {
       font-size: 14px;
-      color: #777;
+      color: #999;
       line-height: 1.65;
     }
 
@@ -920,7 +925,7 @@
     .reveal {
       opacity: 0;
       transform: translateY(24px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1);
     }
     .reveal.visible {
       opacity: 1;
@@ -941,6 +946,46 @@
       .form-options { grid-template-columns: 1fr 1fr; }
     }
 
+
+    /* ============================================================
+       ACESSIBILIDADE
+    ============================================================ */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: var(--space-sm);
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--font-casual);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      z-index: 999999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: var(--space-sm); }
+
+    /* Focus ring visível */
+    a:focus-visible,
+    button:focus-visible,
+    .form-option:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+    /* Remover outline padrão apenas quando há focus-visible */
+    a:focus:not(:focus-visible),
+    button:focus:not(:focus-visible) { outline: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
     /* ============================================================
        RUÍDO DE FUNDO
     ============================================================ */
@@ -1014,6 +1059,7 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Ir para o conteúdo</a>
   <div id="cursor" aria-hidden="true"></div>
 
   <!-- ======================== NAV ======================== -->
@@ -1026,7 +1072,7 @@
   </nav>
 
   <!-- ======================== HERO ======================== -->
-  <section class="hero" aria-labelledby="hero-headline">
+  <section class="hero" id="main-content" aria-labelledby="hero-headline">
     <div class="hero__inner">
       <div class="hero__eyebrow reveal">
         <span class="label--script">design esportivo</span>
@@ -1070,8 +1116,8 @@
     <div class="container">
       <div class="problema__grid">
         <div class="problema__left reveal">
-          <span class="label--script">isso te parece familiar?</span>
-          <div class="divider"></div>
+          <span class="label--script" style="color:var(--royal);">isso te parece familiar?</span>
+          <div class="divider" style="background:var(--royal);"></div>
           <h2 class="display" id="problema-title">
             Sua equipe merece mais do que um logo<br>
             <em>feito no celular.</em>
@@ -1094,8 +1140,8 @@
     <div class="container">
       <div class="solucao__inner">
         <div class="solucao__sticky reveal">
-          <span class="label--script">o que eu faço por isso</span>
-          <div class="divider"></div>
+          <span class="label--script" style="color:var(--royal);">o que eu faço por isso</span>
+          <div class="divider" style="background:var(--royal);"></div>
           <h2 class="solucao__title display" id="solucao-title">
             Design que coloca sua marca<br>
             no mesmo nível<br>
@@ -1136,15 +1182,15 @@
           <div class="opcao__itens">
             <div class="item-preco">
               <span class="item-preco__nome">Arte de jogo</span>
-              <span class="item-preco__valor">R$ 50</span>
+              
             </div>
             <div class="item-preco">
               <span class="item-preco__nome">Arte de resultado</span>
-              <span class="item-preco__valor">R$ 50</span>
+              
             </div>
             <div class="item-preco">
               <span class="item-preco__nome">Escalação</span>
-              <span class="item-preco__valor">R$ 60</span>
+              
             </div>
           </div>
         </article>
@@ -1160,15 +1206,15 @@
           <div class="opcao__itens">
             <div class="item-preco">
               <span class="item-preco__nome">4 artes/mês</span>
-              <span class="item-preco__valor">R$ 160</span>
+              
             </div>
             <div class="item-preco">
               <span class="item-preco__nome">8 artes/mês</span>
-              <span class="item-preco__valor">R$ 300</span>
+              
             </div>
             <div class="item-preco">
               <span class="item-preco__nome">12 artes/mês</span>
-              <span class="item-preco__valor">R$ 420</span>
+              
             </div>
           </div>
         </article>
@@ -1184,15 +1230,15 @@
           <div class="opcao__itens">
             <div class="item-preco">
               <span class="item-preco__nome">1 template personalizado</span>
-              <span class="item-preco__valor">R$ 70</span>
+              
             </div>
             <div class="item-preco">
               <span class="item-preco__nome">Kit com 3 templates</span>
-              <span class="item-preco__valor">R$ 180</span>
+              
             </div>
             <div class="item-preco">
               <span class="item-preco__nome">Kit com 5 templates</span>
-              <span class="item-preco__valor">R$ 280</span>
+              
             </div>
           </div>
         </article>
@@ -1207,7 +1253,7 @@
           </div>
           <div class="opcao__itens">
             <div class="item-preco" style="border-bottom:none;padding-bottom:0;">
-              <span class="item-preco__nome" style="color:#888;font-size:13px;line-height:1.5;">Valor sob consulta. Preencha o briefing e receba uma proposta personalizada.</span>
+              <span class="item-preco__nome" style="color:#888;font-size:13px;line-height:1.5;">Preencha o briefing e receba uma proposta personalizada.</span>
             </div>
           </div>
         </article>
@@ -1221,7 +1267,7 @@
     <div class="container">
       <div class="sobre__inner">
         <div class="sobre__img-wrap reveal" aria-label="Foto da Lorena, designer esportiva">
-          <img src="https://i.imgur.com/l3xe6MT.png" alt="Lorena Mariano, designer esportiva — Maringá" />
+          <img src="https://i.imgur.com/l3xe6MT.png" loading="lazy" decoding="async" width="600" height="750" alt="Lorena Mariano, designer esportiva — Maringá" />
         </div>
         <div class="sobre__content">
           <div class="reveal">
@@ -1354,7 +1400,7 @@
               <span class="form-option__check"></span>
               <span>
                 <span class="form-option__label">Artes Avulsas</span>
-                <span class="form-option__price">A partir de R$ 50</span>
+                
               </span>
             </label>
             <label class="form-option" data-value="pacote" tabindex="0">
@@ -1362,7 +1408,7 @@
               <span class="form-option__check"></span>
               <span>
                 <span class="form-option__label">Pacote Mensal</span>
-                <span class="form-option__price">A partir de R$ 160/mês</span>
+                
               </span>
             </label>
             <label class="form-option" data-value="template" tabindex="0">
@@ -1370,7 +1416,7 @@
               <span class="form-option__check"></span>
               <span>
                 <span class="form-option__label">Templates Editáveis</span>
-                <span class="form-option__price">A partir de R$ 70</span>
+                
               </span>
             </label>
             <label class="form-option" data-value="idvisual" tabindex="0">
@@ -1378,7 +1424,7 @@
               <span class="form-option__check"></span>
               <span>
                 <span class="form-option__label">Identidade Visual Completa</span>
-                <span class="form-option__price">Sob consulta</span>
+                
               </span>
             </label>
           </div>
@@ -1405,7 +1451,7 @@
           <p class="form-title">Qual é o nome do time ou projeto?</p>
           <div class="form-input-wrap">
             <label for="nomeTime">Nome do time ou projeto</label>
-            <input type="text" id="nomeTime" placeholder="Ex: Grêmio Esportivo União, Projeto Bola Pra Frente…" />
+            <input type="text" id="nomeTime" autocomplete="organization" placeholder="Ex: Grêmio Esportivo União, Projeto Bola Pra Frente…" />
           </div>
           <div class="form-nav">
             <button class="form-back" onclick="prevStep(3)" type="button">← Voltar</button>
@@ -1459,13 +1505,12 @@
           <span class="form-question">Passo 5 de 5</span>
           <p class="form-title">Resumo do seu pedido</p>
           <div class="resumo-valor" id="resumoValor">
-            <div class="resumo-valor__label">Valor estimado</div>
-            <div class="resumo-valor__num" id="resumoNum">R$ —</div>
+            <div class="resumo-valor__label">Resumo do pedido</div>
             <div class="resumo-valor__itens" id="resumoItens"></div>
           </div>
           <div class="form-input-wrap">
             <label for="nomeContato">Seu nome</label>
-            <input type="text" id="nomeContato" placeholder="Como posso te chamar?" />
+            <input type="text" id="nomeContato" autocomplete="given-name" placeholder="Como posso te chamar?" />
           </div>
           <div class="form-input-wrap">
             <label for="obsExtra">Tem algum detalhe extra? (opcional)</label>
@@ -1554,7 +1599,13 @@
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      // Stagger em grupos de cards
+      if (el.closest('.servicos__opcoes') || el.closest('.paraquem__list')) {
+        el.style.transitionDelay = (i % 4) * 40 + 'ms';
+      }
+      observer.observe(el);
+    });
 
     /* ---------- Formulário de Briefing ---------- */
     const WA_NUMBER = '5544999707173'; // ← troque pelo seu número
@@ -1634,15 +1685,37 @@
           <span class="form-option__check"></span>
           <span>
             <span class="form-option__label">${item.label}</span>
-            <span class="form-option__price">R$ ${item.preco}</span>
+
           </span>
         </label>`).join('');
+    }
+
+    /* Feedback de erro acessível */
+    const errBox = document.createElement('div');
+    errBox.setAttribute('role', 'alert');
+    errBox.setAttribute('aria-live', 'assertive');
+    errBox.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);';
+    document.body.appendChild(errBox);
+    function showError(msg) {
+      errBox.textContent = '';
+      setTimeout(() => { errBox.textContent = msg; }, 50);
+      // Visual inline
+      const activeStep = document.querySelector('.form-step.active');
+      let errEl = activeStep.querySelector('.form-error-msg');
+      if (!errEl) {
+        errEl = document.createElement('p');
+        errEl.className = 'form-error-msg';
+        errEl.style.cssText = 'color:#ff4d4d;font-size:13px;margin-top:8px;font-family:var(--font-casual);letter-spacing:0.1em;';
+        activeStep.querySelector('.form-nav').before(errEl);
+      }
+      errEl.textContent = '⚠ ' + msg;
+      setTimeout(() => { if(errEl) errEl.textContent = ''; }, 4000);
     }
 
     function nextStep(current) {
       if (current === 1) {
         const sel = document.querySelector('[name="tipo"]:checked');
-        if (!sel) { alert('Escolha uma opção para continuar.'); return; }
+        if (!sel) { showError('Escolha uma opção para continuar.'); return; }
         state.tipo = sel.value;
         if (state.tipo === 'idvisual') {
           precoSelecionado = 0;
@@ -1656,7 +1729,7 @@
       }
       if (current === 2) {
         const sel = document.querySelector('[name="item"]:checked');
-        if (!sel) { alert('Escolha um item para continuar.'); return; }
+        if (!sel) { showError('Escolha um item para continuar.'); return; }
         state.item = sel.value;
         const cfg = PRECOS[state.tipo];
         const found = cfg.itens.find(i => i.value === sel.value);
@@ -1667,13 +1740,13 @@
       }
       if (current === 3) {
         state.nome = document.getElementById('nomeTime').value.trim();
-        if (!state.nome) { alert('Informe o nome do time ou projeto.'); return; }
+        if (!state.nome) { showError('Informe o nome do time ou projeto.'); return; }
         showStep(4);
         return;
       }
       if (current === 4) {
         const sel = document.querySelector('[name="esporte"]:checked');
-        if (!sel) { alert('Selecione o esporte.'); return; }
+        if (!sel) { showError('Selecione o esporte.'); return; }
         state.esporte = sel.value;
         state.contexto = document.getElementById('contexto').value.trim();
         buildResumo();
@@ -1692,7 +1765,6 @@
 
     function buildResumo() {
       const tipoLabel = { avulso: 'Arte Avulsa', pacote: 'Pacote Mensal', template: 'Template Editável', idvisual: 'Identidade Visual Completa' };
-      document.getElementById('resumoNum').textContent = state.tipo === 'idvisual' ? 'Sob consulta' : 'R$ ' + precoSelecionado;
       document.getElementById('resumoItens').innerHTML =
         `<strong style="color:var(--white)">${tipoLabel[state.tipo]}</strong> — ${labelSelecionada}<br>` +
         `Time: ${state.nome} · ${state.esporte}`;
@@ -1701,7 +1773,7 @@
     function enviarWhatsApp() {
       state.contato = document.getElementById('nomeContato').value.trim();
       state.obs = document.getElementById('obsExtra').value.trim();
-      if (!state.contato) { alert('Informe seu nome para continuar.'); return; }
+      if (!state.contato) { showError('Informe seu nome para continuar.'); return; }
 
       const tipoLabel = { avulso: 'Arte Avulsa', pacote: 'Pacote Mensal', template: 'Template Editável', idvisual: 'Identidade Visual Completa' };
 
@@ -1709,7 +1781,6 @@
       msg += `\n\n*TIPO:* ${tipoLabel[state.tipo]}`;
       if (state.tipo !== 'idvisual') {
         msg += `\n*ITEM:* ${labelSelecionada}`;
-        msg += `\n*VALOR ESTIMADO:* R$ ${precoSelecionado}`;
       } else {
         msg += `\n*SERVIÇO:* Identidade Visual Completa (sob consulta)`;
       }
