@@ -8,27 +8,30 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" as="style" />
-  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@700;800&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@700;800&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
        TOKENS
     ============================================================ */
-    :root {
-      --black:    #0a0a0a;
-      --graphite: #1e1e1e;
-      --graphite-mid: #2c2c2c;
-      --white:    #f5f5f5;
-      --gold:     #ffc700;
-      --gold-dim: #e6b300;
-      --royal: #1f1be4;
-      --royal-dim: #1815c7;
+        :root {
+      --black:        #0d0d0d;
+      --bg:           #1a1a1a;
+      --surface:      #222222;
+      --surface-2:    #2a2a2a;
+      --border-c:     #333333;
+      --white:        #f5f5f5;
+      --text:         #f0f0f0;
+      --text-muted:   #888888;
+      --yellow:       #eedd60;
+      --yellow-dim:   #d4c440;
+      --gray-btn:     #d0d0d0;
+      --gray-btn-dim: #b8b8b8;
 
-      --font-display: 'Times New Roman', Times, serif;
-      --font-script:  'Gochi Hand', cursive;
+      --font-display: 'Bebas Neue', 'Arial Black', sans-serif;
+      --font-body:    'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       --font-casual:  'Courier New', monospace;
-      --font-body:    'Helvetica Neue', Helvetica, Arial, sans-serif;
 
       --space-xs:  8px;
       --space-sm:  16px;
@@ -36,11 +39,10 @@
       --space-lg:  64px;
       --space-xl:  120px;
 
-      --border: 1px solid #2c2c2c;
-      --border-gold: 1px solid var(--gold);
-      --radius: 0px;
-
-      --max-w: 1100px;
+      --border:      1px solid var(--border-c);
+      --border-acc:  2px solid var(--yellow);
+      --radius:      0px;
+      --max-w:       1140px;
     }
 
     /* ============================================================
@@ -48,12 +50,12 @@
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--black);
-      color: var(--white);
+        body {
+      background: var(--bg);
+      color: var(--text);
       font-family: var(--font-body);
       font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
@@ -74,34 +76,27 @@
     /* ============================================================
        TYPOGRAPHY
     ============================================================ */
-    .display {
+        .display {
       font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 600;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 0.93;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
     }
-    .label {
+        .label {
       font-family: var(--font-casual);
       font-size: 11px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--text-muted);
     }
-    .label--script {
-      font-family: var(--font-script);
-      font-size: 20px;
-      letter-spacing: 0;
-      text-transform: none;
-      color: var(--gold);
-      line-height: 1;
-      display: block;
-    }
+
     .body-text {
       font-family: var(--font-body);
       font-size: 16px;
       line-height: 1.7;
-      color: #aaaaaa;
+      color: var(--text-muted);
     }
 
     /* ============================================================
@@ -109,20 +104,21 @@
     ============================================================ */
 
     /* Button */
-    .btn {
+        .btn {
       display: inline-block;
-      touch-action: manipulation;
-      font-family: var(--font-casual);
+      font-family: var(--font-body);
       font-size: 12px;
-      letter-spacing: 0.15em;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 18px 40px;
+      padding: 16px 36px;
       cursor: pointer;
       position: relative;
       overflow: hidden;
       transition: color 0.25s ease;
       border: none;
       z-index: 0;
+      touch-action: manipulation;
     }
     .btn::after {
       content: '';
@@ -134,18 +130,18 @@
       z-index: -1;
     }
     .btn:hover::after { transform: scaleX(1); }
-    .btn--primary {
-      background: var(--gold);
+        .btn--primary {
+      background: var(--gray-btn);
       color: var(--black);
     }
-    .btn--primary::after { background: var(--gold-dim); }
+    .btn--primary::after { background: var(--gray-btn-dim); }
     .btn--primary:hover { color: var(--black); }
-    .btn--outline {
+        .btn--outline {
       background: transparent;
-      color: var(--gold);
-      border: var(--border-gold);
+      color: var(--gray-btn);
+      border: 1px solid var(--gray-btn);
     }
-    .btn--outline::after { background: var(--gold); }
+    .btn--outline::after { background: var(--gray-btn); }
     .btn--outline:hover { color: var(--black); }
     .btn:active { transform: scale(0.97); transition: transform 0.1s ease; }
 
@@ -158,14 +154,14 @@
       text-transform: uppercase;
       border: var(--border);
       padding: 6px 14px;
-      color: #aaa;
+      color: var(--text-muted);
     }
 
     /* Divider */
-    .divider {
+        .divider {
       width: 40px;
-      height: 2px;
-      background: var(--gold);
+      height: 3px;
+      background: var(--yellow);
       margin: var(--space-sm) 0;
     }
 
@@ -177,7 +173,7 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       border-bottom: var(--border);
-      background: rgba(10,10,10,0.92);
+      background: rgba(26,26,26,0.95);
       backdrop-filter: blur(8px);
     }
     .nav__inner {
@@ -189,29 +185,30 @@
       max-width: var(--max-w);
       margin: 0 auto;
     }
-    .nav__logo {
+        .nav__logo {
       font-family: var(--font-display);
-      font-style: italic;
-      font-size: 20px;
+      font-size: 18px;
+      letter-spacing: 0em;
+      text-transform: uppercase;
       color: var(--white);
     }
-    .nav__logo span { color: var(--gold); }
-    .nav__cta {
+    .nav__logo span { color: var(--yellow); }
+        .nav__cta {
       font-family: var(--font-casual);
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
-      border: var(--border-gold);
+      color: var(--yellow);
+      border: 1px solid var(--yellow);
       padding: 10px 24px;
       transition: background 0.2s, color 0.2s;
     }
-    .nav__cta:hover { background: var(--gold); color: var(--black); }
+    .nav__cta:hover { background: var(--yellow); color: var(--black); }
     .nav__progress {
       position: absolute;
       bottom: -1px; left: 0;
       height: 2px;
-      background: var(--royal);
+      background: var(--yellow);
       width: 0%;
       transition: width 0.1s linear;
     }
@@ -230,17 +227,15 @@
       overflow: hidden;
     }
 
-    /* Background grid lines — brutalista */
+    /* Grid de pontos — fundo branco */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(var(--graphite) 1px, transparent 1px),
-        linear-gradient(90deg, var(--graphite) 1px, transparent 1px);
-      background-size: 80px 80px;
-      opacity: 0.35;
+      background-image: radial-gradient(circle, rgba(238,221,96,0.15) 1px, transparent 1px);
+      background-size: 28px 28px;
       pointer-events: none;
+      z-index: 0;
     }
 
     .hero__inner {
@@ -250,6 +245,9 @@
       max-width: var(--max-w);
       margin: 0 auto;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero__eyebrow {
@@ -257,38 +255,43 @@
     }
 
     .hero__headline {
-      font-size: clamp(48px, 7vw, 96px);
-      max-width: 820px;
-      margin-bottom: var(--space-md);
+      font-size: clamp(60px, 9vw, 130px);
+      max-width: 960px;
+      margin: 0 auto var(--space-md);
+      text-align: center;
+      line-height: 0.9;
     }
     .hero__headline em {
-      color: var(--gold);
-      font-style: italic;
+      color: var(--yellow);
+      font-style: normal;
     }
 
     .hero__sub {
-      max-width: 480px;
+      max-width: 560px;
       font-size: 17px;
-      color: #888;
-      margin-bottom: var(--space-lg);
+      color: var(--text-muted);
+      margin: 0 auto var(--space-lg);
       line-height: 1.65;
+      text-align: center;
     }
 
     .hero__bottom {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: var(--space-md);
       padding: var(--space-md) 0;
-      border-top: 1px solid #1e1e1e;
+      border-top: var(--border);
       margin-top: var(--space-md);
       position: relative;
+      width: 100%;
     }
     .hero__bottom::before {
       content: "";
       position: absolute;
       top: -1px; left: 0;
-      width: 60px; height: 1px;
-      background: var(--gold);
+      width: 60px; height: 2px;
+      background: var(--yellow);
     }
     .hero__stat {
       display: flex;
@@ -297,17 +300,18 @@
     }
     .hero__stat-num {
       font-family: var(--font-display);
-      font-style: italic;
-      font-size: 36px;
-      color: var(--royal);
+      font-style: normal;
+      font-size: 40px;
+      color: var(--yellow);
       line-height: 1;
+      letter-spacing: 0.02em;
     }
     .hero__stat-label {
       font-family: var(--font-casual);
       font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #555;
+      color: var(--text-muted);
     }
     .hero__stat-sep {
       width: 1px;
@@ -319,7 +323,7 @@
        PROBLEMA
     ============================================================ */
     .problema {
-      background: var(--graphite);
+      background: var(--surface-2);
       border-bottom: var(--border);
     }
     .problema__grid {
@@ -329,15 +333,15 @@
       align-items: center;
     }
     .problema__left h2 {
-      font-size: clamp(32px, 4vw, 52px);
+      font-size: clamp(36px, 5vw, 64px);
       margin: var(--space-sm) 0 var(--space-md);
-      line-height: 1.1;
+      line-height: 0.95;
     }
-    .problema__left h2 em { color: var(--gold); }
+    .problema__left h2 em { color: var(--yellow); }
     .problema__right p {
       font-size: 17px;
       line-height: 1.75;
-      color: #999;
+      color: var(--text-muted);
     }
     .problema__right p + p { margin-top: var(--space-sm); }
 
@@ -359,10 +363,10 @@
       margin: var(--space-sm) 0 var(--space-md);
       line-height: 1.08;
     }
-    .solucao__title em { color: var(--gold); }
+    .solucao__title em { color: var(--yellow); }
     .solucao__text {
       font-size: 17px;
-      color: #999;
+      color: var(--text-muted);
       line-height: 1.75;
       margin-bottom: var(--space-md);
     }
@@ -384,7 +388,7 @@
     /* Três colunas de opção */
     .servicos__opcoes {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       border-left: var(--border);
     }
     .opcao {
@@ -400,34 +404,35 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--gold);
+      height: 3px;
+      background: var(--yellow);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
     }
     .opcao:hover::before { transform: scaleX(1); }
-    .opcao:hover { background: rgba(255,199,0,0.03); }
-    .opcao:hover .opcao__num { color: var(--gold); }
+    .opcao:hover { background: rgba(238,221,96,0.03); }
+    .opcao:hover .opcao__num { color: var(--yellow); }
     .opcao__header {
       padding: var(--space-md);
       border-bottom: var(--border);
     }
     .opcao__num {
       font-family: var(--font-display);
-      font-style: italic;
-      font-size: 42px;
-      color: var(--graphite-mid);
+      font-style: normal;
+      font-size: 56px;
+      color: #ccc;
       line-height: 1;
       margin-bottom: var(--space-xs);
       transition: color 0.25s ease;
+      letter-spacing: 0.02em;
     }
     .opcao__tag {
       font-family: var(--font-casual);
       font-size: 9px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--yellow);
       margin-bottom: var(--space-xs);
       display: block;
     }
@@ -435,18 +440,18 @@
       font-family: var(--font-display);
       font-style: italic;
       font-size: 22px;
-      color: var(--white);
+      color: var(--text);
       line-height: 1.15;
     }
     .opcao__desc {
       font-size: 13px;
-      color: #aaa;
+      color: var(--text-muted);
       margin-top: 6px;
       line-height: 1.5;
     }
-    .opcao--id { border-left: 2px solid var(--gold); }
-    .opcao--id .opcao__num { color: var(--gold); }
-    .opcao--id .opcao__titulo { color: var(--gold); }
+    .opcao--id { border-left: 3px solid var(--yellow); }
+    .opcao--id .opcao__num { color: var(--yellow); }
+    .opcao--id .opcao__titulo { color: var(--yellow); }
     .opcao__itens {
       padding: var(--space-md);
       flex: 1;
@@ -465,14 +470,14 @@
     .item-preco:last-child { border-bottom: none; padding-bottom: 0; }
     .item-preco__nome {
       font-size: 14px;
-      color: var(--white);
+      color: var(--text);
       line-height: 1.4;
     }
     .item-preco__valor {
       font-family: var(--font-display);
       font-style: italic;
       font-size: 18px;
-      color: var(--gold);
+      color: var(--yellow);
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -482,7 +487,7 @@
     ============================================================ */
     .briefing {
       border-bottom: var(--border);
-      background: var(--black);
+      background: var(--bg);
       position: relative;
       overflow: hidden;
     }
@@ -491,7 +496,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(255,199,0,0.18) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(238,221,96,0.12) 1px, transparent 1px);
       background-size: 28px 28px;
       pointer-events: none;
       z-index: 0;
@@ -515,8 +520,8 @@
       line-height: 1.08;
       margin: var(--space-sm) 0 var(--space-sm);
     }
-    .briefing__header h2 em { color: var(--gold); }
-    .briefing__header p { font-size: 16px; color: #888; line-height: 1.65; }
+    .briefing__header h2 em { color: var(--yellow); }
+    .briefing__header p { font-size: 16px; color: var(--text-muted); line-height: 1.65; }
 
     .form-step { display: none; }
     .form-step.active { display: block; }
@@ -531,14 +536,14 @@
       background: var(--graphite-mid);
       transition: background 0.3s;
     }
-    .form-progress__dot.done { background: var(--gold); }
+    .form-progress__dot.done { background: var(--yellow); }
 
     .form-question {
       font-family: var(--font-casual);
       font-size: 11px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--yellow);
       margin-bottom: var(--space-sm);
       display: block;
     }
@@ -546,7 +551,7 @@
       font-family: var(--font-display);
       font-style: italic;
       font-size: clamp(22px, 3vw, 32px);
-      color: var(--white);
+      color: var(--text);
       margin-bottom: var(--space-md);
       line-height: 1.15;
     }
@@ -567,9 +572,9 @@
       align-items: center;
       gap: 10px;
     }
-    .form-option:hover { border-color: #888; background: rgba(255,255,255,0.04); transform: translateX(3px); }
+    .form-option:hover { border-color: var(--text-muted); background: rgba(255,255,255,0.04); transform: translateX(3px); }
     .form-option { transition: border-color 0.2s, background 0.2s, transform 0.2s; }
-    .form-option.selected { border-color: var(--gold); background: rgba(255,199,0,0.06); }
+    .form-option.selected { border-color: var(--yellow); background: rgba(238,221,96,0.07); }
     .form-option input { display: none; }
     .form-option__check {
       width: 16px; height: 16px;
@@ -579,26 +584,26 @@
       transition: border-color 0.2s, background 0.2s;
     }
     .form-option.selected .form-option__check {
-      border-color: var(--gold);
-      background: var(--gold);
+      border-color: var(--yellow);
+      background: var(--yellow);
     }
     .form-option__check::after {
       content: '';
       width: 8px; height: 8px;
-      background: var(--black);
+      background: var(--bg);
       clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
       display: none;
     }
     .form-option.selected .form-option__check::after { display: block; }
     .form-option__label {
       font-size: 14px;
-      color: var(--white);
+      color: var(--text);
       line-height: 1.35;
     }
     .form-option__price {
       font-family: var(--font-casual);
       font-size: 11px;
-      color: var(--gold);
+      color: var(--yellow);
       margin-top: 2px;
     }
 
@@ -608,16 +613,16 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #aaa;
+      color: var(--text-muted);
       display: block;
       margin-bottom: 8px;
     }
     .form-input-wrap input,
     .form-input-wrap textarea {
       width: 100%;
-      background: var(--black);
+      background: var(--surface-2);
       border: var(--border);
-      color: var(--white);
+      color: var(--text);
       font-family: var(--font-body);
       font-size: 16px;
       min-height: 48px;
@@ -629,7 +634,7 @@
       -webkit-appearance: none;
     }
     .form-input-wrap input:focus,
-    .form-input-wrap textarea:focus { border-color: #555; }
+    .form-input-wrap textarea:focus { border-color: var(--text-muted); }
 
     .form-nav {
       display: flex;
@@ -643,19 +648,19 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #555;
+      color: var(--text-muted);
       background: none;
       border: none;
       cursor: pointer;
       padding: 0;
       transition: color 0.2s;
     }
-    .form-back:hover { color: var(--white); }
+    .form-back:hover { color: var(--text); }
 
     /* Resumo de valor */
     .resumo-valor {
-      background: var(--black);
-      border: var(--border-gold);
+      background: var(--surface-2);
+      border: 2px solid var(--yellow);
       padding: var(--space-md);
       margin-bottom: var(--space-md);
     }
@@ -664,21 +669,21 @@
       font-size: 10px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #aaa;
+      color: var(--text-muted);
       margin-bottom: var(--space-xs);
     }
 .resumo-valor__num { display: none; }
     .resumo-valor__itens {
       margin-top: var(--space-sm);
       font-size: 13px;
-      color: #999;
+      color: var(--text-muted);
       line-height: 1.7;
     }
 
     /* ============================================================
        SOBRE MIM
     ============================================================ */
-    .sobre { background: var(--graphite); border-bottom: var(--border); }
+    .sobre { background: var(--surface); border-bottom: var(--border); }
     .sobre__inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -700,7 +705,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      border: 2px solid var(--gold);
+      border: 3px solid var(--yellow);
       transform: translate(10px, 10px);
       z-index: 2;
       pointer-events: none;
@@ -716,7 +721,7 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--black);
-      background: var(--gold);
+      background: var(--yellow);
       padding: 5px 10px;
       z-index: 3;
     }
@@ -735,10 +740,10 @@
       margin: var(--space-sm) 0 var(--space-md);
       line-height: 1.1;
     }
-    .sobre__content h2 em { color: var(--gold); }
+    .sobre__content h2 em { color: var(--yellow); }
     .sobre__content p {
       font-size: 16px;
-      color: #999;
+      color: var(--text-muted);
       line-height: 1.75;
       margin-bottom: var(--space-sm);
     }
@@ -772,9 +777,9 @@
       padding: var(--space-md) var(--space-md) var(--space-lg);
       transition: background 0.2s;
     }
-    .paraquem-item:hover { background: rgba(31,27,228,0.04); }
-    .paraquem-item:hover .paraquem-item__icon { border-color: var(--royal); background: rgba(31,27,228,0.1); }
-    .paraquem-item:hover .paraquem-item__icon svg { stroke: var(--royal); }
+    .paraquem-item:hover { background: rgba(238,221,96,0.05); }
+    .paraquem-item:hover .paraquem-item__icon { border-color: var(--yellow); background: rgba(238,221,96,0.1); }
+    .paraquem-item:hover .paraquem-item__icon svg { stroke: var(--yellow); }
     .paraquem-item__icon {
       width: 40px;
       height: 40px;
@@ -788,10 +793,11 @@
     .paraquem-item__icon svg {
       width: 18px;
       height: 18px;
-      stroke: var(--royal);
+      stroke: var(--yellow);
       fill: none;
       stroke-width: 1.5;
     }
+    .paraquem-item__icon { border-color: var(--yellow); }
     .paraquem-item h3 {
       font-family: var(--font-display);
       font-style: italic;
@@ -800,14 +806,14 @@
     }
     .paraquem-item p {
       font-size: 14px;
-      color: #999;
+      color: var(--text-muted);
       line-height: 1.65;
     }
 
     /* ============================================================
        DIFERENCIAL
     ============================================================ */
-    .diferencial { background: var(--graphite); border-bottom: var(--border); }
+    .diferencial { background: var(--surface); border-bottom: var(--border); }
     .diferencial__inner {
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -819,14 +825,14 @@
       line-height: 1.08;
       margin: var(--space-sm) 0;
     }
-    .diferencial__left h2 em { color: var(--gold); }
+    .diferencial__left h2 em { color: var(--yellow); }
     .diferencial__right p {
       font-size: 18px;
       line-height: 1.8;
-      color: #999;
+      color: var(--text-muted);
     }
     .diferencial__right p strong {
-      color: var(--white);
+      color: var(--text);
       font-weight: 500;
     }
 
@@ -836,6 +842,7 @@
     .cta-final {
       border-bottom: var(--border);
       text-align: center;
+      background: var(--surface);
     }
     .cta-final__inner {
       max-width: 720px;
@@ -847,10 +854,10 @@
       line-height: 1.05;
       margin: var(--space-sm) 0 var(--space-md);
     }
-    .cta-final__headline em { color: var(--gold); }
+    .cta-final__headline em { color: var(--yellow); }
     .cta-final__sub {
       font-size: 17px;
-      color: #888;
+      color: var(--text-muted);
       margin-bottom: var(--space-lg);
       line-height: 1.65;
     }
@@ -876,7 +883,7 @@
       font-family: var(--font-casual);
       font-size: 10px;
       letter-spacing: 0.2em;
-      color: #2a2a2a;
+      color: var(--text-muted);
       border-top: var(--border);
       border-bottom: var(--border);
       padding: 10px 0;
@@ -894,16 +901,18 @@
     }
     .footer__logo {
       font-family: var(--font-display);
-      font-style: italic;
-      font-size: 18px;
+      font-style: normal;
+      font-size: 22px;
+      letter-spacing: 0em;
+      text-transform: uppercase;
     }
-    .footer__logo span { color: var(--gold); }
+    .footer__logo span { color: var(--yellow); }
     .footer__copy {
       font-family: var(--font-casual);
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #444;
+      color: var(--text-muted);
     }
     .footer__links {
       display: flex;
@@ -914,10 +923,10 @@
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #555;
+      color: var(--text-muted);
       transition: color 0.2s;
     }
-    .footer__links a:hover { color: var(--gold); }
+    .footer__links a:hover { color: var(--yellow); }
 
     /* ============================================================
        SCROLL REVEAL (CSS-only fade-up)
@@ -940,7 +949,8 @@
       .solucao__inner,
       .sobre__inner,
       .diferencial__inner { grid-template-columns: 1fr; }
-      .servicos__opcoes { grid-template-columns: 1fr 1fr; }
+      .servicos__opcoes { grid-template-columns: repeat(3, 1fr); }
+      @media (max-width: 768px) { .servicos__opcoes { grid-template-columns: 1fr 1fr; } }
       .paraquem__list { grid-template-columns: 1fr 1fr; }
       .solucao__sticky { position: static; }
       .form-options { grid-template-columns: 1fr 1fr; }
@@ -954,7 +964,7 @@
       position: absolute;
       top: -100px;
       left: var(--space-sm);
-      background: var(--gold);
+      background: var(--yellow);
       color: var(--black);
       font-family: var(--font-casual);
       font-size: 11px;
@@ -972,7 +982,7 @@
     .form-option:focus-visible,
     input:focus-visible,
     textarea:focus-visible {
-      outline: 2px solid var(--gold);
+      outline: 2px solid var(--yellow);
       outline-offset: 3px;
     }
     /* Remover outline padrão apenas quando há focus-visible */
@@ -986,6 +996,81 @@
         transition-duration: 0.01ms !important;
       }
     }
+
+
+        /* Em dentro de display — acento amarelo */
+    .display em {
+      font-style: normal;
+      color: var(--yellow);
+    }
+    /* Titulos de seção menores */
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 80px);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 0.95;
+      color: var(--black);
+    }
+
+
+    /* ============================================================
+       PORTFÓLIO — MARQUEE
+    ============================================================ */
+    .portfolio { border-top: var(--border); border-bottom: var(--border); overflow: hidden; }
+    .portfolio__header {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      padding-bottom: var(--space-md);
+      border-bottom: var(--border);
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .portfolio__header h2 { font-size: clamp(36px, 5vw, 72px); }
+
+    .marquee-wrap {
+      overflow: hidden;
+      padding: var(--space-md) 0;
+      cursor: grab;
+      user-select: none;
+    }
+    .marquee-wrap:active { cursor: grabbing; }
+    .marquee-track {
+      display: flex;
+      gap: var(--space-sm);
+      width: max-content;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marqueeScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      flex-shrink: 0;
+      width: 320px;
+      height: 280px;
+      overflow: hidden;
+      position: relative;
+      background: var(--surface-2);
+    }
+    .marquee-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), filter 0.4s ease;
+      filter: grayscale(30%);
+    }
+    .marquee-item:hover img {
+      transform: scale(1.06);
+      filter: grayscale(0%);
+    }
+    @media (max-width: 600px) {
+      .marquee-item { width: 240px; height: 210px; }
+    }
+
     /* ============================================================
        RUÍDO DE FUNDO
     ============================================================ */
@@ -995,10 +1080,10 @@
       inset: 0;
       z-index: 9999;
       pointer-events: none;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.09;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       background-repeat: repeat;
-      background-size: 200px 200px;
+      background-size: 180px 180px;
     }
     @media (max-width: 600px) {
       :root { --space-xl: 72px; --space-lg: 48px; }
@@ -1018,18 +1103,18 @@
     #cursor {
       position: fixed;
       width: 20px; height: 20px;
-      border: 1.5px solid var(--gold);
+      border: 1.5px solid var(--yellow);
       border-radius: 0;
       pointer-events: none;
       z-index: 99999;
       transform: translate(-50%, -50%);
       transition: transform 0.08s ease, width 0.15s ease, height 0.15s ease, opacity 0.2s;
-      mix-blend-mode: difference;
+      mix-blend-mode: normal;
     }
     #cursor::before, #cursor::after {
       content: '';
       position: absolute;
-      background: var(--gold);
+      background: var(--yellow);
     }
     #cursor::before { width: 1px; height: 8px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
     #cursor::after  { width: 8px; height: 1px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
@@ -1044,6 +1129,7 @@
       from { opacity: 0; transform: translateY(32px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+    .hero__eyebrow { text-align: center; }
     .hero__eyebrow  { animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
     .hero__headline { animation: slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.25s both; }
     .hero__sub      { animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s both; }
@@ -1065,7 +1151,7 @@
   <!-- ======================== NAV ======================== -->
   <nav class="nav" aria-label="Navegação principal">
     <div class="nav__inner">
-      <span class="nav__logo">Lorena <span>Mariano</span> <span style="color:var(--gold);font-style:normal;">✱</span></span>
+      <span class="nav__logo">LORENA <span>MARIANO</span> <span style="color:var(--yellow);">✱</span></span>
       <a href="#orcamento" class="nav__cta">Orçamento</a>
     </div>
     <div class="nav__progress" id="navProgress" role="progressbar" aria-hidden="true"></div>
@@ -1075,7 +1161,7 @@
   <section class="hero" id="main-content" aria-labelledby="hero-headline">
     <div class="hero__inner">
       <div class="hero__eyebrow reveal">
-        <span class="label--script">design esportivo</span>
+        <span class="label">design esportivo</span>
       </div>
 
       <h1 class="hero__headline display reveal" id="hero-headline">
@@ -1085,7 +1171,7 @@
       </h1>
 
       <p class="hero__sub reveal">
-        Design esportivo para times, atletas e projetos que querem ser levados a sério nas redes — templates prontos, identidade de quem joga de verdade.
+        Design esportivo para times, atletas e projetos que querem ser levados a sério nas redes.
       </p>
 
       <a href="#orcamento" class="btn btn--primary reveal" aria-label="Solicitar orçamento de design esportivo">
@@ -1116,8 +1202,8 @@
     <div class="container">
       <div class="problema__grid">
         <div class="problema__left reveal">
-          <span class="label--script" style="color:var(--royal);">isso te parece familiar?</span>
-          <div class="divider" style="background:var(--royal);"></div>
+          <span class="label">isso te parece familiar?</span>
+          <div class="divider"></div>
           <h2 class="display" id="problema-title">
             Sua equipe merece mais do que um logo<br>
             <em>feito no celular.</em>
@@ -1140,8 +1226,8 @@
     <div class="container">
       <div class="solucao__inner">
         <div class="solucao__sticky reveal">
-          <span class="label--script" style="color:var(--royal);">o que eu faço por isso</span>
-          <div class="divider" style="background:var(--royal);"></div>
+          <span class="label">o que eu faço por isso</span>
+          <div class="divider"></div>
           <h2 class="solucao__title display" id="solucao-title">
             Design que coloca sua marca<br>
             no mesmo nível<br>
@@ -1150,7 +1236,7 @@
         </div>
         <div class="reveal">
           <p class="solucao__text">
-            Crio artes e templates editáveis para as redes sociais do seu time ou projeto esportivo. Com padrão visual e coerência que mostram profissionalismo antes mesmo de você entrar em campo.
+            Crio artes para as redes sociais do seu time ou projeto esportivo. Com padrão visual e coerência que mostram profissionalismo antes mesmo de você entrar em campo.
           </p>
           <a href="#orcamento" class="btn btn--outline">Ver Serviços</a>
         </div>
@@ -1164,7 +1250,7 @@
       <div class="servicos__header reveal">
         <h2 class="display" id="servicos-title">Como posso trabalhar com você</h2>
         <div style="display:flex;align-items:center;gap:var(--space-md);flex-wrap:wrap;">
-          <span class="label--script">Serviços &amp; Preços</span>
+          <span class="label">Serviços &amp; Preços</span>
           <a href="#orcamento" class="btn btn--outline" style="font-size:11px;padding:12px 24px;">Solicitar orçamento →</a>
         </div>
       </div>
@@ -1220,33 +1306,10 @@
         </article>
 
         <!-- OPÇÃO 3 -->
-        <article class="opcao reveal" role="listitem">
-          <div class="opcao__header">
-            <div class="opcao__num display" aria-hidden="true">03</div>
-            <span class="opcao__tag">Para times que querem autonomia</span>
-            <h3 class="opcao__titulo">Templates Editáveis</h3>
-            <p class="opcao__desc">Templates criados do zero com a identidade do seu time. Você edita quando quiser, no Canva.</p>
-          </div>
-          <div class="opcao__itens">
-            <div class="item-preco">
-              <span class="item-preco__nome">1 template personalizado</span>
-              
-            </div>
-            <div class="item-preco">
-              <span class="item-preco__nome">Kit com 3 templates</span>
-              
-            </div>
-            <div class="item-preco">
-              <span class="item-preco__nome">Kit com 5 templates</span>
-              
-            </div>
-          </div>
-        </article>
-
-        <!-- OPÇÃO 4 -->
+        <!-- OPÇÃO 3 -->
         <article class="opcao opcao--id reveal" role="listitem">
           <div class="opcao__header">
-            <div class="opcao__num display" aria-hidden="true">04</div>
+            <div class="opcao__num display" aria-hidden="true">03</div>
             <span class="opcao__tag">Para times que querem tudo</span>
             <h3 class="opcao__titulo">Identidade Visual</h3>
             <p class="opcao__desc">Logo, paleta, tipografia e manual de marca. A base visual completa do seu time — feita do zero, inconfundível.</p>
@@ -1271,7 +1334,7 @@
         </div>
         <div class="sobre__content">
           <div class="reveal">
-            <span class="label--script">Sobre mim</span>
+            <span class="label">Sobre mim</span>
             <div class="divider"></div>
           </div>
           <h2 class="display reveal" id="sobre-title">
@@ -1286,7 +1349,7 @@
           <p class="reveal">
             Meu trabalho é visual, mas o que eu estou construindo é identidade. A diferença entre um escudo que dura dez anos e um que dura gerações está nas decisões que a maioria ignora — tipografia, proporção, como a marca se comporta numa camiseta molhada de chuva num jogo decisivo.
           </p>
-          <p class="reveal" style="color: var(--white); font-style: italic;">
+          <p class="reveal" style="color: var(--text); font-style: italic;">
             Se você quer design que parece de todos os outros times, eu não sou a pessoa certa. Se você quer algo inconfundivelmente seu, a gente tem muito a conversar.
           </p>
           <div class="sobre__tags reveal" aria-label="Especialidades">
@@ -1305,7 +1368,7 @@
   <section class="paraquem section--tight" aria-labelledby="paraquem-title">
     <div class="container">
       <div class="paraquem__header reveal">
-        <span class="label--script">Para quem é</span>
+        <span class="label">Para quem é</span>
         <div class="divider"></div>
         <h2 class="display" id="paraquem-title">
           <em>feito pra você se...</em>
@@ -1346,7 +1409,7 @@
     <div class="container">
       <div class="diferencial__inner">
         <div class="reveal">
-          <span class="label--script">Diferencial</span>
+          <span class="label">Diferencial</span>
           <div class="divider"></div>
           <h2 class="display" id="diferencial-title">
             Por que trabalhar<br>
@@ -1372,7 +1435,7 @@
       <div class="briefing__inner">
 
         <div class="briefing__header reveal">
-          <span class="label--script">Pré-briefing</span>
+          <span class="label">Pré-briefing</span>
           <div class="divider"></div>
           <h2 class="display" id="briefing-title">
             Me conta o que<br>
@@ -1411,14 +1474,7 @@
                 
               </span>
             </label>
-            <label class="form-option" data-value="template" tabindex="0">
-              <input type="radio" name="tipo" value="template" />
-              <span class="form-option__check"></span>
-              <span>
-                <span class="form-option__label">Templates Editáveis</span>
-                
-              </span>
-            </label>
+
             <label class="form-option" data-value="idvisual" tabindex="0">
               <input type="radio" name="tipo" value="idvisual" />
               <span class="form-option__check"></span>
@@ -1531,14 +1587,83 @@
     </div>
   </section>
 
+  <!-- ======================== PORTFÓLIO ======================== -->
+  <section class="portfolio section--tight" id="portfolio" aria-labelledby="portfolio-title">
+    <div class="container">
+      <div class="portfolio__header reveal">
+        <h2 class="display" id="portfolio-title">Trabalhos</h2>
+        <span class="label">Projetos recentes</span>
+      </div>
+    </div>
+    <div class="marquee-wrap" aria-label="Galeria de projetos">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/HD5v636.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/EBqiiJ0.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/EbpJHqg.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/VCvzLTh.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/NAmLLOo.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/TaGs82a.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/2v8orLO.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/DW3lgZc.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/dqqa1KX.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/HD5v636.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/EBqiiJ0.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/EbpJHqg.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/VCvzLTh.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/NAmLLOo.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/TaGs82a.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/2v8orLO.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/DW3lgZc.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+        <div class="marquee-item">
+          <img src="https://i.imgur.com/dqqa1KX.png" alt="Projeto de design esportivo" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ======================== FOOTER ======================== -->
   <footer class="footer" role="contentinfo">
     <div class="footer__inner">
-      <span class="footer__logo">Lorena <span>Mariano</span> <span style="color:var(--gold);font-style:normal;">✱</span></span>
+      <span class="footer__logo">LORENA <span>MARIANO</span> <span style="color:var(--yellow);">✱</span></span>
       <span class="footer__copy">© 2026 · Design Esportivo · Todos os direitos reservados</span>
       <nav class="footer__links" aria-label="Links do rodapé">
         <a href="#sobre">Sobre</a>
         <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Trabalhos</a>
         <a href="#orcamento">Orçamento</a>
       </nav>
     </div>
@@ -1625,14 +1750,6 @@
           { label: '4 artes/mês',  value: 'pacote_4',  preco: 160 },
           { label: '8 artes/mês',  value: 'pacote_8',  preco: 300 },
           { label: '12 artes/mês', value: 'pacote_12', preco: 420 },
-        ]
-      },
-      template: {
-        title: 'Qual kit de templates você precisa?',
-        itens: [
-          { label: '1 template personalizado', value: 'tmpl_1', preco: 70  },
-          { label: 'Kit com 3 templates',      value: 'tmpl_3', preco: 180 },
-          { label: 'Kit com 5 templates',      value: 'tmpl_5', preco: 280 },
         ]
       },
       idvisual: { title: '', itens: [] }
@@ -1764,7 +1881,7 @@
     }
 
     function buildResumo() {
-      const tipoLabel = { avulso: 'Arte Avulsa', pacote: 'Pacote Mensal', template: 'Template Editável', idvisual: 'Identidade Visual Completa' };
+      const tipoLabel = { avulso: 'Arte Avulsa', pacote: 'Pacote Mensal', idvisual: 'Identidade Visual Completa' };
       document.getElementById('resumoItens').innerHTML =
         `<strong style="color:var(--white)">${tipoLabel[state.tipo]}</strong> — ${labelSelecionada}<br>` +
         `Time: ${state.nome} · ${state.esporte}`;
@@ -1775,7 +1892,7 @@
       state.obs = document.getElementById('obsExtra').value.trim();
       if (!state.contato) { showError('Informe seu nome para continuar.'); return; }
 
-      const tipoLabel = { avulso: 'Arte Avulsa', pacote: 'Pacote Mensal', template: 'Template Editável', idvisual: 'Identidade Visual Completa' };
+      const tipoLabel = { avulso: 'Arte Avulsa', pacote: 'Pacote Mensal', idvisual: 'Identidade Visual Completa' };
 
       let msg = `Olá, Lorena! Vim pelo site e quero solicitar um orçamento.`;
       msg += `\n\n*TIPO:* ${tipoLabel[state.tipo]}`;
