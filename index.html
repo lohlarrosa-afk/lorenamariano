@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorena Mariano — Designer Esportiva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mynerve&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf7e6;
+      --bg-dark: #191919;
+      --accent: #ffd426;
+      --text: #191919;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+    /* ── CURSOR ── */
+    #cursor {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: fixed;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: multiply;
+      transition: width 0.2s, height 0.2s;
+    }
+    #cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--text);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .headline {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+    }
+    .accent-font { font-family: 'Mynerve', cursive; }
+    .tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #19191988;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: none;
+      cursor: none;
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--accent); color: var(--text); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 15px 36px;
+      border: 1.5px solid var(--text);
+      cursor: none;
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: var(--text); color: var(--bg); transform: translateY(-2px); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50%       { transform: translateY(-12px) rotate(-8deg); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes slideRight {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s, backdrop-filter 0.3s;
+    }
+    nav.scrolled {
+      background: #faf7e6ee;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #19191911;
+    }
+    .nav-logo { font-family: 'Times New Roman', serif; font-style: italic; font-weight: 700; font-size: 22px; letter-spacing: -1px; cursor: none; }
+    .nav-links { display: flex; gap: 40px; align-items: center; }
+    .nav-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+      cursor: none;
+    }
+    .nav-link:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-circle-1 {
+      position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
+      width: 520px; height: 520px; border-radius: 50%;
+      border: 1px solid #1919190f; pointer-events: none;
+    }
+    .hero-circle-2 {
+      position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+      width: 320px; height: 320px; border-radius: 50%;
+      border: 1px solid #ffd42633; pointer-events: none;
+    }
+    .hero-float-text {
+      position: absolute; top: 120px; right: 15%;
+      font-family: 'Mynerve', cursive; font-size: 14px;
+      color: var(--text); opacity: 0.35;
+      animation: float 5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-spin {
+      position: absolute; bottom: 20%; right: 8%;
+      width: 200px; height: 200px;
+      animation: spin-slow 20s linear infinite;
+      pointer-events: none;
+    }
+    .hero-title { font-size: clamp(64px, 11vw, 160px); color: var(--text); line-height: 0.88; }
+    .hero-title span { color: var(--accent); }
+    .hero-divider {
+      width: 60px; height: 2px;
+      background: var(--accent);
+      display: inline-block;
+      transform-origin: left;
+      animation: slideRight 0.8s 0.3s ease both;
+    }
+    .hero-stats { display: flex; gap: 60px; margin-top: 80px; flex-wrap: wrap; }
+    .stat-num { font-family: 'Times New Roman', serif; font-style: italic; font-weight: 700; font-size: 44px; line-height: 1; }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      overflow: hidden;
+      padding: 14px 0;
+      background: var(--text);
+    }
+    .ticker-inner {
+      display: flex;
+      width: max-content;
+      animation: ticker 24s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--bg);
+      padding: 0 40px;
+    }
+    .ticker-dot { color: var(--accent); font-size: 20px; padding: 0 4px; }
+
+    /* ── PORTFOLIO ── */
+    #work { padding: 120px 48px; background: var(--bg); }
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 10px 18px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+      border: 1px solid #19191933;
+      background: transparent;
+      color: var(--text);
+      cursor: none;
+      transition: all 0.2s;
+    }
+    .filter-btn.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+      grid-auto-rows: 260px;
+      margin-top: 48px;
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      cursor: none;
+      background: var(--text);
+    }
+    .project-card.tall { grid-row: span 2; }
+    .card-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+      filter: grayscale(20%);
+    }
+    .project-card:hover .card-img { transform: scale(1.06); }
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #ffd426ee 0%, #191919cc 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+    }
+    .project-card:hover .card-overlay { opacity: 1; }
+    .card-arrow {
+      position: absolute; top: 20px; right: 20px;
+      width: 44px; height: 44px;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      transform: translate(8px, -8px);
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .project-card:hover .card-arrow { transform: translate(0,0); opacity: 1; }
+
+    /* ── ABOUT ── */
+    #about { padding: 120px 48px; background: var(--bg-dark); color: var(--bg); }
+    .about-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-portrait {
+      width: 100%; aspect-ratio: 3/4;
+      position: relative; overflow: hidden;
+    }
+    .about-portrait img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .about-portrait-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 48px 40px;
+      background: linear-gradient(transparent, rgba(25,25,25,0.95));
+    }
+    .about-portrait-border {
+      position: absolute; inset: 20px;
+      border: 1px solid #ffd42644;
+      pointer-events: none;
+    }
+    .about-accent-block {
+      position: absolute; top: -20px; right: -20px;
+      width: 100px; height: 100px;
+      background: var(--accent); z-index: -1;
+    }
+    .about-quote {
+      font-family: 'Mynerve', cursive;
+      font-size: 20px; color: var(--accent); line-height: 1.7;
+      padding: 28px 0;
+      border-top: 1px solid #faf7e622;
+      border-bottom: 1px solid #faf7e622;
+      margin-bottom: 40px;
+    }
+    .about-badges { display: flex; gap: 32px; flex-wrap: wrap; }
+    .about-badge { display: flex; align-items: center; gap: 8px; }
+    .about-badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+    /* ── SERVICES ── */
+    #services { padding: 120px 48px; background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      border: 1px solid #19191922;
+    }
+    .service-card {
+      padding: 40px 32px;
+      border-right: 1px solid #19191922;
+      border-bottom: 1px solid #19191922;
+      transition: background 0.3s;
+      cursor: none;
+    }
+    .service-card:hover { background: var(--bg-dark); }
+    .service-card:hover .srv-num { color: var(--accent); }
+    .service-card:hover .srv-title { color: var(--bg); }
+    .service-card:hover .srv-desc { color: #faf7e699; }
+    .service-card:hover .srv-arrow { color: var(--bg); }
+    .srv-num { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); font-family: 'Inter', sans-serif; margin-bottom: 20px; transition: color 0.3s; }
+    .srv-title { font-family: 'Times New Roman', serif; font-style: italic; font-weight: 700; font-size: 28px; margin-bottom: 16px; line-height: 1.1; transition: color 0.3s; }
+    .srv-desc { font-size: 14px; line-height: 1.7; color: #19191988; transition: color 0.3s; }
+    .srv-arrow { margin-top: 28px; font-size: 20px; font-family: 'Times New Roman', serif; font-style: italic; transition: color 0.3s; }
+
+    /* ── WORKFLOW ── */
+    #workflow { padding: 120px 48px; background: var(--bg); border-top: 1px solid #19191911; border-bottom: 1px solid #19191911; }
+    .workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .workflow-step {
+      padding: 40px 32px;
+      border-left: 1px solid #19191922;
+      cursor: none;
+    }
+    .workflow-step:hover .step-num { background: var(--accent); color: var(--text); }
+    .step-num {
+      width: 52px; height: 52px;
+      border: 1.5px solid #19191933;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Times New Roman', serif; font-style: italic; font-size: 20px;
+      margin-bottom: 28px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .step-title { font-family: 'Times New Roman', serif; font-style: italic; font-weight: 700; font-size: 26px; margin-bottom: 12px; }
+    .step-desc { font-size: 14px; line-height: 1.7; color: #19191988; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: var(--accent);
+      padding: 60px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { padding: 120px 48px; background: var(--bg-dark); }
+    .contact-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-social-link {
+      display: flex; align-items: center; gap: 20;
+      text-decoration: none; color: var(--bg);
+      padding: 20px 24px;
+      border: 1px solid #faf7e618;
+      transition: border-color 0.3s, background 0.3s;
+      cursor: none;
+      margin-bottom: 16px;
+      gap: 20px;
+    }
+    .contact-social-link:hover { border-color: #25D366; background: #25D36618; }
+    .contact-social-link.insta:hover { border-color: #E1306C; background: #E1306C18; }
+    .social-icon {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #faf7e633;
+      padding: 16px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--bg);
+      outline: none;
+      transition: border-color 0.3s;
+      cursor: none;
+    }
+    .contact-input::placeholder { color: #faf7e666; }
+    .contact-input:focus { border-bottom-color: var(--accent); }
+    .form-group { margin-bottom: 32px; }
+    .form-label { display: block; margin-bottom: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Inter', sans-serif; color: #faf7e655; }
+
+    /* ── MODAL ── */
+    #modal-bg {
+      display: none;
+      position: fixed; inset: 0;
+      background: #191919dd;
+      z-index: 200;
+      align-items: center; justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 0.25s ease;
+    }
+    #modal-bg.open { display: flex; }
+    #modal-box {
+      background: var(--bg);
+      max-width: 880px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      animation: fadeUp 0.3s ease;
+      position: relative;
+    }
+    .modal-banner { height: 320px; position: relative; overflow: hidden; display: flex; align-items: flex-end; }
+    .modal-banner-overlay { position: absolute; inset: 0; opacity: 0.6; }
+    .modal-banner-content { padding: 40px 48px; position: relative; z-index: 2; }
+    .modal-close {
+      position: absolute; top: 24px; right: 24px;
+      background: var(--bg); border: none;
+      width: 44px; height: 44px;
+      font-size: 20px; cursor: none;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 3;
+    }
+    .modal-content { padding: 48px; }
+    .modal-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Inter', sans-serif; color: var(--accent); display: block; margin-bottom: 12px; }
+    .modal-tags { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .modal-pill { padding: 8px 18px; border: 1px solid #19191933; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .process-step { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 16px; }
+    .process-num { font-family: 'Times New Roman', serif; font-style: italic; font-size: 22px; color: var(--accent); min-width: 36px; line-height: 1.4; }
+    .mockups { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+    .mockup-placeholder { height: 200px; display: flex; align-items: center; justify-content: center; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-dark);
+      border-top: 1px solid #faf7e611;
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* ── SUCCESS STATE ── */
+    #form-success {
+      display: none;
+      padding: 60px 40px;
+      text-align: center;
+      border: 1px solid var(--accent);
+      animation: fadeIn 0.4s ease;
+    }
+    #form-success.show { display: block; }
+    #contact-form-inner.hide { display: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-spin { display: none; }
+      .about-accent-block { display: none; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      #home, #work, #about, #services, #workflow, #contact { padding: 80px 24px; }
+      .cta-banner { padding: 40px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+      .hero-stats { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CURSORS -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- MODAL -->
+<div id="modal-bg">
+  <div id="modal-box">
+    <div class="modal-banner" id="modal-banner">
+      <div class="modal-banner-overlay" id="modal-banner-overlay"></div>
+      <div class="modal-banner-content">
+        <span class="modal-tag" id="modal-cat"></span>
+        <h2 class="headline" style="font-size:clamp(36px,6vw,72px);color:#faf7e6" id="modal-title"></h2>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-content">
+      <p style="font-size:17px;line-height:1.7;color:#191919;max-width:600px;margin-bottom:40px" id="modal-desc"></p>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div id="modal-process-wrap">
+        <div class="section-label" style="margin-bottom:24px">Processo Criativo</div>
+        <div id="modal-process"></div>
+      </div>
+      <div class="mockups" id="modal-mockups"></div>
+      <button class="btn-primary" style="width:100%;text-align:center" onclick="closeModal();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Iniciar um Projeto Similar →</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo headline">LM</div>
+  <div class="nav-links">
+    <a class="nav-link" onclick="goto('work')">Trabalhos</a>
+    <a class="nav-link" onclick="goto('about')">Sobre</a>
+    <a class="nav-link" onclick="goto('services')">Serviços</a>
+    <a class="nav-link" onclick="goto('contact')">Contato</a>
+  </div>
+  <button class="btn-primary" style="padding:10px 24px;font-size:10px" onclick="goto('contact')">Vamos Conversar →</button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-circle-1"></div>
+  <div class="hero-circle-2"></div>
+  <div class="hero-float-text">design esportivo &amp; direção criativa</div>
+  <div class="hero-spin">
+    <svg viewBox="0 0 200 200" width="200" height="200">
+      <defs><path id="cp" d="M100,100 m-75,0 a75,75 0 1,1 150,0 a75,75 0 1,1 -150,0"/></defs>
+      <text font-size="11.5" font-family="Inter" font-weight="700" letter-spacing="4" fill="#19191955">
+        <textPath href="#cp">CULTURA DO FUTEBOL · EXCELÊNCIA VISUAL · </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <div class="fade-in-up" style="display:flex;align-items:center;gap:12px;margin-bottom:40px">
+    <div class="hero-divider"></div>
+    <span class="section-label">Desde 2025 · Maringá, Paraná</span>
+  </div>
+
+  <div class="fade-in-up" style="transition-delay:0.1s">
+    <h1 class="headline hero-title">Lorena<br><span>Mariano</span></h1>
+  </div>
+
+  <div class="fade-in-up" style="margin-top:32px;max-width:560px;transition-delay:0.25s">
+    <p class="accent-font" style="font-size:22px;color:#191919;margin-bottom:12px;opacity:0.8">Designer Esportiva & Direção Criativa</p>
+    <p style="font-size:16px;line-height:1.7;color:#191919bb;max-width:440px">Criando identidades visuais para clubes de futebol, atletas e marcas esportivas que exigem muito mais do que design comum.</p>
+  </div>
+
+  <div class="fade-in-up" style="display:flex;gap:16px;margin-top:48px;flex-wrap:wrap;transition-delay:0.4s">
+    <button class="btn-primary" onclick="goto('work')">Ver Portfólio →</button>
+    <button class="btn-outline" onclick="goto('contact')">Iniciar Projeto</button>
+  </div>
+
+  <div class="hero-stats fade-in-up" style="transition-delay:0.6s">
+    <div><div class="stat-num headline">2025</div><div class="section-label">Início</div></div>
+    <div><div class="stat-num headline">80+</div><div class="section-label">Projetos</div></div>
+    <div><div class="stat-num headline">4</div><div class="section-label">Especialidades</div></div>
+    <div><div class="stat-num headline">BR</div><div class="section-label">País</div></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="ticker"></div>
+</div>
+
+<!-- PORTFOLIO -->
+<section id="work">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;flex-wrap:wrap;gap:32px" class="fade-in-up">
+    <div>
+      <div class="section-label" style="margin-bottom:16px">Trabalhos Selecionados</div>
+      <h2 class="headline" style="font-size:clamp(40px,6vw,80px)">Portfólio</h2>
+    </div>
+    <div class="filter-bar" id="filter-bar"></div>
+  </div>
+  <div class="portfolio-grid" id="portfolio-grid"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap fade-in-up">
+      <div class="about-portrait">
+        <img src="https://i.imgur.com/vRZE3Yv.jpeg" alt="Lorena Mariano" />
+        <div class="about-portrait-overlay">
+          <div class="accent-font" style="font-size:28px;color:#ffd426;margin-bottom:4px">Lorena Mariano</div>
+          <div class="tag" style="color:#faf7e688;letter-spacing:0.2em">Maringá · Paraná · Brasil</div>
+        </div>
+        <div class="about-portrait-border"></div>
+      </div>
+      <div class="about-accent-block"></div>
+    </div>
+    <div class="fade-in-up" style="transition-delay:0.2s">
+      <div class="section-label" style="color:#faf7e666;margin-bottom:20px">Sobre</div>
+      <h2 class="headline" style="font-size:clamp(36px,5vw,60px);color:#faf7e6;margin-bottom:32px">O Design<br><span style="color:#ffd426">Por Trás do Jogo</span></h2>
+      <p style="font-size:16px;line-height:1.9;color:#faf7e6cc;margin-bottom:20px">31 anos. Maringá. Não cresci torcendo, não sei escalação, nunca fui de estádio. O esporte entrou na minha vida pelo design — e ficou.</p>
+      <p style="font-size:16px;line-height:1.9;color:#faf7e6aa;margin-bottom:20px">O que os primeiros projetos me mostraram: time não é empresa. Time é comunidade. E comunidade precisa de um símbolo que as pessoas queiram vestir, tatuar, defender.</p>
+      <p style="font-size:16px;line-height:1.9;color:#faf7e6aa;margin-bottom:40px">Meu trabalho é visual, mas o que eu estou construindo é identidade. A diferença entre um escudo que dura dez anos e um que dura gerações está nas decisões que a maioria ignora — tipografia, proporção, como a marca se comporta numa camiseta molhada de chuva num jogo decisivo.</p>
+      <div class="about-quote">"Se você quer design que parece de todos os outros times, eu não sou a pessoa certa. Se você quer algo inconfundivelmente seu, a gente tem muito a conversar."</div>
+      <div class="about-badges">
+        <div class="about-badge"><div class="about-badge-dot"></div><span class="tag" style="color:#faf7e688">Desde 2025</span></div>
+        <div class="about-badge"><div class="about-badge-dot"></div><span class="tag" style="color:#faf7e688">Maringá, PR</span></div>
+        <div class="about-badge"><div class="about-badge-dot"></div><span class="tag" style="color:#faf7e688">Futebol & Esporte</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="margin-bottom:64px" class="fade-in-up">
+    <div class="section-label" style="margin-bottom:16px;color:#19191966">O Que Faço</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px">
+      <h2 class="headline" style="font-size:clamp(40px,6vw,80px)">Serviços</h2>
+      <p style="max-width:360px;font-size:15px;line-height:1.7;color:#19191988">Design com intenção — do conceito à entrega, sem terceirizar o que é meu.</p>
+    </div>
+  </div>
+  <div class="services-grid" id="services-grid"></div>
+</section>
+
+<!-- WORKFLOW -->
+<section id="workflow">
+  <div style="margin-bottom:80px" class="fade-in-up">
+    <div class="section-label" style="margin-bottom:16px">Como Funciona</div>
+    <h2 class="headline" style="font-size:clamp(40px,6vw,80px)">Processo<br><span style="color:#ffd426">Criativo</span></h2>
+  </div>
+  <div class="workflow-grid" id="workflow-grid"></div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div>
+    <h3 class="headline" style="font-size:clamp(28px,4vw,52px);color:#191919">Pronta para elevar sua marca?</h3>
+    <p class="accent-font" style="font-size:18px;color:#191919;opacity:0.7;margin-top:4px">Vamos construir algo extraordinário juntos.</p>
+  </div>
+  <button class="btn-primary" style="background:#191919;color:#faf7e6;white-space:nowrap" onclick="goto('contact')">Iniciar Projeto →</button>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="fade-in-up">
+      <div class="section-label" style="margin-bottom:16px;color:#faf7e666">Entre em Contato</div>
+      <h2 class="headline" style="font-size:clamp(36px,5vw,64px);margin-bottom:32px;color:#faf7e6">Vamos Criar<br><span style="color:#ffd426">Juntos</span></h2>
+      <p style="font-size:16px;line-height:1.8;color:#faf7e688;margin-bottom:56px">Disponível para projetos, campanhas e parcerias criativas. Baseada em Maringá, Paraná — atendendo o Brasil inteiro.</p>
+      <a href="https://wa.me/5544999707173" target="_blank" class="contact-social-link">
+        <div class="social-icon" style="background:#25D366">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div>
+          <div class="tag" style="display:block;margin-bottom:2px;color:#faf7e655">WhatsApp</div>
+          <div style="font-weight:600;font-size:15px">(44) 99970-7173</div>
+        </div>
+      </a>
+      <a href="https://instagram.com/lorenamariano" target="_blank" class="contact-social-link insta">
+        <div class="social-icon" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div>
+          <div class="tag" style="display:block;margin-bottom:2px;color:#faf7e655">Instagram</div>
+          <div style="font-weight:600;font-size:15px">@lorenamariano</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- FORM -->
+    <div class="fade-in-up" style="transition-delay:0.2s">
+      <div id="form-success">
+        <div class="headline" style="font-size:48px;color:#ffd426;margin-bottom:16px">✓</div>
+        <h3 class="headline" style="font-size:28px;margin-bottom:12px;color:#faf7e6">Mensagem Enviada!</h3>
+        <p style="color:#faf7e688">Retorno em até 24 horas.</p>
+      </div>
+      <div id="contact-form-inner">
+        <div class="form-group">
+          <label class="form-label">Seu Nome</label>
+          <input class="contact-input" type="text" placeholder="Nome e Sobrenome" id="f-name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-mail</label>
+          <input class="contact-input" type="email" placeholder="ola@suamarca.com.br" id="f-email" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tipo de Projeto</label>
+          <input class="contact-input" type="text" placeholder="Social Media / Camisas / Atleta..." id="f-project" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Conte sobre o seu projeto</label>
+          <textarea class="contact-input" placeholder="Breve descrição da sua visão, prazo e objetivos..." rows="4" id="f-message" style="resize:vertical;min-height:100px"></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;text-align:center;background:#ffd426;color:#191919" onclick="submitForm()">Enviar Mensagem →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="headline" style="font-size:24px;color:#faf7e6">Lorena Mariano</div>
+  <div class="accent-font" style="font-size:16px;color:#faf7e655">Designer Esportiva · Maringá, PR</div>
+  <div class="section-label" style="color:#faf7e644">© 2025 — Todos os direitos reservados</div>
+</footer>
+
+<script>
+  // ── DATA ──
+  const ACCENT = '#ffd426';
+  const BG = '#faf7e6';
+  const TEXT = '#191919';
+  const BG_DARK = '#191919';
+
+  const projects = [
+    { id:1, title:"CR7 x Heritage", cat:"Design de Atleta", color:"#1a1a2e", aspect:"tall",
+      desc:"Identidade visual cinematográfica unindo o legado de Ronaldo a uma estética editorial atemporal.",
+      tags:["Identidade","Editorial","Atleta"],
+      process:["Pesquisa e moodboard com 3 décadas de fotografia do CR7","Construção do sistema tipográfico em torno de poder e elegância","Definição de paleta, proporções e comportamento da marca","Entrega final: 48 peças em 6 plataformas"] },
+    { id:2, title:"Flamengo Matchday", cat:"Dia de Jogo", color:"#8B0000", aspect:"wide",
+      desc:"Visuais elétricos de dia de jogo para a campanha da Libertadores 2024 do Flamengo — ousados, apaixonados, icônicos.",
+      tags:["Dia de Jogo","Futebol","Brasil"],
+      process:["Briefing do clube: energia máxima, vermelho máximo","Desenvolvimento de sistema modular com 12 templates","Teste de comportamento das peças em diferentes formatos","Alcance orgânico: 2,4M impressões no lançamento"] },
+    { id:3, title:"Adidas Drop", cat:"Mídias Sociais", color:"#000814", aspect:"square",
+      desc:"Campanha social-first para um lançamento limitado da Adidas Football. Minimal. Brutal. Esgotado em 4 horas.",
+      tags:["Social","Adidas","Campanha"] },
+    { id:4, title:"Neymar Jr.", cat:"Design de Atleta", color:"#003049", aspect:"tall",
+      desc:"Identidade visual para a marca pessoal do NJr — onde lifestyle encontra performance de elite.",
+      tags:["Atleta","Identidade","Esporte"] },
+    { id:5, title:"Pulse Jersey", cat:"Camisas", color:"#2d6a4f", aspect:"square",
+      desc:"Design de camisa conceitual explorando padrão geométrico como linguagem visual — arte que se veste.",
+      tags:["Camisa","Conceito","Esporte"] },
+    { id:6, title:"Real Madrid Social", cat:"Mídias Sociais", color:"#6b3fa0", aspect:"wide",
+      desc:"Direção semanal de redes sociais para o Instagram do Real Madrid — 14M de alcance semanal.",
+      tags:["Social","Madrid","Estratégia"] },
+    { id:7, title:"Camisa Conceito PR", cat:"Camisas", color:"#1a3a2e", aspect:"square",
+      desc:"Proposta de camisa para clube paranaense — identidade regional traduzida em linguagem esportiva contemporânea.",
+      tags:["Camisa","Paraná","Identidade"] },
+    { id:8, title:"Mbappé Era", cat:"Design de Atleta", color:"#1b1b2f", aspect:"wide",
+      desc:"Identidade visual capturando a era Mbappé — velocidade, juventude e peso cultural.",
+      tags:["Identidade","Atleta","Editorial"] },
+  ];
+
+  const services = [
+    { num:"01", title:"Social Media Esportivo", desc:"Artes de dia de jogo, conteúdo de atletas, campanhas sazonais. Peças que param o scroll e constroem a identidade do clube nas redes." },
+    { num:"02", title:"Design de Atleta", desc:"Identidade visual para atletas que querem uma presença inconfundível. Do escudo pessoal ao conteúdo que representa quem você é em campo." },
+    { num:"03", title:"Design de Camisas", desc:"Camisas são o produto mais íntimo de um clube. Design com intenção — tipografia, proporção, comportamento em campo. Um uniforme que vira símbolo." },
+    { num:"04", title:"Identidade Visual de Clube", desc:"Escudo, paleta, tipografia, sistema visual completo. As decisões que a maioria ignora e que definem se uma identidade dura dez anos ou gerações." },
+  ];
+
+  const workflow = [
+    { num:"01", title:"Briefing", desc:"Imersão total na sua visão, no clube, no atleta, no que você quer que as pessoas sintam ao ver sua marca." },
+    { num:"02", title:"Conceito", desc:"Referências, moodboard e proposta visual — antes de qualquer pixel, a gente alinha o caminho." },
+    { num:"03", title:"Design", desc:"Craft. Precisão. Decisões que a maioria ignora. O trabalho que faz a diferença entre genérico e inconfundível." },
+    { num:"04", title:"Revisões", desc:"Duas rodadas de refinamento para aperfeiçoar cada detalhe até ficar exatamente certo." },
+    { num:"05", title:"Entrega", desc:"Arquivos organizados e prontos para uso — em qualquer formato, em qualquer plataforma." },
+  ];
+
+  const categories = ["Todos","Dia de Jogo","Mídias Sociais","Design de Atleta","Camisas"];
+  let activeFilter = "Todos";
+
+  // ── CURSOR ──
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let rx = -100, ry = -100, mx = -100, my = -100;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+  (function animRing() {
+    rx += (mx - rx) * 0.14; ry += (my - ry) * 0.14;
+    ring.style.left = rx+'px'; ring.style.top = ry+'px';
+    requestAnimationFrame(animRing);
+  })();
+
+  // ── NAV SCROLL ──
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── SMOOTH SCROLL ──
+  function goto(id) { document.getElementById(id).scrollIntoView({ behavior:'smooth' }); }
+
+  // ── TICKER ──
+  const tickerItems = ["Cultura do Futebol","Identidade Visual","Marca de Atleta","Arte de Jogo","Social Media Esportivo","Design de Camisa"];
+  const tickerEl = document.getElementById('ticker');
+  let tickerHTML = '';
+  for (let r = 0; r < 4; r++) {
+    tickerItems.forEach(t => {
+      tickerHTML += `<span class="ticker-item">${t}</span><span class="ticker-dot">·</span>`;
+    });
+  }
+  tickerEl.innerHTML = tickerHTML;
+
+  // ── SVG THUMBNAILS ──
+  function getSVG(project) {
+    const c = project.color;
+    const t = project.title.replace(/[<>&"]/g,'');
+    const patterns = {
+      'Design de Atleta': `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><rect width='400' height='500' fill='${c}'/><circle cx='200' cy='180' r='80' fill='none' stroke='${ACCENT}' stroke-width='1' opacity='0.4'/><circle cx='200' cy='180' r='120' fill='none' stroke='${ACCENT}' stroke-width='0.5' opacity='0.2'/><line x1='0' y1='180' x2='400' y2='180' stroke='white' stroke-width='0.5' opacity='0.1'/><text x='200' y='370' text-anchor='middle' font-family='Times New Roman' font-style='italic' font-size='40' fill='white' opacity='0.13'>${t}</text></svg>`,
+      'Dia de Jogo': `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 340'><rect width='600' height='340' fill='${c}'/><polygon points='0,340 600,0 600,340' fill='${ACCENT}' opacity='0.12'/><circle cx='300' cy='170' r='60' fill='none' stroke='white' stroke-width='2' opacity='0.15'/><text x='300' y='195' text-anchor='middle' font-family='Times New Roman' font-style='italic' font-size='52' fill='white' opacity='0.1'>${t}</text></svg>`,
+      'Mídias Sociais': `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='${c}'/><rect x='40' y='40' width='320' height='320' fill='none' stroke='${ACCENT}' stroke-width='1' opacity='0.2'/><rect x='80' y='80' width='240' height='240' fill='none' stroke='white' stroke-width='0.5' opacity='0.1'/><text x='200' y='220' text-anchor='middle' font-family='Times New Roman' font-style='italic' font-size='40' fill='white' opacity='0.12'>${t}</text></svg>`,
+      'Camisas': `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='${c}'/><line x1='0' y1='66' x2='400' y2='66' stroke='${ACCENT}' stroke-width='1' opacity='0.2'/><line x1='0' y1='133' x2='400' y2='133' stroke='${ACCENT}' stroke-width='0.5' opacity='0.12'/><line x1='0' y1='200' x2='400' y2='200' stroke='${ACCENT}' stroke-width='0.5' opacity='0.12'/><line x1='0' y1='266' x2='400' y2='266' stroke='${ACCENT}' stroke-width='0.5' opacity='0.12'/><line x1='0' y1='333' x2='400' y2='333' stroke='${ACCENT}' stroke-width='0.5' opacity='0.12'/><text x='200' y='220' text-anchor='middle' font-family='Times New Roman' font-style='italic' font-size='44' fill='white' opacity='0.13'>${t}</text></svg>`,
+    };
+    const svg = patterns[project.cat] || `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='${c}'/><text x='200' y='210' text-anchor='middle' font-family='Times New Roman' font-style='italic' font-size='44' fill='white' opacity='0.13'>${t}</text></svg>`;
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+
+  // ── FILTERS ──
+  function renderFilters() {
+    const bar = document.getElementById('filter-bar');
+    bar.innerHTML = categories.map(cat =>
+      `<button class="filter-btn ${cat === activeFilter ? 'active' : ''}" onclick="setFilter('${cat}')">${cat}</button>`
+    ).join('');
+  }
+
+  function setFilter(cat) {
+    activeFilter = cat;
+    renderFilters();
+    renderPortfolio();
+  }
+
+  // ── PORTFOLIO ──
+  function renderPortfolio() {
+    const grid = document.getElementById('portfolio-grid');
+    const filtered = activeFilter === 'Todos' ? projects : projects.filter(p => p.cat === activeFilter);
+    grid.innerHTML = filtered.map(p => {
+      const h = p.aspect === 'tall' ? '520px' : p.aspect === 'wide' ? '280px' : '380px';
+      const span = p.aspect === 'tall' ? 'tall' : '';
+      return `
+        <div class="project-card ${span}" style="height:${h}" onclick="openModal(${p.id})">
+          <img class="card-img" src="${getSVG(p)}" alt="${p.title}" style="height:100%"/>
+          <div class="card-overlay">
+            <span class="tag" style="color:${ACCENT};margin-bottom:8px;display:block">${p.cat}</span>
+            <h3 class="headline" style="font-size:clamp(22px,3vw,32px);color:${BG};line-height:1">${p.title}</h3>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>`;
+    }).join('');
+    observeAll();
+  }
+
+  // ── MODAL ──
+  function openModal(id) {
+    const p = projects.find(x => x.id === id);
+    if (!p) return;
+    document.getElementById('modal-banner').style.background = p.color;
+    document.getElementById('modal-banner-overlay').style.background = `linear-gradient(135deg,${p.color},${TEXT})`;
+    document.getElementById('modal-cat').textContent = p.cat;
+    document.getElementById('modal-title').textContent = p.title;
+    document.getElementById('modal-desc').textContent = p.desc;
+    document.getElementById('modal-tags').innerHTML = (p.tags||[]).map(t => `<span class="modal-pill">${t}</span>`).join('');
+    const procWrap = document.getElementById('modal-process-wrap');
+    const procEl = document.getElementById('modal-process');
+    if (p.process) {
+      procWrap.style.display = 'block';
+      procEl.innerHTML = p.process.map((s,i) =>
+        `<div class="process-step"><span class="process-num">0${i+1}</span><p style="font-size:15px;line-height:1.6;padding-top:4px">${s}</p></div>`
+      ).join('');
+    } else { procWrap.style.display = 'none'; }
+    document.getElementById('modal-mockups').innerHTML = [1,2].map(i =>
+      `<div class="mockup-placeholder" style="background:${p.color};opacity:${0.7+i*0.1}"><span style="font-family:'Times New Roman',serif;font-style:italic;font-size:18px;color:${BG};opacity:0.6">Mockup ${i}</span></div>`
+    ).join('');
+    document.getElementById('modal-bg').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-bg').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modal-bg').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+
+  // ── SERVICES ──
+  function renderServices() {
+    document.getElementById('services-grid').innerHTML = services.map(s => `
+      <div class="service-card"
+        onmouseenter="this.style.background='${BG_DARK}';this.querySelector('.srv-title').style.color='${BG}';this.querySelector('.srv-desc').style.color='${BG}99';this.querySelector('.srv-arrow').style.color='${BG}'"
+        onmouseleave="this.style.background='transparent';this.querySelector('.srv-title').style.color='${TEXT}';this.querySelector('.srv-desc').style.color='${TEXT}88';this.querySelector('.srv-arrow').style.color='${TEXT}'">
+        <div class="srv-num">${s.num}</div>
+        <div class="srv-title">${s.title}</div>
+        <p class="srv-desc">${s.desc}</p>
+        <div class="srv-arrow">→</div>
+      </div>`).join('');
+  }
+
+  // ── WORKFLOW ──
+  function renderWorkflow() {
+    document.getElementById('workflow-grid').innerHTML = workflow.map(s => `
+      <div class="workflow-step">
+        <div class="step-num">${s.num}</div>
+        <div class="step-title">${s.title}</div>
+        <p class="step-desc">${s.desc}</p>
+      </div>`).join('');
+  }
+
+  // ── FORM ──
+  function submitForm() {
+    document.getElementById('contact-form-inner').classList.add('hide');
+    document.getElementById('form-success').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('form-success').classList.remove('show');
+      document.getElementById('contact-form-inner').classList.remove('hide');
+      document.getElementById('f-name').value = '';
+      document.getElementById('f-email').value = '';
+      document.getElementById('f-project').value = '';
+      document.getElementById('f-message').value = '';
+    }, 3500);
+  }
+
+  // ── INTERSECTION OBSERVER ──
+  function observeAll() {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in-up:not(.visible)').forEach(el => io.observe(el));
+  }
+
+  // ── INIT ──
+  renderFilters();
+  renderPortfolio();
+  renderServices();
+  renderWorkflow();
+  observeAll();
+</script>
+</body>
+</html>
