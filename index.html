@@ -350,98 +350,6 @@
     .about-badge { display: flex; align-items: center; gap: 8px; }
     .about-badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
 
-    /* ── QORE ── */
-    #qore { padding: 120px 48px; background: var(--bg-dark); overflow: hidden; position: relative; }
-    .qore-label { color: #ffd42688; }
-    .qore-intro { max-width: 640px; }
-    .qore-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      margin-top: 80px;
-      background: #faf7e611;
-    }
-    .qore-card {
-      background: #191919;
-      padding: 52px 48px;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.35s;
-      cursor: none;
-    }
-    .qore-card:hover { background: #111; }
-    .qore-card:hover .qore-card-bg { opacity: 1; }
-    .qore-card:hover .qore-letter { -webkit-text-stroke-color: #ffd426; }
-    .qore-card-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #ffd42608 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.4s;
-      pointer-events: none;
-    }
-    .qore-letter {
-      font-family: 'Bebas Neue', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: clamp(72px, 10vw, 120px);
-      line-height: 1;
-      -webkit-text-stroke: 1px #ffd42644;
-      color: transparent;
-      margin-bottom: 8px;
-      transition: -webkit-text-stroke-color 0.3s;
-      display: block;
-    }
-    .qore-word {
-      font-family: 'Inter', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #ffd426;
-      margin-bottom: 28px;
-      display: block;
-    }
-    .qore-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: clamp(24px, 3vw, 36px);
-      color: #faf7e6;
-      margin-bottom: 16px;
-      line-height: 1;
-      letter-spacing: 0.03em;
-    }
-    .qore-desc {
-      font-size: 15px;
-      line-height: 1.8;
-      color: #faf7e699;
-      max-width: 340px;
-    }
-    .qore-tagline {
-      margin-top: 80px;
-      padding: 48px;
-      border: 1px solid #ffd42622;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .qore-tagline-text {
-      font-family: 'Mynerve', cursive;
-      font-size: clamp(18px, 2.5vw, 26px);
-      color: #faf7e6;
-      line-height: 1.5;
-      max-width: 580px;
-    }
-    .qore-tagline-text em { color: #ffd426; font-style: normal; }
-    @media (max-width: 768px) {
-      .qore-grid { grid-template-columns: 1fr; }
-      .qore-card { padding: 40px 28px; }
-      #qore { padding: 80px 24px; }
-      .qore-tagline { padding: 32px 24px; }
-    }
-
     /* ── SERVICES ── */
     #services { padding: 120px 48px; background: var(--bg); }
     .services-grid {
@@ -649,7 +557,6 @@
   <div class="nav-links">
     <a class="nav-link" onclick="goto('work')">Trabalhos</a>
     <a class="nav-link" onclick="goto('about')">Sobre</a>
-    <a class="nav-link" onclick="goto('qore')" style="color:#ffd426">QORE™</a>
     <a class="nav-link" onclick="goto('services')">Serviços</a>
     <a class="nav-link" onclick="goto('contact')">Contato</a>
   </div>
@@ -746,59 +653,6 @@
         <div class="about-badge"><div class="about-badge-dot"></div><span class="tag" style="color:#faf7e688">Desde 2025</span></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- QORE -->
-<section id="qore">
-  <!-- Decorative large background text -->
-  <div aria-hidden="true" style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(200px,28vw,380px);color:transparent;-webkit-text-stroke:1px #ffd42609;line-height:1;pointer-events:none;user-select:none">QORE</div>
-
-  <div class="fade-in-up qore-intro">
-    <div class="section-label qore-label" style="margin-bottom:16px">Metodologia</div>
-    <h2 class="headline" style="font-size:clamp(40px,6vw,80px);color:#faf7e6;margin-bottom:28px;font-family:'Bebas Neue',sans-serif;font-style:normal;font-weight:400;letter-spacing:0.04em">Método<br><span style="color:#ffd426">QORE™</span></h2>
-    <p style="font-size:17px;line-height:1.8;color:#faf7e6aa">O método QORE™ é o processo que eu uso para transformar times e atletas em marcas com presença. Não começo perguntando qual cor você quer. Começo entendendo quem você é.</p>
-  </div>
-
-  <div class="qore-grid fade-in-up" style="transition-delay:0.15s">
-
-    <div class="qore-card">
-      <div class="qore-card-bg"></div>
-      <span class="qore-letter">Q</span>
-      <span class="qore-word">Quem é</span>
-      <div class="qore-title">Identidade &amp; Essência</div>
-      <p class="qore-desc">A história, a personalidade e a alma do time ou atleta. O ponto de partida que define tudo. Sem isso, o visual não tem raiz.</p>
-    </div>
-
-    <div class="qore-card">
-      <div class="qore-card-bg"></div>
-      <span class="qore-letter">O</span>
-      <span class="qore-word">Onde quer chegar</span>
-      <div class="qore-title">Posicionamento &amp; Ambição</div>
-      <p class="qore-desc">Como você quer ser percebido, qual é o nível de posicionamento que você quer ocupar e onde essa marca precisa chegar.</p>
-    </div>
-
-    <div class="qore-card">
-      <div class="qore-card-bg"></div>
-      <span class="qore-letter">R</span>
-      <span class="qore-word">Representação</span>
-      <div class="qore-title">Visual &amp; Linguagem</div>
-      <p class="qore-desc">Como tudo isso se traduz em escudo, tipografia, cores, uniformes e materiais. A construção visual com intenção em cada decisão.</p>
-    </div>
-
-    <div class="qore-card">
-      <div class="qore-card-bg"></div>
-      <span class="qore-letter">E</span>
-      <span class="qore-word">Expansão</span>
-      <div class="qore-title">Presença &amp; Alcance</div>
-      <p class="qore-desc">Como a marca ganha força no digital, no uniforme, na arquibancada e na mente das pessoas. Identidade que vai além da tela.</p>
-    </div>
-
-  </div>
-
-  <div class="qore-tagline fade-in-up" style="transition-delay:0.3s">
-    <p class="qore-tagline-text">"Não é só design. É construção de marca esportiva através do <em>método QORE™</em> — da essência à presença."</p>
-    <button class="btn-primary" style="background:#ffd426;color:#191919;white-space:nowrap;flex-shrink:0" onclick="goto('contact')">Aplicar o QORE™ →</button>
   </div>
 </section>
 
