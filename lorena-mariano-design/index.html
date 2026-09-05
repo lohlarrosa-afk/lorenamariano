@@ -3,553 +3,775 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lorena Mariano | Designer Esportiva</title>
-<meta name="description" content="Design esportivo para times e atletas: posts para redes sociais, identidade visual e conteúdo que fortalece a sua marca dentro e fora de campo." />
+<title>Lorena Mariano | Marketing e Design Esportivo</title>
+<meta name="description" content="Marketing e design esportivo para times, arenas e atletas. Identidade visual, design de conteúdo, dia de jogo e apoio a patrocínio." />
+<link rel="canonical" href="https://lorenadesign.com.br/" />
 
-<!-- Favicon -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="Lorena Mariano | Marketing e Design Esportivo" />
+<meta property="og:description" content="Marketing e design esportivo para times, arenas e atletas. Identidade visual, design de conteúdo e dia de jogo." />
+<meta property="og:image" content="https://lorenadesign.com.br/img/hero/01-prancheta.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#101011" />
+
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="apple-touch-icon" href="favicon.png" />
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="img/hero/01-prancheta.jpg" fetchpriority="high" />
 
 <style>
-  @font-face{
-    font-family:'Bootzy';
-    src:url('fonts/BootzyTM.ttf') format('truetype');
-    font-weight:normal;font-style:normal;font-display:swap;
-  }
+  /* ============ TOKENS ============
+     Paleta: preto, cinza, branco e o amarelo #f6d512.
+     O amarelo nunca é texto sobre fundo claro. Ele é fundo de botão,
+     marcador e filete, sempre com texto preto por cima. */
   :root{
-    --bg:#F2F2F4;          /* fundo */
-    --surface:#FFFFFF;     /* card claro */
-    --ink:#232322;         /* texto */
-    --muted:#6E6E70;       /* cinza secundário */
-    --line:rgba(35,35,34,0.13);
-    --accent:#f1e327;      /* amarelo destaque (dourado) */
-    --dark:#232322;        /* seções escuras */
-    --on-dark:#F2F2F4;
-    --maxw:1280px;
+    --bg:#FFFFFF;
+    --surface:#F4F4F5;
+    --surface-2:#FFFFFF;
+    --ink:#101011;
+    --muted:#67676E;
+    --line:rgba(16,16,17,.13);
+    --accent:#f6d512;
+    --accent-ink:#101011;
+
+    --band-bg:#101011;
+    --band-ink:#F4F4F5;
+    --band-muted:#9C9CA3;
+
+    --field-bg:#FFFFFF;
+    --field-line:rgba(16,16,17,.20);
+    --field-placeholder:#6B6B72;
+
+    --header-bg:rgba(255,255,255,.90);
+    --radius:18px;
+    --radius-lg:24px;
+    --maxw:1240px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0B0B0C;
+      --surface:#141416;
+      --surface-2:#141416;
+      --ink:#F2F2F3;
+      --muted:#9C9CA3;
+      --line:rgba(242,242,243,.15);
+
+      --band-bg:#141416;
+      --band-ink:#F2F2F3;
+      --band-muted:#9C9CA3;
+
+      --field-bg:#0B0B0C;
+      --field-line:rgba(242,242,243,.22);
+      --field-placeholder:#9C9CA3;
+
+      --header-bg:rgba(11,11,12,.90);
+    }
   }
 
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    font-weight:400;
-    letter-spacing:-0.018em;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-    line-height:1.5;
+    background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;font-weight:400;
+    letter-spacing:-.014em;line-height:1.55;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  ::selection{background:var(--accent);color:var(--ink)}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
-  /* ---------- NAV ---------- */
+  .display{
+    font-family:'Bebas Neue','Archivo',sans-serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:-.014em;line-height:.88;
+  }
+  .h2{font-size:clamp(40px,5.6vw,78px)}
+  .lead{color:var(--muted);font-size:16.5px;line-height:1.7;max-width:56ch}
+
+  /* Rótulo pequeno em caixa-alta, como na referência */
+  .label{
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  }
+  .label-rule{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .label-rule::before{content:"";width:24px;height:3px;background:var(--accent);border-radius:2px}
+
+  /* ============ BOTÕES ============ */
+  .btn{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;
+    letter-spacing:.09em;text-transform:uppercase;
+    border-radius:100px;padding:15px 22px 15px 26px;border:1px solid transparent;
+    display:inline-flex;align-items:center;gap:14px;white-space:nowrap;cursor:pointer;
+    transition:transform .2s ease, background .25s, color .25s, box-shadow .25s, border-color .25s;
+  }
+  .btn .ico{
+    width:26px;height:26px;border-radius:50%;flex:0 0 auto;
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:transform .25s ease;
+  }
+  .btn .ico svg{width:13px;height:13px}
+  .btn:hover .ico{transform:translateX(3px)}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-primary .ico{background:rgba(16,16,17,.14)}
+  .btn-primary:hover{box-shadow:0 10px 26px rgba(246,213,18,.36)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+  .btn-ghost .ico{background:var(--surface)}
+  .btn-ghost:hover{border-color:var(--ink)}
+
+  /* ============ HEADER ============ */
   header{
     position:fixed;top:0;left:0;width:100%;z-index:100;
-    transition:background .4s ease, padding .4s ease;
-    padding:24px 0;
+    padding:18px 0;border-bottom:1px solid transparent;
+    transition:background .35s ease, border-color .35s ease, padding .35s ease;
   }
   header.scrolled{
-    background:rgba(242,242,244,0.85);
-    backdrop-filter:blur(14px);
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
+    background:var(--header-bg);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    padding:11px 0;border-bottom-color:var(--line);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between}
-  .logo{display:flex;align-items:center}
-  .logo img{height:38px;width:auto;display:block;transition:height .4s ease, transform .3s ease}
-  header.scrolled .logo img{height:30px}
-  .nav-links{display:flex;gap:34px;align-items:center}
-  .nav-links a{font-size:14px;color:var(--muted);font-weight:500;transition:color .25s}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .logo img{height:30px;width:auto;transition:height .35s ease}
+  header.scrolled .logo img{height:26px}
+  @media (prefers-color-scheme: dark){ .logo img{filter:invert(1)} }
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{
+    font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:700;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--muted);
+    transition:color .2s;white-space:nowrap;
+  }
   .nav-links a:hover{color:var(--ink)}
-  .nav-cta{
-    border:1px solid var(--ink);border-radius:100px;padding:10px 22px;
-    font-size:14px;font-weight:600;color:var(--ink);
-    transition:all .3s ease;
+  .nav-links .nav-cta{
+    background:var(--accent);color:var(--accent-ink);
+    border-radius:100px;padding:11px 20px;
   }
-  .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:var(--ink)}
-  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
-  .burger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+  .nav-links .nav-cta:hover{color:var(--accent-ink);filter:brightness(.94)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;padding:6px;cursor:pointer}
+  .burger span{display:block;width:24px;height:2px;background:var(--ink);transition:transform .3s, opacity .3s}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-  /* ---------- HERO ---------- */
-  .hero{padding:200px 0 90px;position:relative;overflow:hidden}
-  .hero .wrap{position:relative;z-index:2}
-  .hero-fx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-  .hero-lines{
-    position:absolute;top:50%;right:clamp(-180px,-8vw,-60px);transform:translateY(-50%);
-    width:min(640px,58vw);height:auto;color:var(--ink);opacity:.08;
+  /* ============ ABA LATERAL DE REDES ============ */
+  .rail{
+    position:fixed;left:22px;top:50%;transform:translateY(-50%);z-index:95;
+    display:flex;flex-direction:column;align-items:center;gap:16px;
   }
-  .hl-circle{stroke-dasharray:754;stroke-dashoffset:754;animation:heroDraw 2.1s ease forwards .35s}
-  @keyframes heroDraw{to{stroke-dashoffset:0}}
-  .hero-glow{
-    position:absolute;left:0;top:0;width:560px;height:560px;border-radius:50%;
-    background:radial-gradient(circle, rgba(241,227,39,.55), rgba(241,227,39,0) 70%);
-    filter:blur(42px);opacity:0;transition:opacity .6s ease;
-    will-change:transform;mix-blend-mode:multiply;
+  .rail::after{content:"";width:1px;height:64px;background:var(--line)}
+  .rail a{
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--muted);border:1px solid var(--line);
+    transition:color .2s, border-color .2s, background .2s;
   }
-  @media(prefers-reduced-motion:reduce){
-    .hl-circle{animation:none;stroke-dashoffset:0}
-    .hero-glow{display:none}
-  }
-  .hero-tag{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:13px;color:var(--muted);font-weight:500;
-    border:1px solid var(--line);border-radius:100px;padding:8px 16px;margin-bottom:34px;
-  }
-  .hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(241,227,39,.25)}
-  .hero h1{
-    font-family:'Bootzy','Archivo',sans-serif;font-weight:normal;
-    font-size:clamp(42px,7.4vw,116px);line-height:.96;letter-spacing:0;
-    text-transform:uppercase;color:var(--ink);
-  }
-  .hero h1 .out{color:var(--ink)}
-  .hero h1 em{font-style:normal;color:var(--ink)}
-  .hero-sub{
-    max-width:560px;margin-top:34px;font-size:clamp(16px,1.5vw,20px);
-    color:var(--muted);font-weight:400;line-height:1.6;
-  }
-  .hero-actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap}
-  .btn{
-    font-weight:600;font-size:15px;border-radius:100px;padding:16px 32px;
-    display:inline-flex;align-items:center;gap:10px;transition:all .3s ease;cursor:pointer;border:1px solid transparent;
-  }
-  .btn-primary{background:var(--accent);color:var(--ink)}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(241,227,39,.5)}
-  .btn-ghost{border-color:var(--ink);color:var(--ink)}
-  .btn-ghost:hover{background:var(--ink);color:var(--on-dark)}
+  .rail a svg{width:16px;height:16px;fill:currentColor}
+  .rail a:hover{color:var(--accent-ink);background:var(--accent);border-color:var(--accent)}
+  @media(max-width:1180px){ .rail{display:none} }
 
-  /* ---------- MARQUEE ---------- */
-  .marquee{
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    padding:22px 0;margin-top:70px;overflow:hidden;white-space:nowrap;
-    background:var(--ink);
+  /* ============ HERO ============ */
+  .hero{padding:140px 0 80px}
+  /* Coluna da foto mais estreita que na versão anterior: a prancheta é
+     retrato 3:4, e numa coluna larga ela ficaria alta demais e empurraria
+     os botões para fora da primeira dobra. */
+  .hero-grid{display:grid;grid-template-columns:1fr .62fr;gap:56px;align-items:center}
+  /* Escala calculada para a manchete caber em 2 linhas na coluna de texto. */
+  .hero h1{font-size:clamp(46px,6vw,84px);margin-bottom:16px}
+  .hero .label{display:block;margin-bottom:20px}
+  .hero .lead{max-width:42ch}
+  .hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+  /* Slideshow do hero: as fotos são todas 3:4 e ocupam a MESMA moldura,
+     então trocam sem nenhum salto de layout. Empilhadas em absoluto e
+     alternadas só por opacity, que é barato para a GPU. */
+  .hero-art{
+    position:relative;aspect-ratio:3/4;
+    border-radius:var(--radius-lg);overflow:hidden;
+    background:var(--surface);
+    box-shadow:0 24px 60px rgba(16,16,17,.14);
   }
-  .marquee-track{display:inline-flex;gap:50px;animation:scroll 26s linear infinite}
-  .marquee-track span{
-    font-family:'Anton',sans-serif;font-size:30px;text-transform:uppercase;
-    letter-spacing:.02em;color:var(--on-dark);display:inline-flex;align-items:center;gap:50px;
+  .hero-slide{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;animation:heroFade 45s linear infinite;
   }
-  .marquee-track span::after{content:"✦";color:var(--accent);font-size:18px}
-  @keyframes scroll{to{transform:translateX(-50%)}}
-
-  /* ---------- SECTION SHELL ---------- */
-  section{padding:110px 0}
-  .eyebrow{
-    font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
-    font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:12px;
-  }
-  .eyebrow::before{content:"";width:34px;height:8px;background:var(--accent);border-radius:2px}
-  .h2{
-    font-family:'Bootzy','Archivo',sans-serif;font-weight:normal;
-    font-size:clamp(38px,5.2vw,74px);line-height:1.0;letter-spacing:0;
+  .hero-slide:nth-of-type(1){animation-delay:-0.5s}
+  .hero-slide:nth-of-type(2){animation-delay:2.5s}
+  .hero-slide:nth-of-type(3){animation-delay:5.5s}
+  .hero-slide:nth-of-type(4){animation-delay:8.5s}
+  .hero-slide:nth-of-type(5){animation-delay:11.5s}
+  .hero-slide:nth-of-type(6){animation-delay:14.5s}
+  .hero-slide:nth-of-type(7){animation-delay:17.5s}
+  .hero-slide:nth-of-type(8){animation-delay:20.5s}
+  .hero-slide:nth-of-type(9){animation-delay:23.5s}
+  .hero-slide:nth-of-type(10){animation-delay:26.5s}
+  .hero-slide:nth-of-type(11){animation-delay:29.5s}
+  .hero-slide:nth-of-type(12){animation-delay:32.5s}
+  .hero-slide:nth-of-type(13){animation-delay:35.5s}
+  .hero-slide:nth-of-type(14){animation-delay:38.5s}
+  .hero-slide:nth-of-type(15){animation-delay:41.5s}
+  /* 15 fotos x 3s = 45s de ciclo. As janelas se SOBREPOEM por 0,5s:
+     a foto que sai so chega a zero depois que a proxima ja esta em 1.
+     Sem essa sobreposicao o card pisca vazio a cada troca. */
+  @keyframes heroFade{
+    0%{opacity:0} 1.111%{opacity:1} 6.667%{opacity:1} 7.778%{opacity:0} 100%{opacity:0}
   }
 
-  /* ---------- ABOUT ---------- */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-  .about-text p{color:var(--muted);font-size:18px;font-weight:400;margin-top:24px;line-height:1.7}
-  .about-text p strong{color:var(--ink);font-weight:600}
-  .stats{display:flex;gap:48px;margin-top:46px;flex-wrap:wrap}
-  .stat .num{font-family:'Archivo',sans-serif;font-weight:800;font-size:46px;color:var(--ink);letter-spacing:-.03em;position:relative;display:inline-block}
-  .stat .num::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:10px;background:var(--accent);z-index:-1}
-  .stat .lbl{font-size:14px;color:var(--muted);margin-top:4px}
-  .about-visual{
-    aspect-ratio:4/5;border-radius:20px;
-    position:relative;isolation:isolate;
-    display:flex;align-items:flex-end;padding:28px;
+  /* ============ NÚMEROS ============ */
+  .stats{
+    border:1px solid var(--line);border-radius:var(--radius-lg);
+    display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;
   }
-  .about-visual::before{
-    content:"";position:absolute;inset:0;border-radius:20px;
-    background:var(--accent);transform:translate(16px,16px);z-index:0;
+  .stat{padding:34px 28px;text-align:center;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:0}
+  .stat .num{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.035em;
+    font-size:clamp(38px,4.4vw,54px);line-height:1;
+    position:relative;display:inline-block;
   }
-  .about-visual img{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;
-    border-radius:20px;z-index:1;
-    filter:contrast(1.04) saturate(1.06);
-    transition:transform .5s ease;
+  .stat .num::after{
+    content:"";position:absolute;left:-3px;right:-3px;bottom:4px;height:9px;
+    background:var(--accent);z-index:-1;
   }
-  .about-visual:hover img{transform:translate(8px,8px)}
-  .about-visual .grain{
-    position:absolute;inset:0;border-radius:20px;z-index:2;pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size:170px 170px;
-    opacity:.20;mix-blend-mode:overlay;
+  .stat .lbl{margin-top:12px}
+
+
+  /* ============ SOBRE ============
+     Retrato à esquerda, espelhando o hero que tem a foto à direita. O texto
+     é longo, então a coluna dele é a maior e as duas alinham pelo topo. */
+  /* gap curto entre linhas, generoso entre colunas: senão o espaço do grid
+     soma com a margem da frase de fecho e abre um buraco no meio da seção. */
+  .about{
+    display:grid;grid-template-columns:.8fr 1fr;align-items:start;
+    gap:clamp(16px,2vw,24px) clamp(36px,5vw,72px);
   }
-  .about-visual .badge{
-    background:var(--accent);color:var(--ink);font-weight:700;font-size:14px;
-    padding:10px 18px;border-radius:100px;position:relative;z-index:3;
-    box-shadow:0 6px 20px rgba(35,35,34,.22);
+  .about-art{border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);line-height:0}
+  .about-art img{width:100%;height:auto}
+  .about-text h2{margin-bottom:26px}
+  .about-text p{color:var(--muted);font-size:16.5px;line-height:1.75;margin-bottom:18px;max-width:62ch}
+  .about-text .about-lead{color:var(--ink);font-size:19px;line-height:1.65}
+  .about-text .about-turn{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;
+    letter-spacing:-.02em;color:var(--ink);
+  }
+  /* A frase de fecho ocupa as duas colunas. Fora de fazer um remate mais forte,
+     isso encurta a coluna de texto e reduz o vão que sobrava sob o retrato. */
+  .about-close{
+    grid-column:1 / -1;text-transform:uppercase;
+    font-size:clamp(30px,3.6vw,54px);line-height:1.04;
+    color:var(--ink);margin-top:clamp(24px,3vw,44px);
   }
 
-  /* ---------- SERVICES ---------- */
-  .services-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:60px}
-  .services-head p{max-width:420px;color:var(--muted);font-weight:400;font-size:17px}
-  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  /* ============ SEÇÕES ============ */
+  section{padding:clamp(72px,9vw,116px) 0}
+
+  /* SERVIÇOS: fileira de cartões com ícone, como na referência */
+  .svc-head{margin-bottom:44px;max-width:62ch}
+  .svc-head .lead{margin-top:16px}
+  .svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
   .svc{
-    border:1px solid var(--line);border-radius:18px;padding:40px;
-    background:var(--surface);transition:all .35s ease;position:relative;overflow:hidden;
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--surface-2);padding:28px 22px;text-align:center;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
   }
-  .svc::after{
-    content:"";position:absolute;left:0;top:0;height:5px;width:100%;background:var(--accent);
-    transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+  .svc:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(16,16,17,.09);border-color:transparent}
+  .svc .chip{
+    width:46px;height:46px;border-radius:13px;margin:0 auto 18px;
+    background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink);
   }
-  .svc:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(35,35,34,.10)}
-  .svc:hover::after{transform:scaleX(1)}
-  .svc .idx{font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;color:var(--ink);background:var(--accent);display:inline-block;padding:2px 8px;border-radius:4px}
-  .svc h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:26px;margin:18px 0 14px;letter-spacing:-.02em}
-  .svc p{color:var(--muted);font-weight:400;font-size:16px;line-height:1.65}
-  .svc .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-  .svc .tags span{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:5px 12px}
+  .svc:hover .chip{background:var(--accent);color:var(--accent-ink)}
+  .svc .chip svg{width:21px;height:21px}
+  .svc h3{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;
+    letter-spacing:.055em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .svc p{color:var(--muted);font-size:14px;line-height:1.65}
 
-  /* ---------- WORK ---------- */
-  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:54px}
-  .work-item{
-    aspect-ratio:1/1;border-radius:16px;overflow:hidden;position:relative;
-    border:1px solid var(--line);display:flex;align-items:flex-end;padding:24px;cursor:pointer;
-    transition:transform .4s ease;
-  }
-  .work-item:hover{transform:scale(1.015)}
-  .work-item .lbl{position:relative;z-index:2;font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;color:#fff}
-  .work-item .cat{position:relative;z-index:2;font-size:12px;color:rgba(255,255,255,.78);display:block;margin-top:4px}
-  .work-item::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.6))}
-  .w1{background:linear-gradient(135deg,#3a3a38,#1a1a19)}
-  .w2{background:linear-gradient(135deg,#48473f,#23231f)}
-  .w3{background:linear-gradient(135deg,#4a4733,#23231a)}
-  .w4{background:linear-gradient(135deg,#3d3d3c,#202020)}
-  .w5{background:linear-gradient(135deg,#454440,#222220)}
-  .w6{background:linear-gradient(135deg,#353535,#181818)}
-  .work-note{text-align:center;margin-top:40px;color:var(--muted);font-size:14px}
+  /* ============ MARCAS ATENDIDAS ============ */
+  .brands{background:var(--band-bg);color:var(--band-ink);padding:56px 0}
+  .brands .label{color:var(--band-muted);text-align:center;display:block;margin-bottom:34px}
+  .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+           mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+  /* 22s para uma metade de ~1560px dá cerca de 70px/s, que é a faixa em que
+     o olho lê "está passando". Abaixo de 45px/s a faixa parece parada. */
+  .marquee-track{display:flex;width:max-content;animation:slide 22s linear infinite}
+  /* Cada .marquee-set precisa ser mais largo que a viewport, senão aparece
+     um vão no ponto de emenda do loop. Com logos pequenas isso vem do gap. */
+  .marquee-set{display:flex;align-items:center;gap:118px;padding-right:118px}
+  /* Logos dessaturadas para a faixa não competir com o resto da página.
+     O brilho compensa o cinza escuro que sobra do dourado sobre o preto. */
+  .marquee-set img{width:auto;filter:grayscale(1) brightness(1.25);opacity:.72}
+  /* Alturas por marca: equilíbrio óptico. Marca redonda precisa de mais
+     altura que assinatura larga para pesar igual na faixa. */
+  .marquee-set .m-arena{height:38px}
+  .marquee-set .m-qualidade{height:44px}
+  .marquee-set .m-atletico{height:48px}
+  .marquee-set .m-arena-atl{height:46px}
+  .marquee-set .m-dogao{height:46px}
+  @keyframes slide{ to{ transform:translateX(-50%) } }
 
-  /* ---------- WORK / EM CONSTRUÇÃO ---------- */
-  .work-soon{
-    margin-top:54px;border:1.5px dashed var(--line);border-radius:24px;
-    background:var(--surface);padding:clamp(56px,9vw,110px) 28px;text-align:center;
+  /* ============ CONTATO ============ */
+  .panel{
+    background:var(--surface);border-radius:var(--radius-lg);
+    padding:clamp(32px,5vw,66px);
+    display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,5vw,60px);align-items:start;
   }
-  .work-soon .pill{
-    display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:var(--ink);
-    font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;
-    padding:9px 18px;border-radius:100px;margin-bottom:26px;
+  /* Título menor que o padrão da página: na coluna estreita do painel, no
+     tamanho cheio ele quebrava em 3 linhas e deixava "padrão?" sozinho. */
+  .panel h2{font-size:clamp(34px,4.4vw,62px)}
+  .panel .lead{margin-top:18px;max-width:38ch}
+  /* Marcador amarelo. Não uso background-color porque o fundo de um inline
+     pinta a caixa inteira da fonte, e o Bebas tem caixa bem mais alta que as
+     letras: virava um bloco pesado. O gradiente deixa eu controlar a altura
+     e a posição da tarja em em, então ela acompanha o corpo do texto. */
+  .hl{
+    color:var(--accent-ink);
+    background-image:linear-gradient(var(--accent),var(--accent));
+    background-repeat:no-repeat;
+    background-size:100% .80em;
+    background-position:0 .17em;
+    padding:0 .07em;
   }
-  .work-soon h3{
-    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.03em;
-    font-size:clamp(28px,4.4vw,52px);line-height:1.05;
-  }
-  .work-soon p{max-width:440px;margin:18px auto 0;color:var(--muted);font-weight:400;font-size:17px}
-  .work-soon .btn{margin-top:34px}
 
-  /* ---------- PROCESS ---------- */
-  .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:54px}
-  .proc{border-top:2px solid var(--ink);padding-top:26px}
-  .proc .step{font-family:'Anton',sans-serif;font-size:54px;color:var(--ink);line-height:1;position:relative;display:inline-block}
-  .proc .step::after{content:"";position:absolute;left:-4px;right:-4px;bottom:8px;height:12px;background:var(--accent);z-index:-1}
-  .proc h4{font-family:'Archivo',sans-serif;font-weight:700;font-size:20px;margin:16px 0 10px}
-  .proc p{color:var(--muted);font-weight:400;font-size:15px;line-height:1.6}
-
-  /* ---------- CTA ---------- */
-  .cta{
-    background:var(--dark);color:var(--on-dark);border-radius:28px;
-    padding:clamp(48px,7vw,96px);text-align:center;position:relative;overflow:hidden;
-  }
-  .cta h2{
-    font-family:'Bootzy','Archivo',sans-serif;font-weight:normal;text-transform:uppercase;
-    font-size:clamp(40px,6.6vw,98px);line-height:.97;letter-spacing:0;
-  }
-  .cta h2 .hl{background:var(--accent);color:var(--ink);padding:0 .1em;border-radius:8px}
-  .cta p{max-width:480px;margin:24px auto 40px;color:rgba(242,242,244,.66);font-size:18px;font-weight:400}
-  .cta .btn-primary{background:var(--accent);color:var(--ink)}
-  .cta .btn-primary:hover{box-shadow:0 14px 34px rgba(241,227,39,.45)}
-
-  /* ---------- BRIEFING ---------- */
-  .brief{
-    background:var(--dark);color:var(--on-dark);border-radius:28px;
-    padding:clamp(40px,6vw,80px);position:relative;overflow:hidden;
-    display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:start;
-  }
-  .brief-intro .eyebrow{color:var(--on-dark)}
-  .brief-intro h2{
-    font-family:'Bootzy','Archivo',sans-serif;font-weight:normal;text-transform:uppercase;
-    font-size:clamp(34px,4.4vw,64px);line-height:.98;letter-spacing:0;color:var(--on-dark);
-  }
-  .brief-hl{background:var(--accent);color:var(--ink);padding:0 .1em;border-radius:8px}
-  .brief-intro p{margin-top:24px;color:rgba(242,242,244,.7);font-size:17px;font-weight:400;line-height:1.6;max-width:420px}
-
-  .brief-form{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .field{display:flex;flex-direction:column;gap:9px}
+  .form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:8px}
   .field-full{grid-column:1 / -1}
-  .field label{font-size:13px;font-weight:600;letter-spacing:.02em;color:rgba(242,242,244,.85)}
+  .field label,.field .flabel{font-size:12.5px;font-weight:600;color:var(--ink)}
   .field input,.field select,.field textarea{
-    background:rgba(255,255,255,.06);border:1px solid rgba(242,242,244,.18);
-    border-radius:12px;padding:14px 16px;color:var(--on-dark);
-    font-family:'Inter',sans-serif;font-size:15px;font-weight:400;letter-spacing:-.01em;
-    transition:border-color .25s, background .25s;width:100%;
+    background:var(--field-bg);border:1px solid var(--field-line);border-radius:11px;
+    padding:13px 15px;color:var(--ink);
+    font-family:'Inter',sans-serif;font-size:15px;font-weight:400;letter-spacing:-.01em;width:100%;
+    transition:border-color .2s;
   }
-  .field textarea{resize:vertical;min-height:88px}
-  .field input::placeholder,.field textarea::placeholder{color:rgba(242,242,244,.4)}
-  .field input:focus,.field select:focus,.field textarea:focus{
-    outline:none;border-color:var(--accent);background:rgba(255,255,255,.10);
+  .field textarea{resize:vertical;min-height:84px}
+  .field input::placeholder,.field textarea::placeholder{color:var(--field-placeholder)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+  .field input[aria-invalid="true"]{border-color:#C62828}
+  .field-error{font-size:12.5px;color:#C62828}
+  @media (prefers-color-scheme: dark){
+    .field input[aria-invalid="true"]{border-color:#FF8A8A}
+    .field-error{color:#FF9E9E}
   }
-  .field select option{color:var(--ink)}
-  .field input.invalid{border-color:#ff6b6b;background:rgba(255,107,107,.08)}
 
-  .chips{display:flex;flex-wrap:wrap;gap:9px}
-  .chip{
-    border:1px solid rgba(242,242,244,.22);background:transparent;color:rgba(242,242,244,.85);
-    border-radius:100px;padding:9px 16px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;
-    cursor:pointer;transition:all .2s ease;
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip-btn{
+    border:1px solid var(--field-line);background:transparent;color:var(--ink);
+    border-radius:100px;padding:9px 15px;
+    font-family:'Inter',sans-serif;font-size:14px;font-weight:500;cursor:pointer;
+    transition:border-color .2s, background .2s;
   }
-  .chip:hover{border-color:var(--accent)}
-  .chip.active{background:var(--accent);border-color:var(--accent);color:var(--ink);font-weight:600}
+  .chip-btn:hover{border-color:var(--ink)}
+  .chip-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+  .form-submit{width:100%;justify-content:center}
+  .form-note{margin-top:12px;text-align:center;color:var(--muted);font-size:12.5px}
 
-  .brief-submit{width:100%;justify-content:center;margin-top:4px}
-  .brief-note{margin-top:14px;text-align:center;color:rgba(242,242,244,.55);font-size:13px}
-
-  /* ---------- FOOTER ---------- */
-  footer{padding:70px 0 40px;border-top:1px solid var(--line)}
-  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:50px}
-  .foot-big{font-family:'Bootzy','Archivo',sans-serif;font-weight:normal;font-size:clamp(46px,7.6vw,104px);text-transform:uppercase;letter-spacing:0;line-height:.92}
-  .foot-big span{background:var(--accent);padding:0 .08em;border-radius:8px}
-  .foot-links{display:flex;gap:60px;flex-wrap:wrap}
-  .foot-col h5{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-  .foot-col a{display:block;color:var(--ink);font-size:15px;margin-bottom:10px;transition:color .25s}
+  /* ============ FOOTER ============
+     Quatro colunas: marca, navegação, contato e chamada. A coluna da marca é
+     a mais larga porque carrega a logo mais a descrição. */
+  footer{padding:70px 0 32px;border-top:1px solid var(--line)}
+  .foot-grid{
+    display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1.2fr;
+    gap:clamp(32px,4vw,56px);margin-bottom:52px;
+  }
+  .foot-logo img{height:34px;width:auto}
+  @media (prefers-color-scheme: dark){ .foot-logo img{filter:invert(1)} }
+  .foot-sobre{color:var(--muted);font-size:15px;line-height:1.65;margin-top:20px;max-width:34ch}
+  .foot-social{display:flex;gap:10px;margin-top:26px}
+  .foot-social a{
+    width:38px;height:38px;border-radius:50%;background:var(--surface);
+    display:flex;align-items:center;justify-content:center;color:var(--ink);
+    transition:background .2s, color .2s;
+  }
+  .foot-social a svg{width:16px;height:16px;fill:currentColor}
+  .foot-social a:hover{background:var(--accent);color:var(--accent-ink)}
+  .foot-col h3{margin-bottom:18px}
+  .foot-col a,.foot-col p{display:block;font-size:15px;margin-bottom:11px;color:var(--ink)}
+  .foot-col a{transition:color .2s}
   .foot-col a:hover{color:var(--muted)}
-  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:26px}
+  .foot-col p{color:var(--muted)}
+  .foot-cta p{font-size:15px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+  .foot-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    color:var(--muted);font-size:11.5px;font-family:'Archivo',sans-serif;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;
+    border-top:1px solid var(--line);padding-top:26px;
+  }
 
-  /* ---------- REVEAL ---------- */
-  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease, transform .8s ease}
+  /* ============ REVEAL ============ */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1)}
   .reveal.in{opacity:1;transform:none}
 
-  /* ---------- EFEITOS LEVES ---------- */
-  /* barra de progresso do scroll */
-  .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:200;transition:width .12s linear}
-
-  /* sublinhado animado no menu */
-  .nav-links a:not(.nav-cta){position:relative}
-  .nav-links a:not(.nav-cta)::after{
-    content:"";position:absolute;left:0;bottom:-5px;width:100%;height:2px;
-    background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+  /* ============ RESPONSIVO ============ */
+  @media(max-width:1080px){
+    .svc-grid{grid-template-columns:repeat(3,1fr)}
   }
-  .nav-links a:not(.nav-cta):hover::after{transform:scaleX(1)}
-
-  /* textura de grão na página inteira */
-  body::after{
-    content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.13;
-    mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-    background-size:160px 160px;
-  }
-
-  /* grão mais visível nas seções escuras (briefing) */
-  .brief::after{
-    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:28px;
-    opacity:.22;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='bn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23bn)'/%3E%3C/svg%3E");
-    background-size:150px 150px;
-  }
-  .brief > *{position:relative;z-index:1}
-
-  /* logo com leve resposta ao hover */
-  .logo img:hover{transform:scale(1.04)}
-
-  /* ---------- RESPONSIVE ---------- */
-  @media(max-width:900px){
-    .about-grid{grid-template-columns:1fr;gap:48px}
-    .svc-grid{grid-template-columns:1fr}
-    .work-grid{grid-template-columns:repeat(2,1fr)}
-    .proc-grid{grid-template-columns:repeat(2,1fr)}
-    .brief{grid-template-columns:1fr;gap:36px}
+  @media(max-width:960px){
+    .foot-grid{grid-template-columns:1fr 1fr;gap:40px 32px}
+    .about{grid-template-columns:1fr;gap:28px}
+    .about-art{max-width:460px}
+    .hero{padding:118px 0 60px}
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .panel{grid-template-columns:1fr;gap:30px}
     .nav-links{
-      position:fixed;top:0;right:0;height:100vh;width:74%;max-width:320px;
-      background:var(--surface);flex-direction:column;justify-content:center;gap:30px;
-      transform:translateX(100%);transition:transform .4s ease;border-left:1px solid var(--line);z-index:90;
+      position:fixed;top:0;right:0;height:100dvh;width:78%;max-width:320px;
+      background:var(--bg);border-left:1px solid var(--line);
+      flex-direction:column;justify-content:center;gap:26px;
+      transform:translateX(100%);transition:transform .35s ease;z-index:90;
     }
     .nav-links.open{transform:none}
-    .nav-links a{font-size:20px}
-    .burger{display:flex;z-index:95}
+    .nav-links a{font-size:16px}
+    .burger{display:flex;z-index:96}
   }
-  @media(max-width:560px){
-    .work-grid{grid-template-columns:1fr}
-    .proc-grid{grid-template-columns:1fr}
-    .stats{gap:30px}
-    .brief-form{grid-template-columns:1fr}
+  @media(max-width:700px){
+    .foot-grid{grid-template-columns:1fr;gap:36px}
+    .wrap{padding:0 20px}
+    .stats{grid-template-columns:1fr}
+    .stat{border-left:0;border-top:1px solid var(--line);padding:26px 20px}
+    .stat:first-child{border-top:0}
+    .svc-grid{grid-template-columns:1fr}
+    .form{grid-template-columns:1fr}
+    .marquee-set{gap:62px;padding-right:62px}
+    .marquee-track{animation-duration:14s}
+    .marquee-set .m-arena{height:30px}.marquee-set .m-qualidade{height:36px}.marquee-set .m-atletico{height:38px}.marquee-set .m-arena-atl{height:36px}.marquee-set .m-dogao{height:36px}
+  }
+
+  /* ============ MOVIMENTO REDUZIDO ============ */
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    /* A faixa de marcas fica FORA desta regra por decisão da Lorena: ela
+       continua passando mesmo para quem pediu movimento reduzido no sistema.
+       O :not() é o que exclui a faixa; todo o resto da página para. */
+    *:not(.marquee-track):not(.hero-slide),*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+    .reveal{opacity:1;transform:none}
   }
 </style>
 </head>
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- NAV -->
+<!-- ============ NAV ============ -->
 <header id="header">
   <div class="wrap nav">
-    <a href="#top" class="logo"><img src="logo/logo.png" alt="Lorena Mariano - Designer Esportiva" /></a>
-    <nav class="nav-links" id="navLinks">
+    <a href="#top" class="logo" aria-label="Lorena Mariano, início">
+      <img src="logo/logo.png" alt="Lorena Mariano" width="150" height="30" />
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Principal">
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
-      <a href="#contato" class="nav-cta">Pedir orçamento</a>
+      <a href="#marcas">Marcas</a>
+      <a href="#contato" class="nav-cta">Falar comigo</a>
     </nav>
-    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<!-- HERO -->
-<div id="top"></div>
+<!-- ============ ABA LATERAL DE REDES ============
+     Para adicionar o Behance quando a página estiver no ar, descomente o
+     bloco abaixo e troque o href pelo endereço do seu perfil. -->
+<aside class="rail" aria-label="Redes sociais">
+  <a href="https://instagram.com/lorenamariano" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+  </a>
+  <a href="https://wa.me/5544999707173" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+  <!--
+  <a href="https://www.behance.net/SEU-PERFIL" target="_blank" rel="noopener" aria-label="Behance">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+  </a>
+  -->
+</aside>
+
+<span id="top"></span>
+<span id="scrollSentinel" aria-hidden="true"></span>
+
+<main>
+
+<!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-fx" aria-hidden="true">
-    <svg class="hero-lines" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="300" y1="0" x2="300" y2="600" stroke="currentColor" stroke-width="2"/>
-      <circle class="hl-circle" cx="300" cy="300" r="120" stroke="currentColor" stroke-width="2"/>
-      <circle cx="300" cy="300" r="7" fill="currentColor"/>
-    </svg>
-    <div class="hero-glow" id="heroGlow"></div>
-  </div>
-  <div class="wrap">
-    <span class="hero-tag reveal"><span class="dot"></span> Designer Esportiva · Maringá-PR</span>
-    <h1 class="reveal">
-      Design que<br>
-      veste a <em>camisa</em><br>
-      <span class="out">do seu time.</span>
-    </h1>
-    <p class="hero-sub reveal">
-      Vou ser sincera: a maioria dos times posta no improviso e some no meio
-      de mil perfis iguais. Eu te ajudo a mudar isso, com identidade e conteúdo
-      que fazem a sua marca ser reconhecida e respeitada, dentro e fora de campo.
-    </p>
-    <div class="hero-actions reveal">
-      <a href="#contato" class="btn btn-primary">Quero meu projeto →</a>
-      <a href="#servicos" class="btn btn-ghost">Ver serviços</a>
-    </div>
-  </div>
-
-  <!-- MARQUEE -->
-  <div class="marquee reveal">
-    <div class="marquee-track">
-      <span>Posts para times</span><span>Identidade Visual</span><span>Atletas</span>
-      <span>Social Media</span><span>Branding Esportivo</span><span>Conteúdo de Jogo</span>
-      <span>Posts para times</span><span>Identidade Visual</span><span>Atletas</span>
-      <span>Social Media</span><span>Branding Esportivo</span><span>Conteúdo de Jogo</span>
-    </div>
-  </div>
-</section>
-
-<!-- SOBRE -->
-<section id="sobre">
-  <div class="wrap about-grid">
-    <div class="about-text reveal">
-      <div class="eyebrow">Quem está por trás</div>
-      <h2 class="h2">Oi, eu sou a Lorena. E eu nunca entendi nada de futebol.</h2>
-      <p>
-        Minha praia sempre foi o lado criativo. Eu vivia de internet, de jogos
-        online, mexendo com arte muito antes de saber o que era um impedimento.
-        Futebol não fazia o meu tipo. Até que me chamaram pra fazer as artes de
-        um time, o Qualidade. E eu <strong>arrisquei</strong>.
+  <div class="wrap hero-grid">
+    <div>
+      <span class="label reveal">Marketing e design esportivo</span>
+      <h1 class="display reveal">Transformo esporte<br>em marca.</h1>
+      <p class="lead reveal">
+        Cuido da marca de times, arenas e atletas: identidade visual, design das
+        peças e conteúdo de jogo.
       </p>
-      <p>
-        Comecei bem cru, no Canva, fui pro Photoshop, fui me profissionalizando.
-        E no meio do caminho aconteceu o que eu menos esperava: <strong>me
-        apaixonei</strong>. O que era um acaso virou a minha área e a coisa que
-        eu mais amo fazer.
-      </p>
-      <p>
-        Hoje eu vivo o esporte. E é justamente por ter chegado de fora que eu
-        sei traduzir um time em arte: olho com a curiosidade de quem chegou
-        agora e a mão de quem faz design há anos. Pego o que vocês são dentro de
-        campo e transformo numa marca que a torcida <strong>reconhece e tem
-        orgulho de compartilhar</strong>.
-      </p>
-      <div class="stats">
-        <div class="stat"><div class="num">+5</div><div class="lbl">marcas esportivas atendidas</div></div>
-        <div class="stat"><div class="num">100%</div><div class="lbl">foco no universo do esporte</div></div>
-        <div class="stat"><div class="num">7d</div><div class="lbl">de conteúdo planejado por semana</div></div>
+      <div class="hero-actions reveal">
+        <a href="#contato" class="btn btn-primary">
+          Falar comigo
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </a>
+        <a href="#servicos" class="btn btn-ghost">
+          Ver serviços
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </a>
       </div>
     </div>
-    <div class="about-visual reveal">
-      <img src="branding.jpg" alt="Lorena Mariano, Designer Esportiva - o poder do branding dentro de campo" />
-      <span class="grain"></span>
-      <span class="badge">★ Designer Esportiva</span>
+    <!-- Rodízio do hero. Para trocar ou acrescentar: exporte em 3:4 (720x960)
+         dentro de img/hero/, acrescente a <img class="hero-slide"> aqui e
+         atualize os nth-of-type e o animation-delay no CSS para o novo total. -->
+    <div class="hero-art reveal">
+      <img class="hero-slide" src="img/hero/01-prancheta.jpg"
+           alt="Prancheta tática com a escalação montada, apoiada na grama"
+           width="720" height="960" fetchpriority="high" />
+      <img class="hero-slide" src="img/hero/02-comemoracao-gol.jpg"
+           alt="Jogador comemorando de braços abertos em frente ao gol"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/03-abraco-time.jpg"
+           alt="Time reunido em abraço antes da partida"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/04-goleiro.jpg"
+           alt="Goleiro ajoelhado no gramado com as mãos no rosto"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/05-banco.jpg"
+           alt="Atleta de olhos fechados no banco, respirando fundo"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/06-treinador.jpg"
+           alt="Treinador de boné acompanhando o jogo de perfil"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/07-quarteto.jpg"
+           alt="Quatro jogadores abraçados comemorando a vitória"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/08-base.jpg"
+           alt="Dois meninos da categoria de base batendo as mãos depois do gol"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/09-craque-da-bola.jpg"
+           alt="Jogador premiado como craque da bola com o troféu nas mãos"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/10-elenco.jpg"
+           alt="Elenco completo reunido em frente ao gol depois da partida"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/11-capitao.jpg"
+           alt="Capitão uniformizado caminhando em campo com a faixa no braço"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/12-comemora-preto.jpg"
+           alt="Jogador de uniforme preto e amarelo comemorando em campo"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/13-perfil-noite.jpg"
+           alt="Atleta de perfil em partida noturna"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/14-qualidade-4-anos.jpg"
+           alt="Peça de aniversário de quatro anos do Qualidade Fut7"
+           width="720" height="960" loading="lazy" />
+      <img class="hero-slide" src="img/hero/15-treinador-recompensa.jpg"
+           alt="Peça com depoimento do treinador do Atlético Maringaense"
+           width="720" height="960" loading="lazy" />
     </div>
   </div>
 </section>
 
-<!-- SERVIÇOS -->
+<!-- ============ NÚMEROS ============
+     CONFIRMAR COM A LORENA: números estimados a partir da pasta de trabalhos
+     e do perfil. Trocar pelos valores reais antes de publicar. -->
+<div class="wrap">
+  <div class="stats reveal">
+    <div class="stat">
+      <div class="num">+10</div>
+      <div class="label lbl">marcas esportivas atendidas</div>
+    </div>
+    <div class="stat">
+      <div class="num">+150</div>
+      <div class="label lbl">peças publicadas</div>
+    </div>
+    <div class="stat">
+      <div class="num">27 mil</div>
+      <div class="label lbl">pessoas acompanhando</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============ SOBRE ============ -->
+<section id="sobre">
+  <div class="wrap about">
+    <div class="about-art reveal">
+      <img src="img/sobre-lorena.jpg"
+           alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time"
+           width="800" height="1071" loading="lazy" />
+    </div>
+
+    <div class="about-text reveal">
+      <h2 class="display h2">Eu sou a Lorena.</h2>
+
+      <p class="about-lead">
+        Sou designer, mas, principalmente, sou alguém que encontrou no esporte
+        um lugar para criar, contar histórias e transformar ideias em algo que
+        as pessoas conseguem sentir.
+      </p>
+
+      <p>
+        Minha relação com o esporte foi acontecendo na prática. Entre times,
+        jogos, campeonatos, bastidores e projetos, fui percebendo que existia
+        muito mais por trás de uma partida do que os 90 minutos dentro de campo.
+      </p>
+
+      <p>
+        Comecei pelo design. Uma arte aqui, uma identidade ali, um uniforme, uma
+        divulgação, e quando percebi já estava criando conteúdo, registrando
+        jogos, pensando em estratégias, ajudando times a se posicionarem e
+        entendendo como transformar aquilo que acontece no esporte em comunicação.
+      </p>
+
+      <p class="about-turn">O que começou como design foi se tornando algo maior.</p>
+
+      <p>
+        Hoje, trabalho com marketing esportivo unindo aquilo que mais gosto de
+        fazer: design, conteúdo, criatividade e esporte.
+      </p>
+
+      <p>
+        Gosto de estar perto do campo, entender a história de cada time, enxergar
+        aquilo que muitas vezes passa despercebido e transformar tudo isso em uma
+        comunicação que tenha identidade.
+      </p>
+
+      <p>
+        Não quero apenas fazer posts bonitos. Quero fazer o esporte ser visto.
+        Quero ajudar times e atletas a construírem uma marca, criarem uma história
+        e serem lembrados pelo que representam.
+      </p>
+
+      <p>
+        Ainda estou construindo meu caminho, aprendendo todos os dias e
+        descobrindo até onde essa mistura de criatividade e esporte pode me levar.
+      </p>
+
+    </div>
+
+    <p class="display about-close reveal">
+      Mas uma coisa eu já sei:<br><span class="hl">é no esporte que eu quero criar.</span>
+    </p>
+  </div>
+</section>
+<!-- ============ SERVIÇOS ============ -->
 <section id="servicos">
   <div class="wrap">
-    <div class="services-head">
-      <div class="reveal">
-        <div class="eyebrow">O que eu faço</div>
-        <h2 class="h2">O que eu faço<br>(e por que importa).</h2>
-      </div>
-      <p class="reveal">Sem enrolação: aqui vai o que eu entrego e o problema real que cada coisa resolve pro seu time.</p>
+    <div class="svc-head reveal">
+      <span class="label label-rule">O que eu faço</span>
+      <h2 class="display h2">Design e marketing na mesma mão.</h2>
+      <p class="lead">
+        Estratégia de marca e execução das peças com a mesma pessoa, sem ficar
+        traduzindo briefing entre o time e o designer.
+      </p>
     </div>
+
     <div class="svc-grid">
-      <div class="svc reveal">
-        <div class="idx">01</div>
-        <h3>Posts para Times & Atletas</h3>
-        <p>Sabe aquele perfil que some no feed? Quase sempre é falta de constância e padrão. Eu cuido das suas artes do dia a dia (escalação, resultado, próximo jogo) pra sua torcida sempre saber que o time tá vivo e organizado.</p>
-        <div class="tags"><span>Escalação</span><span>Resultado</span><span>Próximo jogo</span><span>Bastidores</span></div>
+      <article class="svc reveal">
+        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M248,92.68a15.86,15.86,0,0,0-4.69-11.31L174.63,12.68a16,16,0,0,0-22.63,0L123.57,41.11l-58,21.77A16.06,16.06,0,0,0,55.35,75.23L32.11,214.68A8,8,0,0,0,40,224a8.4,8.4,0,0,0,1.32-.11l139.44-23.24a16,16,0,0,0,12.35-10.17l21.77-58L243.31,104A15.87,15.87,0,0,0,248,92.68Zm-69.87,92.19L63.32,204l47.37-47.37a28,28,0,1,0-11.32-11.32L52,192.7,71.13,77.86,126,57.29,198.7,130ZM112,132a12,12,0,1,1,12,12A12,12,0,0,1,112,132Zm96-15.32L139.31,48l24-24L232,92.68Z"/></svg></div>
+        <h3>Identidade visual</h3>
+        <p>Logo, paleta, tipografia e manual de marca. O que o time usa em tudo, do uniforme ao story.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z"/></svg></div>
+        <h3>Design de conteúdo</h3>
+        <p>As peças do dia a dia: escalação, resultado, próximo jogo, bastidores e carrossel.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></svg></div>
+        <h3>Dia de jogo</h3>
+        <p>Pacote de pré, durante e pós-jogo, para cada partida virar conteúdo em vez de passar batida.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg></div>
+        <h3>Posicionamento</h3>
+        <p>Definir o que a marca comunica antes de desenhar. Sem isso, arte bonita não resolve nada.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M254.3,107.91,228.78,56.85a16,16,0,0,0-21.47-7.15L182.44,62.13,130.05,48.27a8.14,8.14,0,0,0-4.1,0L73.56,62.13,48.69,49.7a16,16,0,0,0-21.47,7.15L1.7,107.9a16,16,0,0,0,7.15,21.47l27,13.51,55.49,39.63a8.06,8.06,0,0,0,2.71,1.25l64,16a8,8,0,0,0,7.6-2.1l55.07-55.08,26.42-13.21a16,16,0,0,0,7.15-21.46Zm-54.89,33.37L165,113.72a8,8,0,0,0-10.68.61C136.51,132.27,116.66,130,104,122L147.24,80h31.81l27.21,54.41ZM41.53,64,62,74.22,36.43,125.27,16,115.06Zm116,119.13L99.42,168.61l-49.2-35.14,28-56L128,64.28l9.8,2.59-45,43.68-.08.09a16,16,0,0,0,2.72,24.81c20.56,13.13,45.37,11,64.91-5L188,152.66Zm62-57.87-25.52-51L214.47,64,240,115.06Zm-87.75,92.67a8,8,0,0,1-7.75,6.06,8.13,8.13,0,0,1-1.95-.24L80.41,213.33a7.89,7.89,0,0,1-2.71-1.25L51.35,193.26a8,8,0,0,1,9.3-13l25.11,17.94L126,208.24A8,8,0,0,1,131.82,217.94Z"/></svg></div>
+        <h3>Apoio a patrocínio</h3>
+        <p>Material de apresentação e conteúdo que mostra ao patrocinador o que ele está comprando.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARCAS ATENDIDAS ============
+     Para acrescentar uma marca: exporte a logo em PNG com fundo transparente,
+     altura 160px, salve em img/marcas/ e repita o bloco <img> nos DOIS
+     .marquee-set (os dois precisam ser idênticos para o loop não pular). -->
+<section id="marcas" class="brands">
+  <div class="wrap">
+    <span class="label">Marcas atendidas</span>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="marquee-set">
+        <img class="m-arena" src="img/marcas/nova-arena-ciacollor.png" alt="Nova Arena Ciacollor" width="162" height="160" loading="lazy" />
+        <img class="m-qualidade" src="img/marcas/qualidade-fut7.png" alt="Qualidade Fut7" width="129" height="160" loading="lazy" />
+        <img class="m-atletico" src="img/marcas/atletico-maringaense.png" alt="Atlético Maringaense" width="106" height="160" loading="lazy" />
+        <img class="m-arena-atl" src="img/marcas/arena-atletico-maringaense.png" alt="Arena Atlético Maringaense" width="147" height="160" loading="lazy" />
+        <img class="m-dogao" src="img/marcas/dogao-raptors.png" alt="Dogão Raptors" width="154" height="160" loading="lazy" />
+        <img class="m-arena" src="img/marcas/nova-arena-ciacollor.png" alt="" aria-hidden="true" width="162" height="160" loading="lazy" />
+        <img class="m-qualidade" src="img/marcas/qualidade-fut7.png" alt="" aria-hidden="true" width="129" height="160" loading="lazy" />
+        <img class="m-atletico" src="img/marcas/atletico-maringaense.png" alt="" aria-hidden="true" width="106" height="160" loading="lazy" />
+        <img class="m-arena-atl" src="img/marcas/arena-atletico-maringaense.png" alt="" aria-hidden="true" width="147" height="160" loading="lazy" />
+        <img class="m-dogao" src="img/marcas/dogao-raptors.png" alt="" aria-hidden="true" width="154" height="160" loading="lazy" />
       </div>
-      <div class="svc reveal">
-        <div class="idx">02</div>
-        <h3>Identidade Visual (IDV)</h3>
-        <p>Logo não é só um desenho bonito. É o que falam de você antes de você abrir a boca. Construo a identidade do seu time ou projeto pra que ela diga, em segundos, quem vocês são e por que merecem respeito.</p>
-        <div class="tags"><span>Logo</span><span>Paleta</span><span>Manual de marca</span></div>
-      </div>
-      <div class="svc reveal">
-        <div class="idx">03</div>
-        <h3>Conteúdo de Dia de Jogo</h3>
-        <p>Dia de jogo é quando todo mundo olha. Ou você aproveita, ou perde. Monto o pacote de pré, durante e pós-jogo pra cada partida virar conteúdo, e não mais uma oportunidade jogada fora.</p>
-        <div class="tags"><span>Pré-jogo</span><span>Tempo real</span><span>Pós-jogo</span></div>
-      </div>
-      <div class="svc reveal">
-        <div class="idx">04</div>
-        <h3>Social Media & Templates</h3>
-        <p>Você não precisa depender de mim pra todo post. Crio uma linha visual e templates editáveis pra sua equipe manter o padrão sozinha. Autonomia no dia a dia, sem perder a identidade.</p>
-        <div class="tags"><span>Feed</span><span>Stories</span><span>Templates</span></div>
+      <div class="marquee-set" aria-hidden="true">
+        <img class="m-arena" src="img/marcas/nova-arena-ciacollor.png" alt="" aria-hidden="true" width="162" height="160" loading="lazy" />
+        <img class="m-qualidade" src="img/marcas/qualidade-fut7.png" alt="" aria-hidden="true" width="129" height="160" loading="lazy" />
+        <img class="m-atletico" src="img/marcas/atletico-maringaense.png" alt="" aria-hidden="true" width="106" height="160" loading="lazy" />
+        <img class="m-arena-atl" src="img/marcas/arena-atletico-maringaense.png" alt="" aria-hidden="true" width="147" height="160" loading="lazy" />
+        <img class="m-dogao" src="img/marcas/dogao-raptors.png" alt="" aria-hidden="true" width="154" height="160" loading="lazy" />
+        <img class="m-arena" src="img/marcas/nova-arena-ciacollor.png" alt="" aria-hidden="true" width="162" height="160" loading="lazy" />
+        <img class="m-qualidade" src="img/marcas/qualidade-fut7.png" alt="" aria-hidden="true" width="129" height="160" loading="lazy" />
+        <img class="m-atletico" src="img/marcas/atletico-maringaense.png" alt="" aria-hidden="true" width="106" height="160" loading="lazy" />
+        <img class="m-arena-atl" src="img/marcas/arena-atletico-maringaense.png" alt="" aria-hidden="true" width="147" height="160" loading="lazy" />
+        <img class="m-dogao" src="img/marcas/dogao-raptors.png" alt="" aria-hidden="true" width="154" height="160" loading="lazy" />
       </div>
     </div>
   </div>
 </section>
 
-<!-- BRIEFING / CONTATO -->
+<!-- ============ CONTATO ============ -->
 <section id="contato">
   <div class="wrap">
-    <div class="brief reveal">
-      <div class="brief-intro">
-        <div class="eyebrow">Pedir orçamento</div>
-        <h2 class="h2">Me conta seu jogo.<br>Eu te respondo no <span class="brief-hl">WhatsApp</span>.</h2>
-        <p>Preenche rapidinho aqui embaixo. Quando clicar em enviar, abre o WhatsApp com tudo já escrito. É só apertar o botão de mandar.</p>
+    <div class="panel reveal">
+      <div>
+        <h2 class="display h2">Vamos colocar a sua marca no <span class="hl">padrão?</span></h2>
+        <p class="lead">
+          Preencha aqui do lado. Ao enviar, abre o WhatsApp com tudo já escrito.
+          É só apertar o botão de mandar.
+        </p>
       </div>
 
-      <form class="brief-form" id="briefForm" novalidate>
+      <form class="form" id="briefForm" novalidate>
         <div class="field">
           <label for="bf-nome">Seu nome</label>
-          <input type="text" id="bf-nome" name="nome" placeholder="Como posso te chamar?" required />
+          <input type="text" id="bf-nome" name="nome" placeholder="Como posso te chamar?"
+                 autocomplete="name" required aria-describedby="err-nome" />
+          <p class="field-error" id="err-nome" role="status"></p>
         </div>
 
         <div class="field">
-          <label for="bf-time">Time ou atleta</label>
-          <input type="text" id="bf-time" name="time" placeholder="Nome do time, projeto ou seu @" required />
+          <label for="bf-time">Time, arena ou atleta</label>
+          <input type="text" id="bf-time" name="time" placeholder="Nome do projeto ou seu @"
+                 autocomplete="organization" required aria-describedby="err-time" />
+          <p class="field-error" id="err-time" role="status"></p>
         </div>
 
-        <div class="field">
-          <label>O que você precisa?</label>
-          <div class="chips" id="bf-servico" role="group" aria-label="Tipo de serviço">
-            <button type="button" class="chip" data-value="Posts para times & atletas">Posts do dia a dia</button>
-            <button type="button" class="chip" data-value="Identidade visual (logo / marca)">Identidade visual</button>
-            <button type="button" class="chip" data-value="Conteúdo de dia de jogo">Dia de jogo</button>
-            <button type="button" class="chip" data-value="Social media & templates">Social media / templates</button>
-            <button type="button" class="chip" data-value="Ainda não sei, quero ajuda">Ainda não sei</button>
+        <div class="field field-full">
+          <span class="flabel" id="lbl-servico">O que você precisa?</span>
+          <div class="chips" id="bf-servico" role="group" aria-labelledby="lbl-servico">
+            <button type="button" class="chip-btn" aria-pressed="false" data-value="Identidade visual">Identidade visual</button>
+            <button type="button" class="chip-btn" aria-pressed="false" data-value="Design de conteúdo">Design de conteúdo</button>
+            <button type="button" class="chip-btn" aria-pressed="false" data-value="Dia de jogo">Dia de jogo</button>
+            <button type="button" class="chip-btn" aria-pressed="false" data-value="Apoio a patrocínio">Apoio a patrocínio</button>
+            <button type="button" class="chip-btn" aria-pressed="false" data-value="Ainda não sei, quero ajuda">Ainda não sei</button>
           </div>
         </div>
 
-        <div class="field">
-          <label for="bf-prazo">Pra quando?</label>
+        <div class="field field-full">
+          <label for="bf-prazo">Para quando?</label>
           <select id="bf-prazo" name="prazo">
             <option value="Sem pressa, quero planejar">Sem pressa, quero planejar</option>
             <option value="Esse mês">Esse mês</option>
@@ -560,162 +782,215 @@
 
         <div class="field field-full">
           <label for="bf-msg">Conta mais (opcional)</label>
-          <textarea id="bf-msg" name="mensagem" rows="3" placeholder="Me fala o que você tem em mente, o que já tentou, o que te incomoda hoje..."></textarea>
+          <textarea id="bf-msg" name="mensagem" rows="3"
+                    placeholder="O que você tem em mente, o que já tentou, o que te incomoda hoje."></textarea>
         </div>
 
         <div class="field field-full">
-          <button type="submit" class="btn btn-primary brief-submit">Enviar no WhatsApp →</button>
-          <p class="brief-note" id="briefNote">Sem compromisso. A conversa continua direto comigo.</p>
+          <button type="submit" class="btn btn-primary form-submit">
+            Enviar no WhatsApp
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          </button>
+          <p class="form-note">Sem compromisso. A conversa continua direto comigo.</p>
         </div>
       </form>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
+<!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-big">Vamos<br><span>criar.</span></div>
-      <div class="foot-links">
-        <div class="foot-col">
-          <h5>Navegação</h5>
-          <a href="#sobre">Sobre</a>
-          <a href="#servicos">Serviços</a>
-          <a href="#contato">Pedir orçamento</a>
-        </div>
-        <div class="foot-col">
-          <h5>Contato</h5>
-          <a href="https://wa.me/5544999707173" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="https://instagram.com/lorenamariano" target="_blank" rel="noopener">Instagram</a>
-          <a href="mailto:lohlarrosa@gmail.com">E-mail</a>
+    <div class="foot-grid">
+
+      <div>
+        <a href="#top" class="foot-logo" aria-label="Lorena Mariano, início">
+          <img src="logo/logo.png" alt="Lorena Mariano" width="170" height="34" loading="lazy" />
+        </a>
+        <p class="foot-sobre">
+          Marketing e design esportivo para times, arenas e atletas que querem
+          ser reconhecidos dentro e fora de campo.
+        </p>
+        <!-- Behance: descomente e troque o href quando a página estiver no ar. -->
+        <div class="foot-social">
+          <a href="https://instagram.com/lorenamariano" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+          </a>
+          <a href="https://wa.me/5544999707173" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
         </div>
       </div>
+
+      <div class="foot-col">
+        <h3 class="label">Navegação</h3>
+        <a href="#top">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#marcas">Marcas</a>
+        <a href="#contato">Falar comigo</a>
+      </div>
+
+      <div class="foot-col">
+        <h3 class="label">Contato</h3>
+        <a href="mailto:lohlarrosa@gmail.com">lohlarrosa@gmail.com</a>
+        <a href="https://wa.me/5544999707173" target="_blank" rel="noopener">(44) 99970-7173</a>
+        <p>Maringá, PR</p>
+      </div>
+
+      <div class="foot-col foot-cta">
+        <h3 class="label">Vamos conversar</h3>
+        <p>Me conta o seu jogo e eu respondo no WhatsApp.</p>
+        <a href="#contato" class="btn btn-primary">
+          Falar comigo
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </a>
+      </div>
+
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Lorena Mariano · Designer Esportiva · Maringá-PR</span>
-      <span>Design com a alma do esporte ★</span>
+      <span>&copy; 2026 Lorena Mariano. Todos os direitos reservados.</span>
+      <span>Marketing e design esportivo</span>
     </div>
   </div>
 </footer>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Lorena Mariano",
+  "description": "Marketing e design esportivo para times, arenas e atletas.",
+  "url": "https://lorenadesign.com.br/",
+  "image": "https://lorenadesign.com.br/img/hero/01-prancheta.jpg",
+  "areaServed": "Brasil",
+  "address": { "@type": "PostalAddress", "addressLocality": "Maringá", "addressRegion": "PR", "addressCountry": "BR" },
+  "sameAs": ["https://instagram.com/lorenamariano"],
+  "email": "lohlarrosa@gmail.com",
+  "telephone": "+5544999707173"
+}
+</script>
+
 <script>
-  // Nav background on scroll
-  const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 30);
-  });
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Mobile menu
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold:0.12 });
-  document.querySelectorAll('.reveal').forEach((el,i) => {
-    el.style.transitionDelay = (i % 4 * 0.08) + 's';
-    io.observe(el);
-  });
-
-  // Barra de progresso do scroll
-  const sp = document.getElementById('scrollProgress');
-  window.addEventListener('scroll', () => {
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - doc.clientHeight;
-    sp.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + '%';
-  });
-
-  // Contador animado dos números (+5, 100%, 7d)
-  function animateCount(el){
-    const m = el.textContent.trim().match(/^(\D*)(\d+)(\D*)$/);
-    if(!m) return;
-    const pre = m[1], target = +m[2], suf = m[3];
-    const dur = 1100, start = performance.now();
-    function tick(now){
-      const p = Math.min((now - start) / dur, 1);
-      const val = Math.round((1 - Math.pow(1 - p, 3)) * target);
-      el.textContent = pre + val + suf;
-      if(p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+  /* Estado fixo do header via sentinela.
+     IntersectionObserver no lugar de listener de scroll: sem trabalho por frame. */
+  var header = document.getElementById('header');
+  var sentinel = document.getElementById('scrollSentinel');
+  if (header && sentinel && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries){
+      header.classList.toggle('scrolled', !entries[0].isIntersecting);
+    }, { rootMargin: '-40px 0px 0px 0px' }).observe(sentinel);
   }
-  const countObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting){ animateCount(e.target); countObs.unobserve(e.target); } });
-  }, { threshold:0.6 });
-  document.querySelectorAll('.stat .num').forEach(el => countObs.observe(el));
 
-  // Brilho dourado seguindo o mouse na hero
-  (function(){
-    const hero = document.querySelector('.hero');
-    const glow = document.getElementById('heroGlow');
-    if(!hero || !glow) return;
-    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-    let tx=0, ty=0, gx=0, gy=0, started=false;
-    hero.addEventListener('pointermove', (e) => {
-      const r = hero.getBoundingClientRect();
-      tx = e.clientX - r.left;
-      ty = e.clientY - r.top;
-      if(!started){ gx = tx; gy = ty; started = true; }
-      glow.style.opacity = '1';
+  /* Menu mobile */
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    var setMenu = function(open){
+      navLinks.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    };
+    burger.addEventListener('click', function(){
+      setMenu(burger.getAttribute('aria-expanded') !== 'true');
     });
-    hero.addEventListener('pointerleave', () => { glow.style.opacity = '0'; });
-    function loop(){
-      gx += (tx - gx) * 0.12;
-      gy += (ty - gy) * 0.12;
-      glow.style.transform = 'translate(' + gx + 'px,' + gy + 'px) translate(-50%,-50%)';
-      requestAnimationFrame(loop);
-    }
-    loop();
-  })();
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ setMenu(false); });
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setMenu(false);
+    });
+  }
 
-  // Briefing -> WhatsApp
-  (function(){
-    const form = document.getElementById('briefForm');
-    if(!form) return;
-    const WHATS = '5544999707173';
-    const chipsBox = document.getElementById('bf-servico');
-    let servico = '';
-
-    chipsBox.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        chipsBox.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        servico = chip.dataset.value;
+  /* Entrada dos blocos ao entrar na viewport.
+     Motivo: hierarquia, o conteúdo aparece na ordem em que deve ser lido. */
+  var revealables = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = ((i % 3) * 0.07) + 's';
+      io.observe(el);
     });
+  }
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const nome = document.getElementById('bf-nome');
-      const time = document.getElementById('bf-time');
-      const prazo = document.getElementById('bf-prazo').value;
-      const msg = document.getElementById('bf-msg').value.trim();
-
-      let ok = true;
-      [nome, time].forEach(f => {
-        if(!f.value.trim()){ f.classList.add('invalid'); ok = false; }
-        else f.classList.remove('invalid');
+  /* Contagem dos indicadores.
+     Motivo: feedback, o número cresce quando entra em cena e fixa a leitura. */
+  if (!reduce && 'IntersectionObserver' in window) {
+    var countObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        countObs.unobserve(e.target);
+        var el = e.target;
+        var m = el.textContent.trim().match(/^(\D*)(\d+)(\D*)$/);
+        if (!m) return;
+        var pre = m[1], target = parseInt(m[2], 10), suf = m[3];
+        var dur = 900, start = performance.now();
+        (function tick(now){
+          var p = Math.min((now - start) / dur, 1);
+          el.textContent = pre + Math.round((1 - Math.pow(1 - p, 3)) * target) + suf;
+          if (p < 1) requestAnimationFrame(tick);
+        })(performance.now());
       });
-      if(!ok){ return; }
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.stat .num').forEach(function(el){ countObs.observe(el); });
+  }
 
-      const linhas = [
-        'Oi, Lorena! Vim pelo seu site e quero um orçamento. 🎯',
-        '',
-        '*Nome:* ' + nome.value.trim(),
-        '*Time/Atleta:* ' + time.value.trim(),
-        '*Preciso de:* ' + (servico || 'Ainda não defini'),
-        '*Prazo:* ' + prazo
-      ];
-      if(msg) linhas.push('*Detalhes:* ' + msg);
+  /* Briefing para o WhatsApp */
+  var form = document.getElementById('briefForm');
+  if (!form) return;
+  var WHATS = '5544999707173';
+  var chipsBox = document.getElementById('bf-servico');
+  var servico = '';
 
-      const url = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(linhas.join('\n'));
-      window.open(url, '_blank', 'noopener');
+  chipsBox.querySelectorAll('.chip-btn').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chipsBox.querySelectorAll('.chip-btn').forEach(function(c){ c.setAttribute('aria-pressed', 'false'); });
+      chip.setAttribute('aria-pressed', 'true');
+      servico = chip.dataset.value;
     });
-  })();
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var campos = [
+      { el: document.getElementById('bf-nome'), err: document.getElementById('err-nome'), msg: 'Preencha o seu nome.' },
+      { el: document.getElementById('bf-time'), err: document.getElementById('err-time'), msg: 'Preencha o time, arena ou atleta.' }
+    ];
+    var ok = true;
+    campos.forEach(function(c){
+      var vazio = !c.el.value.trim();
+      c.el.setAttribute('aria-invalid', String(vazio));
+      c.err.textContent = vazio ? c.msg : '';
+      if (vazio) { if (ok) { c.el.focus(); } ok = false; }
+    });
+    if (!ok) return;
+
+    var msg = document.getElementById('bf-msg').value.trim();
+    var linhas = [
+      'Oi, Lorena! Vim pelo seu site e quero um orçamento.',
+      '',
+      '*Nome:* ' + document.getElementById('bf-nome').value.trim(),
+      '*Time/Arena/Atleta:* ' + document.getElementById('bf-time').value.trim(),
+      '*Preciso de:* ' + (servico || 'Ainda não defini'),
+      '*Prazo:* ' + document.getElementById('bf-prazo').value
+    ];
+    if (msg) linhas.push('*Detalhes:* ' + msg);
+
+    window.open('https://wa.me/' + WHATS + '?text=' + encodeURIComponent(linhas.join('\n')), '_blank', 'noopener');
+  });
+})();
 </script>
 </body>
 </html>
