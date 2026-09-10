@@ -1,0 +1,460 @@
+  /* ============ TOKENS ============
+     Paleta: preto, cinza, branco e o amarelo #f6d512.
+     O amarelo nunca é texto sobre fundo claro. Ele é fundo de botão,
+     marcador e filete, sempre com texto preto por cima. */
+  :root{
+    --bg:#FFFFFF;
+    --surface:#F4F4F5;
+    --surface-2:#FFFFFF;
+    --ink:#101011;
+    --muted:#67676E;
+    --line:rgba(16,16,17,.13);
+    --accent:#f6d512;
+    --accent-ink:#101011;
+
+    --band-bg:#101011;
+    --band-ink:#F4F4F5;
+    --band-muted:#9C9CA3;
+
+    --field-bg:#FFFFFF;
+    --field-line:rgba(16,16,17,.20);
+    --field-placeholder:#6B6B72;
+
+    --header-bg:rgba(255,255,255,.90);
+    --radius:18px;
+    --radius-lg:24px;
+    --maxw:1240px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0B0B0C;
+      --surface:#141416;
+      --surface-2:#141416;
+      --ink:#F2F2F3;
+      --muted:#9C9CA3;
+      --line:rgba(242,242,243,.15);
+
+      --band-bg:#141416;
+      --band-ink:#F2F2F3;
+      --band-muted:#9C9CA3;
+
+      --field-bg:#0B0B0C;
+      --field-line:rgba(242,242,243,.22);
+      --field-placeholder:#9C9CA3;
+
+      --header-bg:rgba(11,11,12,.90);
+    }
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;font-weight:400;
+    letter-spacing:-.014em;line-height:1.55;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  .display{
+    font-family:'Bebas Neue','Archivo',sans-serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:-.014em;line-height:.88;
+  }
+  .h2{font-size:clamp(40px,5.6vw,78px)}
+  .lead{color:var(--muted);font-size:16.5px;line-height:1.7;max-width:56ch}
+
+  /* Rótulo pequeno em caixa-alta, como na referência */
+  .label{
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  }
+  .label-rule{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .label-rule::before{content:"";width:24px;height:3px;background:var(--accent);border-radius:2px}
+
+  /* ============ BOTÕES ============ */
+  .btn{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;
+    letter-spacing:.09em;text-transform:uppercase;
+    border-radius:100px;padding:15px 22px 15px 26px;border:1px solid transparent;
+    display:inline-flex;align-items:center;gap:14px;white-space:nowrap;cursor:pointer;
+    transition:transform .2s ease, background .25s, color .25s, box-shadow .25s, border-color .25s;
+  }
+  .btn .ico{
+    width:26px;height:26px;border-radius:50%;flex:0 0 auto;
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:transform .25s ease;
+  }
+  .btn .ico svg{width:13px;height:13px}
+  .btn:hover .ico{transform:translateX(3px)}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-primary .ico{background:rgba(16,16,17,.14)}
+  .btn-primary:hover{box-shadow:0 10px 26px rgba(246,213,18,.36)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+  .btn-ghost .ico{background:var(--surface)}
+  .btn-ghost:hover{border-color:var(--ink)}
+
+  /* ============ HEADER ============ */
+  header{
+    position:fixed;top:0;left:0;width:100%;z-index:100;
+    padding:18px 0;border-bottom:1px solid transparent;
+    transition:background .35s ease, border-color .35s ease, padding .35s ease;
+  }
+  header.scrolled{
+    background:var(--header-bg);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    padding:11px 0;border-bottom-color:var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  /* Assinatura: o símbolo é só o "4", sem o nome. Componho o logotipo aqui,
+     com o nome em Bebas ao lado, senão ninguém descobre que a marca se chama
+     Quatro Linhas. O degradê do símbolo tem uma ponta clara que sumiria no
+     branco, então o contraste mínimo vem de um leve escurecimento. */
+  .logo{display:flex;align-items:center;gap:11px}
+  .logo img{height:30px;width:auto;transition:height .35s ease;filter:contrast(1.35) brightness(.82)}
+  .logo .marca{
+    font-family:'Bebas Neue','Archivo',sans-serif;text-transform:uppercase;
+    font-size:20px;letter-spacing:.03em;line-height:1;color:var(--ink);white-space:nowrap;
+    transition:font-size .35s ease;
+  }
+  header.scrolled .logo img{height:26px}
+  header.scrolled .logo .marca{font-size:18px}
+  @media (prefers-color-scheme: dark){ .logo img{filter:invert(1) contrast(1.2)} }
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{
+    font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:700;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--muted);
+    transition:color .2s;white-space:nowrap;
+  }
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links .nav-cta{
+    background:var(--accent);color:var(--accent-ink);
+    border-radius:100px;padding:11px 20px;
+  }
+  .nav-links .nav-cta:hover{color:var(--accent-ink);filter:brightness(.94)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;padding:6px;cursor:pointer}
+  .burger span{display:block;width:24px;height:2px;background:var(--ink);transition:transform .3s, opacity .3s}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* ============ ABA LATERAL DE REDES ============ */
+  .rail{
+    position:fixed;left:22px;top:50%;transform:translateY(-50%);z-index:95;
+    display:flex;flex-direction:column;align-items:center;gap:16px;
+  }
+  .rail::after{content:"";width:1px;height:64px;background:var(--line)}
+  .rail a{
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--muted);border:1px solid var(--line);
+    transition:color .2s, border-color .2s, background .2s;
+  }
+  .rail a svg{width:16px;height:16px;fill:currentColor}
+  .rail a:hover{color:var(--accent-ink);background:var(--accent);border-color:var(--accent)}
+  @media(max-width:1180px){ .rail{display:none} }
+
+  /* ============ HERO ============ */
+  .hero{padding:140px 0 80px}
+  /* Coluna da foto mais estreita que na versão anterior: a prancheta é
+     retrato 3:4, e numa coluna larga ela ficaria alta demais e empurraria
+     os botões para fora da primeira dobra. */
+  .hero-grid{display:grid;grid-template-columns:1fr .62fr;gap:56px;align-items:center}
+  /* Escala calculada para a manchete caber em 2 linhas na coluna de texto. */
+  .hero h1{font-size:clamp(46px,6vw,84px);margin-bottom:16px}
+  .hero .label{display:block;margin-bottom:20px}
+  .hero .lead{max-width:42ch}
+  .hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+  /* Slideshow do hero: as fotos são todas 3:4 e ocupam a MESMA moldura,
+     então trocam sem nenhum salto de layout. Empilhadas em absoluto e
+     alternadas só por opacity, que é barato para a GPU. */
+  .hero-art{
+    position:relative;aspect-ratio:3/4;
+    border-radius:var(--radius-lg);overflow:hidden;
+    background:var(--surface);
+    box-shadow:0 24px 60px rgba(16,16,17,.14);
+  }
+  .hero-slide{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;animation:heroFade 45s linear infinite;
+  }
+  .hero-slide:nth-of-type(1){animation-delay:-0.5s}
+  .hero-slide:nth-of-type(2){animation-delay:2.5s}
+  .hero-slide:nth-of-type(3){animation-delay:5.5s}
+  .hero-slide:nth-of-type(4){animation-delay:8.5s}
+  .hero-slide:nth-of-type(5){animation-delay:11.5s}
+  .hero-slide:nth-of-type(6){animation-delay:14.5s}
+  .hero-slide:nth-of-type(7){animation-delay:17.5s}
+  .hero-slide:nth-of-type(8){animation-delay:20.5s}
+  .hero-slide:nth-of-type(9){animation-delay:23.5s}
+  .hero-slide:nth-of-type(10){animation-delay:26.5s}
+  .hero-slide:nth-of-type(11){animation-delay:29.5s}
+  .hero-slide:nth-of-type(12){animation-delay:32.5s}
+  .hero-slide:nth-of-type(13){animation-delay:35.5s}
+  .hero-slide:nth-of-type(14){animation-delay:38.5s}
+  .hero-slide:nth-of-type(15){animation-delay:41.5s}
+  /* 15 fotos x 3s = 45s de ciclo. As janelas se SOBREPOEM por 0,5s:
+     a foto que sai so chega a zero depois que a proxima ja esta em 1.
+     Sem essa sobreposicao o card pisca vazio a cada troca. */
+  @keyframes heroFade{
+    0%{opacity:0} 1.111%{opacity:1} 6.667%{opacity:1} 7.778%{opacity:0} 100%{opacity:0}
+  }
+
+  /* ============ NÚMEROS ============ */
+  .stats{
+    border:1px solid var(--line);border-radius:var(--radius-lg);
+    display:grid;grid-template-columns:repeat(2,1fr);overflow:hidden;
+  }
+  .stat{padding:34px 28px;text-align:center;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:0}
+  .stat .num{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.035em;
+    font-size:clamp(38px,4.4vw,54px);line-height:1;
+    position:relative;display:inline-block;
+  }
+  .stat .num::after{
+    content:"";position:absolute;left:-3px;right:-3px;bottom:4px;height:9px;
+    background:var(--accent);z-index:-1;
+  }
+  .stat .lbl{margin-top:12px}
+
+
+  /* ============ SOBRE (resumo) ============
+     Bloco pequeno, entre as marcas e o contato. Retrato estreito e três
+     linhas: o suficiente para dar rosto ao estúdio sem virar biografia.
+     A história completa fica em sobre.html. */
+  .sobre-curto{padding:clamp(56px,7vw,88px) 0}
+  .sc-grid{
+    display:grid;grid-template-columns:220px 1fr;
+    gap:clamp(24px,4vw,48px);align-items:center;
+  }
+  .sc-foto{border-radius:var(--radius);overflow:hidden;background:var(--surface);line-height:0}
+  .sc-foto img{width:100%;height:auto}
+  .sc-texto p{color:var(--muted);font-size:17px;line-height:1.7;max-width:52ch;margin-bottom:18px}
+  .sc-link{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:12.5px;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--ink);
+    border-bottom:2px solid var(--accent);padding-bottom:3px;
+  }
+
+  /* ============ SEÇÕES ============ */
+  section{padding:clamp(72px,9vw,116px) 0}
+
+  /* SERVIÇOS: fileira de cartões com ícone, como na referência */
+  .svc-head{margin-bottom:44px;max-width:62ch}
+  .svc-head .lead{margin-top:16px}
+  .svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .svc{
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--surface-2);padding:28px 22px;text-align:center;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .svc:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(16,16,17,.09);border-color:transparent}
+  .svc .chip{
+    width:46px;height:46px;border-radius:13px;margin:0 auto 18px;
+    background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink);
+  }
+  .svc:hover .chip{background:var(--accent);color:var(--accent-ink)}
+  .svc .chip svg{width:21px;height:21px}
+  .svc h3{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;
+    letter-spacing:.055em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .svc p{color:var(--muted);font-size:14px;line-height:1.65}
+
+  /* ============ MARCAS ATENDIDAS ============ */
+  .brands{background:var(--band-bg);color:var(--band-ink);padding:56px 0}
+  .brands .label{color:var(--band-muted);text-align:center;display:block;margin-bottom:34px}
+  .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+           mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+  /* 22s para uma metade de ~1560px dá cerca de 70px/s, que é a faixa em que
+     o olho lê "está passando". Abaixo de 45px/s a faixa parece parada. */
+  .marquee-track{display:flex;width:max-content;animation:slide 22s linear infinite}
+  /* Cada .marquee-set precisa ser mais largo que a viewport, senão aparece
+     um vão no ponto de emenda do loop. Com logos pequenas isso vem do gap. */
+  .marquee-set{display:flex;align-items:center;gap:118px;padding-right:118px}
+  /* Logos dessaturadas para a faixa não competir com o resto da página.
+     O brilho compensa o cinza escuro que sobra do dourado sobre o preto. */
+  .marquee-set img{width:auto;filter:grayscale(1) brightness(1.25);opacity:.72}
+  /* Alturas por marca: equilíbrio óptico. Marca redonda precisa de mais
+     altura que assinatura larga para pesar igual na faixa. */
+  .marquee-set .m-arena{height:38px}
+  .marquee-set .m-qualidade{height:44px}
+  .marquee-set .m-atletico{height:48px}
+  .marquee-set .m-arena-atl{height:46px}
+  .marquee-set .m-dogao{height:46px}
+  @keyframes slide{ to{ transform:translateX(-50%) } }
+
+  /* ============ CONTATO ============ */
+  .panel{
+    background:var(--surface);border-radius:var(--radius-lg);
+    padding:clamp(32px,5vw,66px);
+    display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,5vw,60px);align-items:start;
+  }
+  /* Título menor que o padrão da página: na coluna estreita do painel, no
+     tamanho cheio ele quebrava em 3 linhas e deixava "padrão?" sozinho. */
+  .panel h2{font-size:clamp(34px,4.4vw,62px)}
+  .panel .lead{margin-top:18px;max-width:38ch}
+  /* Marcador amarelo. Não uso background-color porque o fundo de um inline
+     pinta a caixa inteira da fonte, e o Bebas tem caixa bem mais alta que as
+     letras: virava um bloco pesado. O gradiente deixa eu controlar a altura
+     e a posição da tarja em em, então ela acompanha o corpo do texto. */
+  .hl{
+    color:var(--accent-ink);
+    background-image:linear-gradient(var(--accent),var(--accent));
+    background-repeat:no-repeat;
+    background-size:100% .80em;
+    background-position:0 .17em;
+    padding:0 .07em;
+  }
+
+  .form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:8px}
+  .field-full{grid-column:1 / -1}
+  .field label,.field .flabel{font-size:12.5px;font-weight:600;color:var(--ink)}
+  .field input,.field select,.field textarea{
+    background:var(--field-bg);border:1px solid var(--field-line);border-radius:11px;
+    padding:13px 15px;color:var(--ink);
+    font-family:'Inter',sans-serif;font-size:15px;font-weight:400;letter-spacing:-.01em;width:100%;
+    transition:border-color .2s;
+  }
+  .field textarea{resize:vertical;min-height:84px}
+  .field input::placeholder,.field textarea::placeholder{color:var(--field-placeholder)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+  .field input[aria-invalid="true"]{border-color:#C62828}
+  .field-error{font-size:12.5px;color:#C62828}
+  @media (prefers-color-scheme: dark){
+    .field input[aria-invalid="true"]{border-color:#FF8A8A}
+    .field-error{color:#FF9E9E}
+  }
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip-btn{
+    border:1px solid var(--field-line);background:transparent;color:var(--ink);
+    border-radius:100px;padding:9px 15px;
+    font-family:'Inter',sans-serif;font-size:14px;font-weight:500;cursor:pointer;
+    transition:border-color .2s, background .2s;
+  }
+  .chip-btn:hover{border-color:var(--ink)}
+  .chip-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+  .form-submit{width:100%;justify-content:center}
+  .form-note{margin-top:12px;text-align:center;color:var(--muted);font-size:12.5px}
+
+  /* ============ FOOTER ============
+     Quatro colunas: marca, navegação, contato e chamada. A coluna da marca é
+     a mais larga porque carrega a logo mais a descrição. */
+  footer{padding:70px 0 32px;border-top:1px solid var(--line)}
+  .foot-grid{
+    display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1.2fr;
+    gap:clamp(32px,4vw,56px);margin-bottom:52px;
+  }
+  .foot-logo{display:flex;align-items:center;gap:12px}
+  .foot-logo img{height:34px;width:auto;filter:contrast(1.35) brightness(.82)}
+  .foot-logo .marca{
+    font-family:'Bebas Neue','Archivo',sans-serif;text-transform:uppercase;
+    font-size:23px;letter-spacing:.03em;line-height:1;color:var(--ink);
+  }
+  @media (prefers-color-scheme: dark){ .foot-logo img{filter:invert(1) contrast(1.2)} }
+  .foot-sobre{color:var(--muted);font-size:15px;line-height:1.65;margin-top:20px;max-width:34ch}
+  .foot-social{display:flex;gap:10px;margin-top:26px}
+  .foot-social a{
+    width:38px;height:38px;border-radius:50%;background:var(--surface);
+    display:flex;align-items:center;justify-content:center;color:var(--ink);
+    transition:background .2s, color .2s;
+  }
+  .foot-social a svg{width:16px;height:16px;fill:currentColor}
+  .foot-social a:hover{background:var(--accent);color:var(--accent-ink)}
+  .foot-col h3{margin-bottom:18px}
+  .foot-col a,.foot-col p{display:block;font-size:15px;margin-bottom:11px;color:var(--ink)}
+  .foot-col a{transition:color .2s}
+  .foot-col a:hover{color:var(--muted)}
+  .foot-col p{color:var(--muted)}
+  .foot-cta p{font-size:15px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+  .foot-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    color:var(--muted);font-size:11.5px;font-family:'Archivo',sans-serif;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;
+    border-top:1px solid var(--line);padding-top:26px;
+  }
+
+  /* ============ REVEAL ============ */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ============ RESPONSIVO ============ */
+  @media(max-width:1080px){
+    .svc-grid{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:960px){
+    .foot-grid{grid-template-columns:1fr 1fr;gap:40px 32px}
+    .sc-grid{grid-template-columns:1fr;gap:24px}
+    .sc-foto{max-width:200px}
+    .hero{padding:118px 0 60px}
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .panel{grid-template-columns:1fr;gap:30px}
+    .nav-links{
+      position:fixed;top:0;right:0;height:100dvh;width:78%;max-width:320px;
+      background:var(--bg);border-left:1px solid var(--line);
+      flex-direction:column;justify-content:center;gap:26px;
+      transform:translateX(100%);transition:transform .35s ease;z-index:90;
+    }
+    .nav-links.open{transform:none}
+    .nav-links a{font-size:16px}
+    .burger{display:flex;z-index:96}
+  }
+  @media(max-width:700px){
+    .foot-grid{grid-template-columns:1fr;gap:36px}
+    .wrap{padding:0 20px}
+    .stats{grid-template-columns:1fr}
+    .stat{border-left:0;border-top:1px solid var(--line);padding:26px 20px}
+    .stat:first-child{border-top:0}
+    .svc-grid{grid-template-columns:1fr}
+    .form{grid-template-columns:1fr}
+    .marquee-set{gap:62px;padding-right:62px}
+    .marquee-track{animation-duration:14s}
+    .marquee-set .m-arena{height:30px}.marquee-set .m-qualidade{height:36px}.marquee-set .m-atletico{height:38px}.marquee-set .m-arena-atl{height:36px}.marquee-set .m-dogao{height:36px}
+  }
+
+  /* ============ MOVIMENTO REDUZIDO ============ */
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    /* A faixa de marcas fica FORA desta regra por decisão da Lorena: ela
+       continua passando mesmo para quem pediu movimento reduzido no sistema.
+       O :not() é o que exclui a faixa; todo o resto da página para. */
+    *:not(.marquee-track):not(.hero-slide),*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+    .reveal{opacity:1;transform:none}
+  }
+
+/* ============ PÁGINA SOBRE (sobre.html) ============
+   Mesma lógica do resumo, mas com espaço para o texto inteiro: retrato à
+   esquerda, história à direita, e a frase de fecho ocupando as duas colunas. */
+.pagina-sobre{padding:clamp(130px,14vw,170px) 0 clamp(72px,9vw,110px)}
+.ps-grid{
+  display:grid;grid-template-columns:.8fr 1fr;align-items:start;
+  gap:clamp(16px,2vw,24px) clamp(36px,5vw,72px);
+}
+.ps-art{border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);line-height:0}
+.ps-art img{width:100%;height:auto}
+.ps-texto h1{margin-bottom:26px}
+.ps-texto p{color:var(--muted);font-size:16.5px;line-height:1.75;margin-bottom:18px;max-width:62ch}
+.ps-texto .ps-lead{color:var(--ink);font-size:19px;line-height:1.65}
+.ps-texto .ps-turn{
+  font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;
+  letter-spacing:-.02em;color:var(--ink);
+}
+.ps-close{
+  grid-column:1 / -1;text-transform:uppercase;
+  font-size:clamp(30px,3.6vw,54px);line-height:1.04;
+  color:var(--ink);margin-top:clamp(24px,3vw,44px);
+}
+.ps-cta{grid-column:1 / -1;display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+
+@media(max-width:960px){
+  .ps-grid{grid-template-columns:1fr;gap:28px}
+  .ps-art{max-width:420px}
+}
