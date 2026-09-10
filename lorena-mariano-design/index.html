@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lorena Mariano | Marketing e Design Esportivo</title>
+<title>Quatro Linhas | Marketing e Design Esportivo</title>
 <meta name="description" content="Marketing e design esportivo para times, arenas e atletas. Identidade visual, design de conteúdo, dia de jogo e apoio a patrocínio." />
 <link rel="canonical" href="https://lorenadesign.com.br/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="pt_BR" />
-<meta property="og:title" content="Lorena Mariano | Marketing e Design Esportivo" />
+<meta property="og:title" content="Quatro Linhas | Marketing e Design Esportivo" />
 <meta property="og:description" content="Marketing e design esportivo para times, arenas e atletas. Identidade visual, design de conteúdo e dia de jogo." />
 <meta property="og:image" content="https://lorenadesign.com.br/img/hero/01-prancheta.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -137,9 +137,20 @@
     padding:11px 0;border-bottom-color:var(--line);
   }
   .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
-  .logo img{height:30px;width:auto;transition:height .35s ease}
+  /* Assinatura: o símbolo é só o "4", sem o nome. Componho o logotipo aqui,
+     com o nome em Bebas ao lado, senão ninguém descobre que a marca se chama
+     Quatro Linhas. O degradê do símbolo tem uma ponta clara que sumiria no
+     branco, então o contraste mínimo vem de um leve escurecimento. */
+  .logo{display:flex;align-items:center;gap:11px}
+  .logo img{height:30px;width:auto;transition:height .35s ease;filter:contrast(1.35) brightness(.82)}
+  .logo .marca{
+    font-family:'Bebas Neue','Archivo',sans-serif;text-transform:uppercase;
+    font-size:20px;letter-spacing:.03em;line-height:1;color:var(--ink);white-space:nowrap;
+    transition:font-size .35s ease;
+  }
   header.scrolled .logo img{height:26px}
-  @media (prefers-color-scheme: dark){ .logo img{filter:invert(1)} }
+  header.scrolled .logo .marca{font-size:18px}
+  @media (prefers-color-scheme: dark){ .logo img{filter:invert(1) contrast(1.2)} }
   .nav-links{display:flex;gap:30px;align-items:center}
   .nav-links a{
     font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:700;
@@ -223,7 +234,7 @@
   /* ============ NÚMEROS ============ */
   .stats{
     border:1px solid var(--line);border-radius:var(--radius-lg);
-    display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;
+    display:grid;grid-template-columns:repeat(2,1fr);overflow:hidden;
   }
   .stat{padding:34px 28px;text-align:center;border-left:1px solid var(--line)}
   .stat:first-child{border-left:0}
@@ -376,8 +387,13 @@
     display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1.2fr;
     gap:clamp(32px,4vw,56px);margin-bottom:52px;
   }
-  .foot-logo img{height:34px;width:auto}
-  @media (prefers-color-scheme: dark){ .foot-logo img{filter:invert(1)} }
+  .foot-logo{display:flex;align-items:center;gap:12px}
+  .foot-logo img{height:34px;width:auto;filter:contrast(1.35) brightness(.82)}
+  .foot-logo .marca{
+    font-family:'Bebas Neue','Archivo',sans-serif;text-transform:uppercase;
+    font-size:23px;letter-spacing:.03em;line-height:1;color:var(--ink);
+  }
+  @media (prefers-color-scheme: dark){ .foot-logo img{filter:invert(1) contrast(1.2)} }
   .foot-sobre{color:var(--muted);font-size:15px;line-height:1.65;margin-top:20px;max-width:34ch}
   .foot-social{display:flex;gap:10px;margin-top:26px}
   .foot-social a{
@@ -454,8 +470,9 @@
 <!-- ============ NAV ============ -->
 <header id="header">
   <div class="wrap nav">
-    <a href="#top" class="logo" aria-label="Lorena Mariano, início">
-      <img src="logo/logo.png" alt="Lorena Mariano" width="150" height="30" />
+    <a href="#top" class="logo" aria-label="Quatro Linhas, início">
+      <img src="logo/marca-4.png" alt="" aria-hidden="true" width="29" height="30" />
+      <span class="marca">Quatro Linhas</span>
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Principal">
       <a href="#sobre">Sobre</a>
@@ -473,7 +490,7 @@
      Para adicionar o Behance quando a página estiver no ar, descomente o
      bloco abaixo e troque o href pelo endereço do seu perfil. -->
 <aside class="rail" aria-label="Redes sociais">
-  <a href="https://instagram.com/lorenamariano" target="_blank" rel="noopener" aria-label="Instagram">
+  <a href="https://www.instagram.com/quatrolinhas.co/" target="_blank" rel="noopener" aria-label="Instagram">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
   </a>
   <a href="https://wa.me/5544999707173" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -498,8 +515,8 @@
       <span class="label reveal">Marketing e design esportivo</span>
       <h1 class="display reveal">Transformo esporte<br>em marca.</h1>
       <p class="lead reveal">
-        Cuido da marca de times, arenas e atletas: identidade visual, design das
-        peças e conteúdo de jogo.
+        Cuidamos da marca de times, arenas e atletas: identidade visual, design
+        das peças e conteúdo de jogo.
       </p>
       <div class="hero-actions reveal">
         <a href="#contato" class="btn btn-primary">
@@ -578,10 +595,10 @@
       <div class="num">+150</div>
       <div class="label lbl">peças publicadas</div>
     </div>
-    <div class="stat">
-      <div class="num">27 mil</div>
-      <div class="label lbl">pessoas acompanhando</div>
-    </div>
+    <!-- Tirei o terceiro indicador ("27 mil pessoas acompanhando"). Aquele
+         número era do perfil pessoal @lorenamariano; a conta da Quatro Linhas
+         tem 1.215 seguidores, então ele passou a ser falso. Assim que houver
+         um número real, é só voltar a célula aqui e o grid volta para 3. -->
   </div>
 </div>
 
@@ -591,7 +608,7 @@
   <div class="wrap about">
     <div class="about-art reveal">
       <img src="img/sobre-lorena.jpg"
-           alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time"
+           alt="Lorena Mariano, fundadora da Quatro Linhas, de perfil em contraluz"
            width="800" height="1071" loading="lazy" />
     </div>
 
@@ -620,8 +637,9 @@
       <p class="about-turn">O que começou como design foi se tornando algo maior.</p>
 
       <p>
-        Hoje, trabalho com marketing esportivo unindo aquilo que mais gosto de
-        fazer: design, conteúdo, criatividade e esporte.
+        Hoje esse algo maior tem nome: <strong>Quatro Linhas</strong>. Um estúdio
+        de marketing esportivo que reúne aquilo que eu mais gosto de fazer: design,
+        conteúdo, criatividade e esporte.
       </p>
 
       <p>
@@ -652,10 +670,10 @@
 <section id="servicos">
   <div class="wrap">
     <div class="svc-head reveal">
-      <span class="label label-rule">O que eu faço</span>
+      <span class="label label-rule">O que fazemos</span>
       <h2 class="display h2">Design e marketing na mesma mão.</h2>
       <p class="lead">
-        Estratégia de marca e execução das peças com a mesma pessoa, sem ficar
+        Estratégia de marca e execução das peças na mesma casa, sem ficar
         traduzindo briefing entre o time e o designer.
       </p>
     </div>
@@ -791,7 +809,7 @@
             Enviar no WhatsApp
             <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
           </button>
-          <p class="form-note">Sem compromisso. A conversa continua direto comigo.</p>
+          <p class="form-note">Sem compromisso. A conversa continua direto com a gente.</p>
         </div>
       </form>
     </div>
@@ -806,8 +824,9 @@
     <div class="foot-grid">
 
       <div>
-        <a href="#top" class="foot-logo" aria-label="Lorena Mariano, início">
-          <img src="logo/logo.png" alt="Lorena Mariano" width="170" height="34" loading="lazy" />
+        <a href="#top" class="foot-logo" aria-label="Quatro Linhas, início">
+          <img src="logo/marca-4.png" alt="" aria-hidden="true" width="33" height="34" loading="lazy" />
+          <span class="marca">Quatro Linhas</span>
         </a>
         <p class="foot-sobre">
           Marketing e design esportivo para times, arenas e atletas que querem
@@ -815,7 +834,7 @@
         </p>
         <!-- Behance: descomente e troque o href quando a página estiver no ar. -->
         <div class="foot-social">
-          <a href="https://instagram.com/lorenamariano" target="_blank" rel="noopener" aria-label="Instagram">
+          <a href="https://www.instagram.com/quatrolinhas.co/" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
           </a>
           <a href="https://wa.me/5544999707173" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -842,7 +861,7 @@
 
       <div class="foot-col foot-cta">
         <h3 class="label">Vamos conversar</h3>
-        <p>Me conta o seu jogo e eu respondo no WhatsApp.</p>
+        <p>Conta o seu jogo e a gente responde no WhatsApp.</p>
         <a href="#contato" class="btn btn-primary">
           Falar comigo
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
@@ -851,7 +870,7 @@
 
     </div>
     <div class="foot-bottom">
-      <span>&copy; 2026 Lorena Mariano. Todos os direitos reservados.</span>
+      <span>&copy; 2026 Quatro Linhas. Todos os direitos reservados.</span>
       <span>Marketing e design esportivo</span>
     </div>
   </div>
@@ -861,13 +880,13 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Lorena Mariano",
+  "name": "Quatro Linhas",
   "description": "Marketing e design esportivo para times, arenas e atletas.",
   "url": "https://lorenadesign.com.br/",
   "image": "https://lorenadesign.com.br/img/hero/01-prancheta.jpg",
   "areaServed": "Brasil",
   "address": { "@type": "PostalAddress", "addressLocality": "Maringá", "addressRegion": "PR", "addressCountry": "BR" },
-  "sameAs": ["https://instagram.com/lorenamariano"],
+  "sameAs": ["https://www.instagram.com/quatrolinhas.co/"],
   "email": "lohlarrosa@gmail.com",
   "telephone": "+5544999707173"
 }
@@ -979,7 +998,7 @@
 
     var msg = document.getElementById('bf-msg').value.trim();
     var linhas = [
-      'Oi, Lorena! Vim pelo seu site e quero um orçamento.',
+      'Oi! Vim pelo site da Quatro Linhas e quero um orçamento.',
       '',
       '*Nome:* ' + document.getElementById('bf-nome').value.trim(),
       '*Time/Arena/Atleta:* ' + document.getElementById('bf-time').value.trim(),
