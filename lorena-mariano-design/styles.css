@@ -165,8 +165,12 @@
      retrato 3:4, e numa coluna larga ela ficaria alta demais e empurraria
      os botões para fora da primeira dobra. */
   .hero-grid{display:grid;grid-template-columns:1fr .62fr;gap:56px;align-items:center}
-  /* Escala calculada para a manchete caber em 2 linhas na coluna de texto. */
   .hero h1{font-size:clamp(46px,6vw,84px);margin-bottom:16px}
+  /* No desktop cada .ln é a própria linha, quebras deliberadas e curtas.
+     No celular (ver breakpoint de 700px) elas viram texto corrido comum,
+     porque as mesmas quebras forçadas em telas estreitas rendiam 6-7
+     linhas em vez de 4, e ficava torto por estar alinhado à esquerda. */
+  .hero h1 .ln{display:block}
   .hero .label{display:block;margin-bottom:20px}
   .hero .lead{max-width:42ch}
   .hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
@@ -410,6 +414,14 @@
   @media(max-width:700px){
     .foot-grid{grid-template-columns:1fr;gap:36px}
     .wrap{padding:0 20px}
+    /* Hero centralizado no celular: as quebras do desktop desmontam (cada
+       .ln vira texto corrido, o navegador quebra a linha onde couber) e o
+       bloco inteiro (rótulo, título, texto, botões) centraliza junto. */
+    .hero h1 .ln{display:inline}
+    .hero .label,.hero .lead{margin-left:auto;margin-right:auto}
+    .hero-grid > div:first-child{text-align:center}
+    .hero-actions{justify-content:center}
+    .hero-art{margin:0 auto}
     .stats{grid-template-columns:1fr}
     .stat{border-left:0;border-top:1px solid var(--line);padding:26px 20px}
     .stat:first-child{border-top:0}
