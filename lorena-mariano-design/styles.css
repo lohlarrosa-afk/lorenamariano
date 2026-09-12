@@ -111,20 +111,9 @@
     padding:11px 0;border-bottom-color:var(--line);
   }
   .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
-  /* Assinatura: o símbolo é só o "4", sem o nome. Componho o logotipo aqui,
-     com o nome em Bebas ao lado, senão ninguém descobre que a marca se chama
-     Quatro Linhas. O degradê do símbolo tem uma ponta clara que sumiria no
-     branco, então o contraste mínimo vem de um leve escurecimento. */
-  .logo{display:flex;align-items:center;gap:11px}
-  .logo img{height:30px;width:auto;transition:height .35s ease;filter:contrast(1.35) brightness(.82)}
-  .logo .marca{
-    font-family:'Bebas Neue','Archivo',sans-serif;text-transform:uppercase;
-    font-size:20px;letter-spacing:.03em;line-height:1;color:var(--ink);white-space:nowrap;
-    transition:font-size .35s ease;
-  }
+  .logo img{height:30px;width:auto;transition:height .35s ease}
   header.scrolled .logo img{height:26px}
-  header.scrolled .logo .marca{font-size:18px}
-  @media (prefers-color-scheme: dark){ .logo img{filter:invert(1) contrast(1.2)} }
+  @media (prefers-color-scheme: dark){ .logo img{filter:invert(1)} }
   .nav-links{display:flex;gap:30px;align-items:center}
   .nav-links a{
     font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:700;
@@ -357,13 +346,8 @@
     display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1.2fr;
     gap:clamp(32px,4vw,56px);margin-bottom:52px;
   }
-  .foot-logo{display:flex;align-items:center;gap:12px}
-  .foot-logo img{height:34px;width:auto;filter:contrast(1.35) brightness(.82)}
-  .foot-logo .marca{
-    font-family:'Bebas Neue','Archivo',sans-serif;text-transform:uppercase;
-    font-size:23px;letter-spacing:.03em;line-height:1;color:var(--ink);
-  }
-  @media (prefers-color-scheme: dark){ .foot-logo img{filter:invert(1) contrast(1.2)} }
+  .foot-logo img{height:34px;width:auto}
+  @media (prefers-color-scheme: dark){ .foot-logo img{filter:invert(1)} }
   .foot-sobre{color:var(--muted);font-size:15px;line-height:1.65;margin-top:20px;max-width:34ch}
   .foot-social{display:flex;gap:10px;margin-top:26px}
   .foot-social a{
