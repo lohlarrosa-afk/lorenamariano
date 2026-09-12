@@ -63,7 +63,7 @@
 
   .display{
     font-family:'Bebas Neue','Archivo',sans-serif;font-weight:400;
-    text-transform:uppercase;letter-spacing:-.014em;line-height:.88;
+    text-transform:uppercase;letter-spacing:-.03em;line-height:.88;
   }
   .h2{font-size:clamp(40px,5.6vw,78px)}
   .lead{color:var(--muted);font-size:16.5px;line-height:1.7;max-width:56ch}
@@ -294,9 +294,10 @@
   .panel h2{font-size:clamp(34px,4.4vw,62px)}
   .panel .lead{margin-top:18px;max-width:38ch}
   /* Marcador amarelo. Não uso background-color porque o fundo de um inline
-     pinta a caixa inteira da fonte, e o Bebas tem caixa bem mais alta que as
-     letras: virava um bloco pesado. O gradiente deixa eu controlar a altura
-     e a posição da tarja em em, então ela acompanha o corpo do texto. */
+     pinta a caixa inteira da fonte, e fontes de título costumam ter caixa
+     bem mais alta que as letras: virava um bloco pesado. O gradiente deixa
+     eu controlar a altura e a posição da tarja em em, então ela acompanha
+     o corpo do texto em vez da caixa da fonte. */
   .hl{
     color:var(--accent-ink);
     background-image:linear-gradient(var(--accent),var(--accent));
