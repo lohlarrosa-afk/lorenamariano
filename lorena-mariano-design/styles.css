@@ -9,6 +9,7 @@
     --ink:#101011;
     --muted:#67676E;
     --line:rgba(16,16,17,.13);
+    --grid-line:rgba(16,16,17,.05);
     --accent:#f6d512;
     --accent-ink:#101011;
 
@@ -33,6 +34,7 @@
       --ink:#F2F2F3;
       --muted:#9C9CA3;
       --line:rgba(242,242,243,.15);
+      --grid-line:rgba(242,242,243,.06);
 
       --band-bg:#141416;
       --band-ink:#F2F2F3;
@@ -53,6 +55,20 @@
     font-family:'Inter',system-ui,sans-serif;font-weight:400;
     letter-spacing:-.014em;line-height:1.55;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* Textura de grade no fundo, inspirada na brandsdecoded.com.br: duas linhas
+     de 1px (uma horizontal, uma vertical) repetidas a cada 44px. Fixa na
+     tela inteira e com z-index negativo, então fica atrás de tudo sempre;
+     onde uma seção tem fundo sólido próprio (a faixa preta, os cartões, o
+     painel de contato), essa seção simplesmente pinta por cima e a grade
+     não aparece ali, o que é o comportamento certo. A opacidade é bem baixa
+     de propósito: para ler como papel, não como tabela. */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:
+      linear-gradient(var(--grid-line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+    background-size:44px 44px,44px 44px;
   }
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
