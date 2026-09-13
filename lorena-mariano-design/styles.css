@@ -1,49 +1,45 @@
   /* ============ TOKENS ============
-     Paleta: preto, cinza, branco e o amarelo #f6d512.
+     Site sempre escuro, por decisão da Lorena (13/09/2026) — não depende
+     mais do prefers-color-scheme do sistema. Mesma paleta de sempre
+     (preto, cinza, branco, amarelo #f6d512), só que o preto agora é o
+     fundo permanente, não uma variação de modo escuro do sistema.
      O amarelo nunca é texto sobre fundo claro. Ele é fundo de botão,
-     marcador e filete, sempre com texto preto por cima. */
+     marcador e filete, sempre com texto preto por cima.
+     --font-display: fonte dos títulos. Trocar aqui troca a página
+     inteira — hoje é a Bootzy (fonte grunge, ver @font-face abaixo). */
   :root{
-    --bg:#FFFFFF;
-    --surface:#F4F4F5;
-    --surface-2:#FFFFFF;
-    --ink:#101011;
-    --muted:#67676E;
-    --line:rgba(16,16,17,.13);
+    color-scheme: dark;
+    --bg:#0B0B0C;
+    --surface:#141416;
+    --surface-2:#141416;
+    --ink:#F2F2F3;
+    --muted:#9C9CA3;
+    --line:rgba(242,242,243,.15);
     --accent:#f6d512;
     --accent-ink:#101011;
 
-    --band-bg:#101011;
-    --band-ink:#F4F4F5;
+    --band-bg:#141416;
+    --band-ink:#F2F2F3;
     --band-muted:#9C9CA3;
 
-    --field-bg:#FFFFFF;
-    --field-line:rgba(16,16,17,.20);
-    --field-placeholder:#6B6B72;
+    --field-bg:#0B0B0C;
+    --field-line:rgba(242,242,243,.22);
+    --field-placeholder:#9C9CA3;
 
-    --header-bg:rgba(255,255,255,.90);
+    --header-bg:rgba(11,11,12,.90);
     --radius:18px;
     --radius-lg:24px;
     --maxw:1240px;
+
+    --font-display:'Bootzy','Archivo',sans-serif;
   }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --bg:#0B0B0C;
-      --surface:#141416;
-      --surface-2:#141416;
-      --ink:#F2F2F3;
-      --muted:#9C9CA3;
-      --line:rgba(242,242,243,.15);
 
-      --band-bg:#141416;
-      --band-ink:#F2F2F3;
-      --band-muted:#9C9CA3;
-
-      --field-bg:#0B0B0C;
-      --field-line:rgba(242,242,243,.22);
-      --field-placeholder:#9C9CA3;
-
-      --header-bg:rgba(11,11,12,.90);
-    }
+  /* Fonte grunge dos títulos. Arquivo local em fonts/BootzyTM.ttf —
+     única variação (normal/normal), sem pesos ou itálico. */
+  @font-face{
+    font-family:'Bootzy';
+    src:url('fonts/BootzyTM.ttf') format('truetype');
+    font-weight:normal;font-style:normal;font-display:swap;
   }
 
   *{margin:0;padding:0;box-sizing:border-box}
@@ -58,12 +54,42 @@
   img{max-width:100%;display:block}
   ::selection{background:var(--accent);color:var(--accent-ink)}
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  .visually-hidden{
+    position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+
+  /* ============ GRÃO / VINHETA (estética grunge) ============
+     Uma camada fixa, por cima de tudo, que não recebe clique nem é lida
+     por leitor de tela. Dá o ar de filme/papel velho sem precisar de
+     imagem pesada: o grão é SVG (feTurbulence) ladrilhado, a vinheta é
+     um gradiente radial escurecendo os cantos. Opacidade baixa de propósito
+     — é textura de fundo, não pode brigar com o texto por cima.
+     Estática (sem animação), então não precisa de exceção no bloco de
+     movimento reduzido lá embaixo. */
+  .grain-overlay{
+    position:fixed;inset:0;z-index:2147483647;pointer-events:none;
+  }
+  .grain-overlay::before{
+    content:"";position:absolute;inset:-10%;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:180px 180px;opacity:.05;mix-blend-mode:overlay;
+  }
+  .grain-overlay::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);
+  }
+
+  /* Filtro vintage para fotografia: leve perda de saturação e cor mais
+     contrastada, textura fílmica em vez de foto digital limpa. Sutil de
+     propósito — "meio grunge", não sépia pesado nem preto e branco. */
+  .vintage-photo{filter:grayscale(.15) contrast(1.12) saturate(.88) brightness(.96)}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
   .display{
-    font-family:'Bebas Neue','Archivo',sans-serif;font-weight:400;
-    text-transform:uppercase;letter-spacing:-.03em;line-height:.88;
+    font-family:var(--font-display);font-weight:400;
+    text-transform:uppercase;letter-spacing:-.01em;line-height:.9;
   }
   .h2{font-size:clamp(40px,5.6vw,78px)}
   .lead{color:var(--muted);font-size:16.5px;line-height:1.7;max-width:56ch}
@@ -111,9 +137,8 @@
     padding:11px 0;border-bottom-color:var(--line);
   }
   .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
-  .logo img{height:30px;width:auto;transition:height .35s ease}
+  .logo img{height:30px;width:auto;transition:height .35s ease;filter:invert(1)}
   header.scrolled .logo img{height:26px}
-  @media (prefers-color-scheme: dark){ .logo img{filter:invert(1)} }
   .nav-links{display:flex;gap:30px;align-items:center}
   .nav-links a{
     font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:700;
@@ -148,84 +173,60 @@
   .rail a:hover{color:var(--accent-ink);background:var(--accent);border-color:var(--accent)}
   @media(max-width:1180px){ .rail{display:none} }
 
-  /* ============ HERO ============ */
-  .hero{padding:140px 0 80px}
-  /* Coluna da foto mais estreita que na versão anterior: a prancheta é
-     retrato 3:4, e numa coluna larga ela ficaria alta demais e empurraria
-     os botões para fora da primeira dobra. */
-  .hero-grid{display:grid;grid-template-columns:1fr .62fr;gap:56px;align-items:center}
-  .hero h1{font-size:clamp(46px,6vw,84px);margin-bottom:16px}
-  /* No desktop cada .ln é a própria linha, quebras deliberadas e curtas.
-     No celular (ver breakpoint de 700px) elas viram texto corrido comum,
-     porque as mesmas quebras forçadas em telas estreitas rendiam 6-7
-     linhas em vez de 4, e ficava torto por estar alinhado à esquerda. */
-  .hero h1 .ln{display:block}
-  .hero .label{display:block;margin-bottom:20px}
-  .hero .lead{max-width:42ch}
-  .hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
-  /* Slideshow do hero: as fotos são todas 3:4 e ocupam a MESMA moldura,
-     então trocam sem nenhum salto de layout. Empilhadas em absoluto e
-     alternadas por opacity, que é barato para a GPU.
-     .hero-art virou só um contêiner de posição: hospeda o brilho (::before)
-     que precisa vazar para fora do quadro, e por isso não pode ter
-     overflow:hidden. Quem recorta a foto nos cantos arredondados é o
-     .hero-frame por dentro. */
-  /* width:100% explícito é necessário aqui: sem overflow:hidden (que agora
-     mora no .hero-frame), o aspect-ratio sozinho não força mais a largura
-     do item de grid, e a caixa colapsava para 0x0 no celular. */
-  .hero-art{position:relative;aspect-ratio:3/4;width:100%}
-  .hero-art::before{
-    content:"";position:absolute;inset:-14%;z-index:0;
-    background:radial-gradient(circle,rgba(246,213,18,.30) 0%,rgba(246,213,18,0) 68%);
-    filter:blur(38px);pointer-events:none;
-    animation:heroGlowBreathe 8s ease-in-out infinite alternate;
+  /* ============ HERO ============
+     Decisão da Lorena (14/09/2026): nada de foto passando no fundo do
+     hero. É só tipografia, centralizada, sobre o fundo escuro com grão —
+     o rodízio de fotos (mesmas 15, mesmo crossfade que existia antes)
+     saiu daqui e virou a ".floating-gallery" logo abaixo. */
+  .hero{
+    position:relative;min-height:92vh;min-height:92svh;
+    display:flex;align-items:center;justify-content:center;
+    padding:140px 0 80px;
   }
-  @keyframes heroGlowBreathe{
-    0%{opacity:.5;transform:scale(1)}
-    100%{opacity:1;transform:scale(1.08)}
-  }
-  .hero-frame{
-    position:relative;z-index:1;width:100%;height:100%;
-    border-radius:var(--radius-lg);overflow:hidden;
-    background:var(--surface);
-    box-shadow:0 24px 60px rgba(16,16,17,.14);
-  }
-  .hero-slide{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    opacity:0;animation:heroFade 45s linear infinite;
-  }
-  .hero-slide:nth-of-type(1){animation-delay:-0.5s}
-  .hero-slide:nth-of-type(2){animation-delay:2.5s}
-  .hero-slide:nth-of-type(3){animation-delay:5.5s}
-  .hero-slide:nth-of-type(4){animation-delay:8.5s}
-  .hero-slide:nth-of-type(5){animation-delay:11.5s}
-  .hero-slide:nth-of-type(6){animation-delay:14.5s}
-  .hero-slide:nth-of-type(7){animation-delay:17.5s}
-  .hero-slide:nth-of-type(8){animation-delay:20.5s}
-  .hero-slide:nth-of-type(9){animation-delay:23.5s}
-  .hero-slide:nth-of-type(10){animation-delay:26.5s}
-  .hero-slide:nth-of-type(11){animation-delay:29.5s}
-  .hero-slide:nth-of-type(12){animation-delay:32.5s}
-  .hero-slide:nth-of-type(13){animation-delay:35.5s}
-  .hero-slide:nth-of-type(14){animation-delay:38.5s}
-  .hero-slide:nth-of-type(15){animation-delay:41.5s}
-  /* 15 fotos x 3s = 45s de ciclo. As janelas se SOBREPOEM por 0,5s:
-     a foto que sai so chega a zero depois que a proxima ja esta em 1.
-     Sem essa sobreposicao o card pisca vazio a cada troca.
-     O scale soma um Ken Burns discreto: cada foto entra em 1.0 e cresce
-     ate 1.06 ao longo da propria janela visivel, um leve empurrao de
-     camera em vez de so aparecer parada. Como e a MESMA transform em
-     todas as 15 (só o delay muda), cada uma reinicia o proprio zoom
-     do zero quando chega a sua vez, 45s depois. */
-  @keyframes heroFade{
-    0%{opacity:0;transform:scale(1)}
-    1.111%{opacity:1}
-    6.667%{opacity:1;transform:scale(1.06)}
-    7.778%{opacity:0;transform:scale(1.06)}
-    100%{opacity:0;transform:scale(1.06)}
-  }
+  .hero-content{position:relative;max-width:820px;margin:0 auto;text-align:center}
+  .hero .label{display:block;margin:0 auto 20px}
+  .hero-h1{font-size:clamp(40px,7vw,88px);margin-bottom:18px}
+  .hero .lead{max-width:48ch;margin:0 auto}
 
-  /* ============ NÚMEROS ============ */
+  /* ============ VITRINE (fotos flutuantes) ============
+     Fotos reais espalhadas, cada uma numa <div class="float-el"> que o JS
+     translada em paralaxe conforme o mouse se move (mais "depth" = mais
+     movimento) — a translação mora na div, o hover-scale mora só na
+     <img>, pra não brigarem pelo mesmo transform.
+     Estático de propósito num contêiner alto: as posições (top/left)
+     ficam inline em cada .float-el porque são únicas por foto; tamanho
+     e o resto vêm das classes size-a/b/c abaixo. */
+  .floating-gallery{
+    position:relative;overflow:hidden;
+    height:clamp(460px,58vw,660px);
+  }
+  .floating-wrap{position:absolute;inset:0}
+  .float-el{position:absolute;will-change:transform;transition:transform .2s ease-out}
+  /* Com as fotos mais juntas e sobrepostas ("embaralhadas"), a que está
+     sob o cursor precisa vir pra cima da pilha, senão o hover-scale dela
+     fica parcialmente tapado pela vizinha. */
+  .float-el:hover{z-index:5}
+  /* .float-el também tem a classe .reveal (fade de entrada, ver seção
+     REVEAL mais abaixo), que declara sua própria transição de transform
+     em .7s — mais lenta do que convém pro paralaxe do mouse. Precisa de
+     mais uma classe aqui (maior especificidade) pra vencer sem editar a
+     regra genérica do .reveal, que é usada em todo o resto do site. */
+  .float-el.reveal{transition:opacity .7s ease, transform .2s ease-out}
+  .float-el img{
+    display:block;width:100%;height:100%;object-fit:cover;
+    border-radius:var(--radius);box-shadow:0 18px 40px rgba(0,0,0,.5);
+    cursor:pointer;transition:transform .3s ease;
+  }
+  .float-el img:hover{transform:scale(1.06)}
+  .size-a{width:110px;height:110px}
+  .size-b{width:150px;height:150px}
+  .size-c{width:160px;height:220px}
+  .hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap;justify-content:center}
+
+  /* ============ NÚMEROS ============
+     +500/+5 confirmados pela Lorena em 14/09/2026. Grid de 2 colunas — se
+     ela decidir o terceiro indicador, mude grid-template-columns abaixo
+     para repeat(3,1fr) além de colar o novo .stat no HTML. */
   .stats{
     border:1px solid var(--line);border-radius:var(--radius-lg);
     display:grid;grid-template-columns:repeat(2,1fr);overflow:hidden;
@@ -243,18 +244,71 @@
   }
   .stat .lbl{margin-top:12px}
 
+  /* ============ SEÇÕES ============ */
+  section{padding:clamp(72px,9vw,116px) 0}
 
-  /* ============ SOBRE (resumo) ============
-     Bloco pequeno, entre as marcas e o contato. Retrato estreito e três
-     linhas: o suficiente para dar rosto ao estúdio sem virar biografia.
-     A história completa fica em sobre.html. */
+  /* ============ POSICIONAMENTO ============
+     Só tipografia, centralizada, sobre o fundo com grão — é a seção
+     conceitual entre os números e os serviços, o "porquê" antes do "o quê". */
+  .stance{text-align:center}
+  .stance-wrap{max-width:900px;margin:0 auto}
+  .stance-label{justify-content:center}
+  .stance-h{margin:0 auto 28px}
+  .stance-p{margin:0 auto;max-width:58ch;font-size:18px}
+
+  /* SERVIÇOS: três frentes grandes, divididas por filete — sem ícone, sem
+     cartão arredondado, mais editorial que a versão anterior de 5 chips. */
+  .svc-head{margin-bottom:44px;max-width:62ch}
+  .svc-head .lead{margin-top:16px}
+  .svc-big-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .svc-big{padding:44px 32px;border-left:1px solid var(--line)}
+  .svc-big:first-child{border-left:0}
+  .svc-big-num{
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;
+    letter-spacing:.06em;color:var(--accent);display:block;margin-bottom:18px;
+  }
+  .svc-big h3{
+    font-family:var(--font-display);font-weight:400;text-transform:uppercase;
+    letter-spacing:0;line-height:1;font-size:clamp(23px,2.4vw,30px);margin-bottom:14px;
+  }
+  .svc-big p{color:var(--muted);font-size:15px;line-height:1.65;max-width:36ch}
+  .svc-cta{margin-top:48px;display:flex;justify-content:center}
+
+  /* ============ CASES ============ */
+  .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:8px}
+  .case{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-2)}
+  .case-img{aspect-ratio:4/3;background:var(--surface)}
+  .case-img img{width:100%;height:100%;object-fit:cover}
+  .case-body{padding:26px 28px 30px}
+  .case-client{
+    display:block;font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:19px;letter-spacing:-.01em;color:var(--ink);margin:0 0 14px;
+  }
+  .case-field{font-size:14.5px;line-height:1.6;color:var(--muted);margin-top:10px}
+  .case-field:first-of-type{margin-top:0}
+  .case-label{
+    display:block;font-family:'Archivo',sans-serif;font-weight:700;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;
+  }
+
+  /* ============ EU VIVO O ESPORTE ============
+     Evolução do antigo "Sobre (resumo)": além do retrato, uma segunda foto
+     menor de bastidor/campo, empilhada, pra mostrar que a relação dela com
+     o esporte não é só a mesa de trabalho. A história completa fica em
+     sobre.html. */
   .sobre-curto{padding:clamp(56px,7vw,88px) 0}
   .sc-grid{
     display:grid;grid-template-columns:220px 1fr;
     gap:clamp(24px,4vw,48px);align-items:center;
   }
+  .sc-foto-group{display:flex;flex-direction:column;gap:14px}
   .sc-foto{border-radius:var(--radius);overflow:hidden;background:var(--surface);line-height:0}
   .sc-foto img{width:100%;height:auto}
+  .sc-foto-extra{max-width:76%;align-self:flex-end}
+  .sc-h{font-size:clamp(28px,3.4vw,42px);margin-bottom:16px}
   .sc-texto p{color:var(--muted);font-size:17px;line-height:1.7;max-width:52ch;margin-bottom:18px}
   .sc-link{
     font-family:'Archivo',sans-serif;font-weight:700;font-size:12.5px;
@@ -262,30 +316,162 @@
     border-bottom:2px solid var(--accent);padding-bottom:3px;
   }
 
-  /* ============ SEÇÕES ============ */
-  section{padding:clamp(72px,9vw,116px) 0}
+  /* ============ DEPOIMENTOS ============
+     Componente pronto mesmo com a seção comentada no HTML — assim, quando
+     a Lorena tiver o primeiro depoimento real, é só descomentar e usar. */
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:8px}
+  .testimonial{border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;background:var(--surface-2)}
+  .testi-quote{font-size:17px;line-height:1.6;color:var(--ink);margin-bottom:20px}
+  .testi-nome{display:block;font-family:'Archivo',sans-serif;font-weight:700;font-size:13.5px;color:var(--ink)}
+  .testi-cargo{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
 
-  /* SERVIÇOS: fileira de cartões com ícone, como na referência */
-  .svc-head{margin-bottom:44px;max-width:62ch}
-  .svc-head .lead{margin-top:16px}
-  .svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-  .svc{
+  /* ============ MONTE SEU PROJETO ============
+     Configurador em etapas: pensado como um briefing comercial, não como
+     tabela de preço. Cartões grandes em vez de checkbox miudinho, cada
+     etapa ocupa a tela inteira do cartão (uma pergunta de cada vez), e o
+     resultado final é tratado como diagnóstico ("veja como fica o
+     investimento"), não como carrinho de compras.
+     Serviços e valores ficam em js/projeto-config.js — ver comentário
+     lá para trocar preços sem mexer neste arquivo. */
+  .msp-card{
+    background:var(--surface);border-radius:var(--radius-lg);
+    padding:clamp(28px,4.6vw,56px);
+  }
+  .msp-steps{
+    display:flex;gap:8px;list-style:none;margin-bottom:clamp(30px,4vw,46px);
+  }
+  .msp-steps li{
+    flex:1;position:relative;padding-bottom:14px;
+    font-family:'Archivo',sans-serif;font-size:10.5px;font-weight:700;
+    letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+    transition:color .25s;
+  }
+  .msp-steps li::before{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:var(--line);border-radius:2px;transition:background .25s;
+  }
+  .msp-steps li[aria-current="step"]{color:var(--ink)}
+  .msp-steps li[aria-current="step"]::before,
+  .msp-steps li.is-done::before{background:var(--accent)}
+  .msp-steps li.is-done{color:var(--muted)}
+
+  .msp-eyebrow{
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+    display:block;margin-bottom:12px;
+  }
+  .msp-question{
+    font-family:var(--font-display);font-weight:400;
+    text-transform:uppercase;letter-spacing:0;line-height:1.05;
+    font-size:clamp(27px,3.6vw,42px);
+  }
+  .msp-question:focus-visible{outline:none}
+  .msp-hint{color:var(--muted);font-size:14.5px;margin-top:10px;max-width:56ch}
+
+  .msp-options{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+    gap:12px;margin:28px 0 6px;
+  }
+  .msp-opt{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    border:1px solid var(--field-line);border-radius:var(--radius);
+    background:var(--field-bg);padding:16px 18px;text-align:left;cursor:pointer;
+    font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:var(--ink);
+    transition:border-color .2s, background .2s, color .2s;
+  }
+  .msp-opt:hover{border-color:var(--ink)}
+  .msp-opt .msp-check{
+    width:22px;height:22px;border-radius:50%;flex:0 0 auto;
+    border:1.5px solid var(--field-line);color:transparent;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s, border-color .2s, color .2s;
+  }
+  .msp-opt.is-check .msp-check{border-radius:6px}
+  .msp-opt .msp-check svg{width:12px;height:12px}
+  .msp-opt[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .msp-opt[aria-pressed="true"] .msp-check{background:var(--accent-ink);border-color:var(--accent-ink);color:var(--accent)}
+
+  .msp-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:32px}
+  .msp-actions-result{justify-content:flex-end;flex-wrap:wrap}
+  .btn .ico-back{transform:scaleX(-1)}
+
+  /* Resultado: mesma linguagem visual dos indicadores do topo da página
+     (número grande em Archivo 800 com o filete amarelo por baixo), para
+     que a estimativa pareça um dado editorial, não o total de um carrinho. */
+  .msp-context{color:var(--muted);font-size:15.5px;margin-top:14px;max-width:60ch}
+  .msp-estimate{
     border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--surface-2);padding:28px 22px;text-align:center;
-    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    padding:28px 26px;margin:24px 0 22px;
   }
-  .svc:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(16,16,17,.09);border-color:transparent}
-  .svc .chip{
-    width:46px;height:46px;border-radius:13px;margin:0 auto 18px;
-    background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink);
+  .msp-estimate .msp-value{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.03em;
+    font-size:clamp(30px,4vw,46px);line-height:1;position:relative;display:inline-block;
   }
-  .svc:hover .chip{background:var(--accent);color:var(--accent-ink)}
-  .svc .chip svg{width:21px;height:21px}
-  .svc h3{
-    font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;
-    letter-spacing:.055em;text-transform:uppercase;margin-bottom:10px;
+  .msp-estimate .msp-value::after{
+    content:"";position:absolute;left:-3px;right:-3px;bottom:4px;height:9px;
+    background:var(--accent);z-index:-1;
   }
-  .svc p{color:var(--muted);font-size:14px;line-height:1.65}
+  .msp-estimate .msp-value-label{
+    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:10px;
+  }
+  .msp-setup-note{color:var(--muted);font-size:14px;line-height:1.55;margin-top:12px;margin-bottom:8px}
+
+  /* ============ PLANOS MENSAIS ============
+     3 cartões de escopo fechado (não é soma de item) — clicáveis, só um
+     ativo por vez, o sugerido já vem marcado mas a pessoa pode trocar.
+     Mesma lógica visual do .msp-opt (amarelo sólido quando ativo). */
+  .msp-plans{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 8px;
+  }
+  .msp-plan{
+    text-align:left;border:1px solid var(--field-line);border-radius:var(--radius);
+    background:var(--field-bg);padding:22px 20px;cursor:pointer;
+    display:flex;flex-direction:column;gap:14px;
+    transition:border-color .2s, background .2s, color .2s;
+  }
+  .msp-plan:hover{border-color:var(--ink)}
+  .msp-plan-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .msp-plan-nome{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
+    letter-spacing:.02em;color:var(--ink);
+  }
+  .msp-plan-tag{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:9.5px;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);
+    background:var(--accent);border-radius:100px;padding:3px 9px;white-space:nowrap;
+  }
+  .msp-plan-preco{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
+    font-size:26px;color:var(--ink);
+  }
+  .msp-plan-lista{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .msp-plan-lista li{
+    font-size:13px;line-height:1.5;color:var(--muted);padding-left:16px;position:relative;
+  }
+  .msp-plan-lista li::before{
+    content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;
+    border-radius:50%;background:var(--muted);
+  }
+  .msp-plan[aria-checked="true"]{background:var(--accent);border-color:var(--accent)}
+  .msp-plan[aria-checked="true"] .msp-plan-nome,
+  .msp-plan[aria-checked="true"] .msp-plan-preco{color:var(--accent-ink)}
+  .msp-plan[aria-checked="true"] .msp-plan-tag{background:var(--accent-ink);color:var(--accent)}
+  .msp-plan[aria-checked="true"] .msp-plan-lista li{color:rgba(16,16,17,.75)}
+  .msp-plan[aria-checked="true"] .msp-plan-lista li::before{background:var(--accent-ink)}
+
+  .msp-recap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .msp-recap span{
+    border:1px solid var(--field-line);border-radius:100px;padding:7px 14px;
+    font-size:13px;color:var(--muted);
+  }
+  /* Chamativo de propósito (pedido da Lorena): ela quer que ninguém saia
+     do wizard achando que o número da tela é fechado — o aviso de que
+     prazo/quantidade/formato se ajustam na conversa precisa ser visto,
+     não só lido de raspão em cinza. Mesmo vermelho usado nos erros do
+     formulário (#FF9E9E), mas em negrito, pra não parecer os dois a
+     mesma coisa — aqui é aviso importante, não campo com erro. */
+  .msp-disclaimer{color:#FF9E9E;font-weight:600;font-size:14px;line-height:1.6;max-width:62ch}
 
   /* ============ MARCAS ATENDIDAS ============ */
   .brands{background:var(--band-bg);color:var(--band-ink);padding:56px 0}
@@ -310,21 +496,11 @@
   .marquee-set .m-dogao{height:46px}
   @keyframes slide{ to{ transform:translateX(-50%) } }
 
-  /* ============ CONTATO ============ */
-  .panel{
-    background:var(--surface);border-radius:var(--radius-lg);
-    padding:clamp(32px,5vw,66px);
-    display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,5vw,60px);align-items:start;
-  }
-  /* Título menor que o padrão da página: na coluna estreita do painel, no
-     tamanho cheio ele quebrava em 3 linhas e deixava "padrão?" sozinho. */
-  .panel h2{font-size:clamp(34px,4.4vw,62px)}
-  .panel .lead{margin-top:18px;max-width:38ch}
-  /* Marcador amarelo. Não uso background-color porque o fundo de um inline
-     pinta a caixa inteira da fonte, e fontes de título costumam ter caixa
-     bem mais alta que as letras: virava um bloco pesado. O gradiente deixa
-     eu controlar a altura e a posição da tarja em em, então ela acompanha
-     o corpo do texto em vez da caixa da fonte. */
+  /* Marcador amarelo em texto de título. Não uso background-color porque o
+     fundo de um inline pinta a caixa inteira da fonte, e fontes de título
+     costumam ter caixa bem mais alta que as letras: virava um bloco
+     pesado. O gradiente deixa eu controlar a altura e a posição da tarja
+     em em, então ela acompanha o corpo do texto em vez da caixa da fonte. */
   .hl{
     color:var(--accent-ink);
     background-image:linear-gradient(var(--accent),var(--accent));
@@ -334,37 +510,26 @@
     padding:0 .07em;
   }
 
-  .form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .field{display:flex;flex-direction:column;gap:8px}
-  .field-full{grid-column:1 / -1}
-  .field label,.field .flabel{font-size:12.5px;font-weight:600;color:var(--ink)}
-  .field input,.field select,.field textarea{
-    background:var(--field-bg);border:1px solid var(--field-line);border-radius:11px;
-    padding:13px 15px;color:var(--ink);
-    font-family:'Inter',sans-serif;font-size:15px;font-weight:400;letter-spacing:-.01em;width:100%;
-    transition:border-color .2s;
-  }
-  .field textarea{resize:vertical;min-height:84px}
-  .field input::placeholder,.field textarea::placeholder{color:var(--field-placeholder)}
-  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
-  .field input[aria-invalid="true"]{border-color:#C62828}
-  .field-error{font-size:12.5px;color:#C62828}
-  @media (prefers-color-scheme: dark){
-    .field input[aria-invalid="true"]{border-color:#FF8A8A}
-    .field-error{color:#FF9E9E}
-  }
+  /* Erro de campo — usado pelo wizard "Monte seu projeto" (etapas 1-3). */
+  .field-error{font-size:12.5px;color:#FF9E9E}
 
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip-btn{
-    border:1px solid var(--field-line);background:transparent;color:var(--ink);
-    border-radius:100px;padding:9px 15px;
-    font-family:'Inter',sans-serif;font-size:14px;font-weight:500;cursor:pointer;
-    transition:border-color .2s, background .2s;
+  /* ============ CTA FINAL / CONTATO ============
+     Sem formulário: o "Monte seu projeto" já pergunta o que a pessoa
+     precisa, então este encerramento é direto — headline, um botão de
+     WhatsApp e os canais de contato, nada de repetir perguntas. */
+  .cta-final{text-align:center}
+  .cta-final-wrap{max-width:900px;margin:0 auto}
+  .cta-final-h{margin:0 auto 36px}
+  .cta-final-actions{display:flex;justify-content:center}
+  .cta-final-channels{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;
+    margin-top:40px;padding-top:32px;border-top:1px solid var(--line);
   }
-  .chip-btn:hover{border-color:var(--ink)}
-  .chip-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
-  .form-submit{width:100%;justify-content:center}
-  .form-note{margin-top:12px;text-align:center;color:var(--muted);font-size:12.5px}
+  .cta-final-channels a,.cta-final-channels span{
+    font-family:'Archivo',sans-serif;font-size:13px;font-weight:600;
+    letter-spacing:.03em;color:var(--muted);
+  }
+  .cta-final-channels a:hover{color:var(--ink)}
 
   /* ============ FOOTER ============
      Quatro colunas: marca, navegação, contato e chamada. A coluna da marca é
@@ -374,8 +539,7 @@
     display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1.2fr;
     gap:clamp(32px,4vw,56px);margin-bottom:52px;
   }
-  .foot-logo img{height:34px;width:auto}
-  @media (prefers-color-scheme: dark){ .foot-logo img{filter:invert(1)} }
+  .foot-logo img{height:34px;width:auto;filter:invert(1)}
   .foot-sobre{color:var(--muted);font-size:15px;line-height:1.65;margin-top:20px;max-width:34ch}
   .foot-social{display:flex;gap:10px;margin-top:26px}
   .foot-social a{
@@ -402,17 +566,24 @@
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1)}
   .reveal.in{opacity:1;transform:none}
 
-  /* ============ RESPONSIVO ============ */
-  @media(max-width:1080px){
-    .svc-grid{grid-template-columns:repeat(3,1fr)}
-  }
+  /* ============ RESPONSIVO ============
+     O hero não precisa mais de regras especiais de centralização por
+     breakpoint: como o texto já é centralizado por padrão em qualquer
+     largura (decisão de 14/09/2026), o que muda no celular é só altura e
+     espaçamento, não alinhamento. */
   @media(max-width:960px){
     .foot-grid{grid-template-columns:1fr 1fr;gap:40px 32px}
     .sc-grid{grid-template-columns:1fr;gap:24px}
-    .sc-foto{max-width:200px}
-    .hero{padding:118px 0 60px}
-    .hero-grid{grid-template-columns:1fr;gap:34px}
-    .panel{grid-template-columns:1fr;gap:30px}
+    .sc-foto-group{flex-direction:row;max-width:320px;margin:0 auto}
+    .sc-foto-extra{max-width:44%;align-self:flex-end}
+    .hero{padding:118px 0 60px;min-height:88vh;min-height:88svh}
+    .floating-gallery{height:clamp(360px,72vw,520px)}
+    .size-c{width:130px;height:180px}
+    .svc-big-grid{grid-template-columns:repeat(3,1fr)}
+    .svc-big{padding:32px 20px}
+    .case-grid{grid-template-columns:1fr 1fr}
+    .msp-options{grid-template-columns:repeat(2,1fr)}
+    .msp-plans{grid-template-columns:1fr}
     .nav-links{
       position:fixed;top:0;right:0;height:100dvh;width:78%;max-width:320px;
       background:var(--bg);border-left:1px solid var(--line);
@@ -426,23 +597,30 @@
   @media(max-width:700px){
     .foot-grid{grid-template-columns:1fr;gap:36px}
     .wrap{padding:0 20px}
-    /* No celular o quadro da foto ocupa quase a tela inteira, sem sobra
-       lateral para o brilho vazar 14% como no desktop: encolhe o vazamento
-       para não bater na borda da tela. */
-    .hero-art::before{inset:-5%}
-    /* Hero centralizado no celular: as quebras do desktop desmontam (cada
-       .ln vira texto corrido, o navegador quebra a linha onde couber) e o
-       bloco inteiro (rótulo, título, texto, botões) centraliza junto. */
-    .hero h1 .ln{display:inline}
-    .hero .label,.hero .lead{margin-left:auto;margin-right:auto}
-    .hero-grid > div:first-child{text-align:center}
-    .hero-actions{justify-content:center}
-    .hero-art{margin:0 auto}
+    .hero{min-height:82vh;min-height:82svh}
+    /* Sem mouse pra paralaxe fazer sentido, e posição espalhada em %
+       fica apertada em tela estreita: no celular vira grade simples,
+       o JS de paralaxe continua registrado mas não muda nada sem ponteiro. */
+    .floating-gallery{height:auto}
+    .floating-wrap{
+      position:static;display:flex;flex-wrap:wrap;
+      justify-content:center;gap:12px;padding:32px 20px;
+    }
+    .float-el{position:static !important;transform:none !important}
+    .size-a,.size-b{width:104px;height:104px}
+    .size-c{width:104px;height:140px}
     .stats{grid-template-columns:1fr}
     .stat{border-left:0;border-top:1px solid var(--line);padding:26px 20px}
     .stat:first-child{border-top:0}
-    .svc-grid{grid-template-columns:1fr}
-    .form{grid-template-columns:1fr}
+    .svc-big-grid{grid-template-columns:1fr}
+    .svc-big{border-left:0;border-top:1px solid var(--line);padding:32px 4px}
+    .svc-big:first-child{border-top:0}
+    .case-grid{grid-template-columns:1fr}
+    .sc-foto-group{max-width:260px}
+    .msp-options{grid-template-columns:1fr}
+    .msp-steps li{font-size:9px;letter-spacing:.04em}
+    .msp-actions{flex-wrap:wrap}
+    .msp-actions .btn{flex:1;justify-content:center}
     .marquee-set{gap:62px;padding-right:62px}
     .marquee-track{animation-duration:14s}
     .marquee-set .m-arena{height:30px}.marquee-set .m-qualidade{height:36px}.marquee-set .m-atletico{height:38px}.marquee-set .m-arena-atl{height:36px}.marquee-set .m-dogao{height:36px}
@@ -454,7 +632,7 @@
     /* A faixa de marcas fica FORA desta regra por decisão da Lorena: ela
        continua passando mesmo para quem pediu movimento reduzido no sistema.
        O :not() é o que exclui a faixa; todo o resto da página para. */
-    *:not(.marquee-track):not(.hero-slide),*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+    *:not(.marquee-track),*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
     .reveal{opacity:1;transform:none}
   }
 
@@ -486,3 +664,6 @@
   .ps-grid{grid-template-columns:1fr;gap:28px}
   .ps-art{max-width:420px}
 }
+
+/* ============ PÁGINA CASES (cases.html) ============ */
+.pagina-cases{padding:clamp(130px,14vw,170px) 0 clamp(72px,9vw,110px)}

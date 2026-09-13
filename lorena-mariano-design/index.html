@@ -4,28 +4,45 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lorena Mariano | Marketing Esportivo</title>
-<meta name="description" content="Marketing esportivo que coloca marcas, times e atletas em movimento. Identidade visual, conteúdo, dia de jogo e apoio a patrocínio." />
+<meta name="description" content="Design, conteúdo e presença digital para times, atletas e projetos esportivos." />
 <link rel="canonical" href="https://lorenadesign.com.br/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:title" content="Lorena Mariano | Marketing Esportivo" />
-<meta property="og:description" content="Marketing esportivo que coloca marcas, times e atletas em movimento." />
+<meta property="og:description" content="Design, conteúdo e presença digital para times, atletas e projetos esportivos." />
 <meta property="og:image" content="https://lorenadesign.com.br/img/hero/01-prancheta.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="theme-color" content="#101011" />
+<meta name="theme-color" content="#0B0B0C" />
 
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="apple-touch-icon" href="favicon.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<link rel="preload" as="image" href="img/hero/01-prancheta.jpg" fetchpriority="high" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="preload" as="font" type="font/ttf" href="fonts/BootzyTM.ttf" crossorigin />
 
 <link rel="stylesheet" href="styles.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Lorena Mariano",
+  "description": "Marketing esportivo, design e conteúdo para times, atletas e projetos esportivos.",
+  "url": "https://lorenadesign.com.br/",
+  "image": "https://lorenadesign.com.br/img/hero/01-prancheta.jpg",
+  "areaServed": "Brasil",
+  "address": { "@type": "PostalAddress", "addressLocality": "Maringá", "addressRegion": "PR", "addressCountry": "BR" },
+  "sameAs": ["https://instagram.com/lorenamariano"],
+  "email": "lohlarrosa@gmail.com",
+  "telephone": "+5544999707173"
+}
+</script>
 </head>
 <body>
+<div class="grain-overlay" aria-hidden="true"></div>
 
 <!-- ============ NAV ============ -->
 <header id="header">
@@ -34,10 +51,12 @@
       <img src="logo/logo.png" alt="Lorena Mariano" width="150" height="30" />
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Principal">
-      <a href="#sobre">Sobre</a>
+      <a href="#top">Início</a>
+      <a href="#cases">Cases</a>
       <a href="#servicos">Serviços</a>
-      <a href="#marcas">Marcas</a>
-      <a href="#contato" class="nav-cta">Falar comigo</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+      <a href="#monte-seu-projeto" class="nav-cta">Monte seu projeto →</a>
     </nav>
     <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
@@ -67,104 +86,116 @@
 
 <main>
 
-<!-- ============ HERO ============ -->
+<!-- ============ HERO ============
+     Decisão da Lorena (14/09/2026): tirar as fotos do fundo do hero — não
+     queria mais "fotos passando de fundo". O hero agora é só tipografia,
+     centralizada, sobre o fundo escuro com grão. As fotos reais dela
+     ganharam a própria vitrine logo abaixo (ver ".floating-gallery"). -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="label reveal">Marketing esportivo</span>
-      <h1 class="display reveal"><span class="ln">O esporte</span> <span class="ln">já tem a atenção.</span> <span class="ln">A gente dá</span> <span class="ln">direção.</span></h1>
-      <p class="lead reveal">
-        Para quem quer ser lembrado dentro e fora do jogo.
-      </p>
-      <div class="hero-actions reveal">
-        <a href="#contato" class="btn btn-primary">
-          Falar comigo
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        </a>
-        <a href="#servicos" class="btn btn-ghost">
-          Ver serviços
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        </a>
-      </div>
-    </div>
-    <!-- Rodízio do hero. Para trocar ou acrescentar: exporte em 3:4 (720x960)
-         dentro de img/hero/, acrescente a <img class="hero-slide"> dentro do
-         .hero-frame e atualize os nth-of-type e o animation-delay no CSS
-         para o novo total. -->
-    <div class="hero-art reveal">
-      <div class="hero-frame">
-      <img class="hero-slide" src="img/hero/01-prancheta.jpg"
-           alt="Prancheta tática com a escalação montada, apoiada na grama"
-           width="720" height="960" fetchpriority="high" />
-      <img class="hero-slide" src="img/hero/02-comemoracao-gol.jpg"
-           alt="Jogador comemorando de braços abertos em frente ao gol"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/03-abraco-time.jpg"
-           alt="Time reunido em abraço antes da partida"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/04-goleiro.jpg"
-           alt="Goleiro ajoelhado no gramado com as mãos no rosto"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/05-banco.jpg"
-           alt="Atleta de olhos fechados no banco, respirando fundo"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/06-treinador.jpg"
-           alt="Treinador de boné acompanhando o jogo de perfil"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/07-quarteto.jpg"
-           alt="Quatro jogadores abraçados comemorando a vitória"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/08-base.jpg"
-           alt="Dois meninos da categoria de base batendo as mãos depois do gol"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/09-craque-da-bola.jpg"
-           alt="Jogador premiado como craque da bola com o troféu nas mãos"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/10-elenco.jpg"
-           alt="Elenco completo reunido em frente ao gol depois da partida"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/11-capitao.jpg"
-           alt="Capitão uniformizado caminhando em campo com a faixa no braço"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/12-comemora-preto.jpg"
-           alt="Jogador de uniforme preto e amarelo comemorando em campo"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/13-perfil-noite.jpg"
-           alt="Atleta de perfil em partida noturna"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/14-qualidade-4-anos.jpg"
-           alt="Peça de aniversário de quatro anos do Qualidade Fut7"
-           width="720" height="960" loading="lazy" />
-      <img class="hero-slide" src="img/hero/15-treinador-recompensa.jpg"
-           alt="Peça com depoimento do treinador do Atlético Maringaense"
-           width="720" height="960" loading="lazy" />
-      </div>
+  <div class="wrap hero-content">
+    <span class="label reveal">Marketing esportivo</span>
+    <h1 class="display hero-h1 reveal">Marketing esportivo<br />para quem vive o jogo.</h1>
+    <p class="lead reveal">
+      Design, conteúdo e presença digital para times, atletas e projetos esportivos.
+    </p>
+    <div class="hero-actions reveal">
+      <a href="#cases" class="btn btn-primary">
+        Conheça meu trabalho
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+      </a>
+      <a href="#monte-seu-projeto" class="btn btn-ghost">
+        Monte seu projeto
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ NÚMEROS ============
-     CONFIRMAR COM A LORENA: números estimados a partir da pasta de trabalhos
-     e do perfil. Trocar pelos valores reais antes de publicar. -->
+<!-- ============ VITRINE (fotos flutuantes) ============
+     Decisão da Lorena (14/09/2026): fotos mais juntas e "embaralhadas"
+     (cada uma com uma leve rotação, tipo pilha de fotos jogada na mesa),
+     que se mexem quando o mouse passa por cima (paralaxe — "depth" maior
+     se move mais). Tudo real, nada de banco de imagem.
+     A rotação de repouso mora em data-rotate (o JS lê e recompõe o
+     transform a cada movimento de mouse, sem apagar a rotação) — troque
+     ali se quiser outro ângulo. No celular, sem mouse fazendo sentido,
+     vira grade simples sem rotação (ver breakpoint em styles.css).
+     Pra trocar uma foto: troque o src/alt do <img>; pra mudar o tamanho,
+     troque a classe size-a/size-b/size-c; pra reordenar quem fica por
+     cima na pilha, mude a ordem dos blocos (o de baixo no HTML fica por
+     cima visualmente). -->
+<section class="floating-gallery" aria-label="Trabalhos em destaque">
+  <div class="floating-wrap" id="floatingWrap">
+    <div class="float-el size-b reveal" style="top:20%;left:24%" data-depth="0.6" data-rotate="-7">
+      <img class="vintage-photo" src="img/hero/02-comemoracao-gol.jpg" alt="Jogador comemorando de braços abertos em frente ao gol" loading="lazy" />
+    </div>
+    <div class="float-el size-c reveal" style="top:8%;left:38%" data-depth="1" data-rotate="5">
+      <img class="vintage-photo" src="img/hero/03-abraco-time.jpg" alt="Time reunido em abraço antes da partida" loading="lazy" />
+    </div>
+    <div class="float-el size-a reveal" style="top:14%;left:58%" data-depth="0.5" data-rotate="-11">
+      <img class="vintage-photo" src="img/hero/07-quarteto.jpg" alt="Quatro jogadores abraçados comemorando a vitória" loading="lazy" />
+    </div>
+    <div class="float-el size-b reveal" style="top:6%;left:64%" data-depth="1.2" data-rotate="9">
+      <img class="vintage-photo" src="img/hero/09-craque-da-bola.jpg" alt="Jogador premiado como craque da bola com o troféu nas mãos" loading="lazy" />
+    </div>
+    <div class="float-el size-a reveal" style="top:58%;left:34%" data-depth="0.7" data-rotate="10">
+      <img class="vintage-photo" src="img/hero/06-treinador.jpg" alt="Treinador de boné acompanhando o jogo de perfil" loading="lazy" />
+    </div>
+    <div class="float-el size-b reveal" style="top:46%;left:22%" data-depth="1.1" data-rotate="-6">
+      <img class="vintage-photo" src="img/hero/12-comemora-preto.jpg" alt="Jogador de uniforme preto e amarelo comemorando em campo" loading="lazy" />
+    </div>
+    <div class="float-el size-c reveal" style="top:32%;left:52%" data-depth="0.8" data-rotate="-4">
+      <img class="vintage-photo" src="img/hero/14-qualidade-4-anos.jpg" alt="Peça de aniversário de quatro anos do Qualidade Fut7" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROVA / AUTORIDADE ============
+     Números reais, dados por ela em 14/09/2026. O terceiro indicador fica
+     de fora até ela decidir qual usar — grid em 2 colunas até lá. Pra
+     acrescentar o terceiro: copie um .stat, cole como 3º filho, e troque
+     .stats-2 por .stats-3 no CSS (ou remova a classe, o grid já assume 3
+     por padrão). -->
 <div class="wrap">
   <div class="stats reveal">
     <div class="stat">
-      <div class="num">+10</div>
-      <div class="label lbl">marcas esportivas atendidas</div>
+      <div class="num">+500</div>
+      <div class="label lbl">projetos entregues</div>
     </div>
     <div class="stat">
-      <div class="num">+150</div>
-      <div class="label lbl">peças publicadas</div>
+      <div class="num">+5</div>
+      <div class="label lbl">times atendidos</div>
     </div>
-    <!-- Tirei o terceiro indicador ("27 mil pessoas acompanhando"): era um
-         número estimado, nunca confirmado por ela. Assim que houver um
-         número real do @lorenamariano, é só voltar a célula aqui e o
-         grid volta para 3. -->
+    <!-- Terceiro indicador: a Lorena vai definir depois. Exemplo de bloco
+         pronto pra colar aqui quando tiver o número:
+    <div class="stat">
+      <div class="num">+NÚMERO</div>
+      <div class="label lbl">texto do indicador</div>
+    </div>
+    -->
   </div>
 </div>
 
+<!-- ============ POSICIONAMENTO ============
+     Só tipografia sobre o fundo escuro com grão — sem foto, sem ícone.
+     É a seção conceitual, o "porquê" antes do "o quê" (Serviços). -->
+<section id="posicionamento" class="stance">
+  <div class="wrap stance-wrap reveal">
+    <span class="label label-rule stance-label">Por que presença</span>
+    <h2 class="display h2 stance-h">
+      Seu time não precisa de<br />mais uma arte. Precisa de <span class="hl">presença</span>.
+    </h2>
+    <p class="lead stance-p">
+      Um time é mais do que 11 jogadores em campo. É comunidade, identidade,
+      torcida e história. Meu trabalho é transformar tudo isso em uma
+      presença visual que as pessoas reconhecem, acompanham e querem vestir.
+    </p>
+  </div>
+</section>
 
-<!-- ============ SERVIÇOS ============ -->
+<!-- ============ SERVIÇOS ============
+     Três frentes, não uma lista de peças. Numeração em vez de ícone —
+     menos decorativo, mais editorial. -->
 <section id="servicos">
   <div class="wrap">
     <div class="svc-head reveal">
@@ -176,47 +207,139 @@
       </p>
     </div>
 
-    <div class="svc-grid">
-      <article class="svc reveal">
-        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M248,92.68a15.86,15.86,0,0,0-4.69-11.31L174.63,12.68a16,16,0,0,0-22.63,0L123.57,41.11l-58,21.77A16.06,16.06,0,0,0,55.35,75.23L32.11,214.68A8,8,0,0,0,40,224a8.4,8.4,0,0,0,1.32-.11l139.44-23.24a16,16,0,0,0,12.35-10.17l21.77-58L243.31,104A15.87,15.87,0,0,0,248,92.68Zm-69.87,92.19L63.32,204l47.37-47.37a28,28,0,1,0-11.32-11.32L52,192.7,71.13,77.86,126,57.29,198.7,130ZM112,132a12,12,0,1,1,12,12A12,12,0,0,1,112,132Zm96-15.32L139.31,48l24-24L232,92.68Z"/></svg></div>
-        <h3>Identidade visual</h3>
-        <p>Logo, paleta, tipografia e manual de marca. O que o time usa em tudo, do uniforme ao story.</p>
+    <div class="svc-big-grid">
+      <article class="svc-big reveal">
+        <span class="svc-big-num">01</span>
+        <h3>Design esportivo</h3>
+        <p>Artes para redes sociais, jogos, campeonatos, anúncios e materiais de comunicação.</p>
       </article>
 
-      <article class="svc reveal">
-        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z"/></svg></div>
-        <h3>Design de conteúdo</h3>
-        <p>As peças do dia a dia: escalação, resultado, próximo jogo, bastidores e carrossel.</p>
+      <article class="svc-big reveal">
+        <span class="svc-big-num">02</span>
+        <h3>Conteúdo &amp; cobertura</h3>
+        <p>Cobertura de partidas, stories, vídeos e conteúdos pra manter o projeto ativo dentro e fora de campo.</p>
       </article>
 
-      <article class="svc reveal">
-        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></svg></div>
-        <h3>Dia de jogo</h3>
-        <p>Pacote de pré, durante e pós-jogo, para cada partida virar conteúdo em vez de passar batida.</p>
+      <article class="svc-big reveal">
+        <span class="svc-big-num">03</span>
+        <h3>Marketing esportivo</h3>
+        <p>Estratégia e construção de presença digital pra times, atletas e projetos esportivos.</p>
       </article>
+    </div>
 
-      <article class="svc reveal">
-        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg></div>
-        <h3>Posicionamento</h3>
-        <p>Definir o que a marca comunica antes de desenhar. Sem isso, arte bonita não resolve nada.</p>
-      </article>
-
-      <article class="svc reveal">
-        <div class="chip" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M254.3,107.91,228.78,56.85a16,16,0,0,0-21.47-7.15L182.44,62.13,130.05,48.27a8.14,8.14,0,0,0-4.1,0L73.56,62.13,48.69,49.7a16,16,0,0,0-21.47,7.15L1.7,107.9a16,16,0,0,0,7.15,21.47l27,13.51,55.49,39.63a8.06,8.06,0,0,0,2.71,1.25l64,16a8,8,0,0,0,7.6-2.1l55.07-55.08,26.42-13.21a16,16,0,0,0,7.15-21.46Zm-54.89,33.37L165,113.72a8,8,0,0,0-10.68.61C136.51,132.27,116.66,130,104,122L147.24,80h31.81l27.21,54.41ZM41.53,64,62,74.22,36.43,125.27,16,115.06Zm116,119.13L99.42,168.61l-49.2-35.14,28-56L128,64.28l9.8,2.59-45,43.68-.08.09a16,16,0,0,0,2.72,24.81c20.56,13.13,45.37,11,64.91-5L188,152.66Zm62-57.87-25.52-51L214.47,64,240,115.06Zm-87.75,92.67a8,8,0,0,1-7.75,6.06,8.13,8.13,0,0,1-1.95-.24L80.41,213.33a7.89,7.89,0,0,1-2.71-1.25L51.35,193.26a8,8,0,0,1,9.3-13l25.11,17.94L126,208.24A8,8,0,0,1,131.82,217.94Z"/></svg></div>
-        <h3>Apoio a patrocínio</h3>
-        <p>Material de apresentação e conteúdo que mostra ao patrocinador o que ele está comprando.</p>
-      </article>
+    <div class="svc-cta reveal">
+      <a href="#monte-seu-projeto" class="btn btn-primary">
+        Monte seu projeto
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ MARCAS ATENDIDAS ============
-     Para acrescentar uma marca: exporte a logo em PNG com fundo transparente,
+<!-- ============ CASES ============
+     Cada case só entra com o que é REAL e verificável — cliente, imagem
+     entregue, o que foi feito. "O desafio" e "Resultado/impacto" ficam de
+     fora quando não há essa informação (nunca invento), em vez de mostrar
+     um placeholder pro visitante do site. O comentário abaixo de cada case
+     diz exatamente o que falta.
+
+     Pra adicionar um case novo: duplique um <article class="case">
+     inteiro, troque a imagem, o nome do cliente e o texto. Os campos
+     "O desafio" e "Resultado" são <p class="case-field"> com um <span
+     class="case-label"> na frente — inclua só os que você tiver. -->
+<section id="cases">
+  <div class="wrap">
+    <div class="svc-head reveal">
+      <span class="label label-rule">Cases</span>
+      <h2 class="display h2">Presença que já rodou o campo.</h2>
+      <p class="lead">
+        Uma seleção do que já virou identidade visual pra time e atleta de
+        verdade — não é banco de imagem, é trabalho entregue.
+      </p>
+    </div>
+
+    <div class="case-grid">
+      <article class="case reveal">
+        <div class="case-img">
+          <img class="vintage-photo" src="img/hero/14-qualidade-4-anos.jpg"
+               alt="Peça de aniversário de quatro anos do Qualidade Fut7"
+               width="720" height="960" loading="lazy" />
+        </div>
+        <div class="case-body">
+          <h3 class="case-client">Qualidade Fut7</h3>
+          <p class="case-field"><span class="case-label">O que foi feito</span>Peça comemorativa para os 4 anos do projeto.</p>
+        </div>
+      </article>
+      <!-- Faltam "O desafio" e "Resultado/impacto" deste case — quando
+           tiver essa informação, acrescente:
+      <p class="case-field"><span class="case-label">O desafio</span>...</p>
+      <p class="case-field"><span class="case-label">Resultado</span>...</p>
+      -->
+
+      <article class="case reveal">
+        <div class="case-img">
+          <img class="vintage-photo" src="img/hero/15-treinador-recompensa.jpg"
+               alt="Peça com depoimento do treinador do Atlético Maringaense"
+               width="720" height="960" loading="lazy" />
+        </div>
+        <div class="case-body">
+          <h3 class="case-client">Atlético Maringaense</h3>
+          <p class="case-field"><span class="case-label">O que foi feito</span>Peça de depoimento do treinador, celebrando a evolução do elenco.</p>
+        </div>
+      </article>
+      <!-- Mesma coisa aqui: falta "O desafio" e "Resultado/impacto". -->
+
+      <!-- Espaço pronto para o 3º/4º case (ex.: Nova Arena, Full7) assim
+           que você tiver uma peça pra mostrar — duplique um <article
+           class="case"> acima e preencha. -->
+    </div>
+
+    <div class="svc-cta reveal">
+      <a href="cases.html" class="sc-link">Ver todos os cases →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EU VIVO O ESPORTE ============
+     Evolução da antiga seção "Sobre (resumo)": mesmo link pra história
+     completa em sobre.html, mas com o headline pessoal que ela pediu e uma
+     segunda foto de bastidor/campo ao lado do retrato — pra mostrar que a
+     relação dela com o esporte não é só a mesa de trabalho. -->
+<section id="sobre" class="sobre-curto">
+  <div class="wrap sc-grid reveal">
+    <div class="sc-foto-group">
+      <div class="sc-foto">
+        <img class="vintage-photo" src="img/sobre-lorena.jpg"
+             alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time"
+             width="800" height="1071" loading="lazy" />
+      </div>
+      <div class="sc-foto sc-foto-extra">
+        <img class="vintage-photo" src="img/hero/06-treinador.jpg"
+             alt="Treinador de boné acompanhando o jogo de perfil, bastidor de uma cobertura"
+             width="720" height="960" loading="lazy" />
+      </div>
+    </div>
+    <div class="sc-texto">
+      <span class="label label-rule">Quem está por trás</span>
+      <h2 class="display h2 sc-h">Eu vivo o esporte.<br />Não só trabalho com ele.</h2>
+      <p>
+        Minha relação com o esporte foi acontecendo na prática. Entre times,
+        jogos, campeonatos, bastidores e projetos, fui percebendo que existia
+        muito mais por trás de uma partida do que os 90 minutos dentro de campo.
+      </p>
+      <a class="sc-link" href="sobre.html">Ler a história completa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUEM JÁ CONFIOU ============
+     Antiga seção "Marcas atendidas", só com o título que ela pediu agora.
+     Pra acrescentar uma marca: exporte a logo em PNG com fundo transparente,
      altura 160px, salve em img/marcas/ e repita o bloco <img> nos DOIS
      .marquee-set (os dois precisam ser idênticos para o loop não pular). -->
 <section id="marcas" class="brands">
   <div class="wrap">
-    <span class="label">Marcas atendidas</span>
+    <span class="label">Quem já confiou no meu trabalho</span>
   </div>
   <div class="marquee">
     <div class="marquee-track">
@@ -248,88 +371,159 @@
   </div>
 </section>
 
+<!-- ============ DEPOIMENTOS ============
+     Componente pronto, mas OCULTO: hoje não existe nenhum depoimento real,
+     e ela pediu explicitamente pra não inventar. Assim que tiver o
+     primeiro depoimento de verdade, tire esta seção do comentário e
+     preencha um <article class="testimonial"> por depoimento (mantenha só
+     os reais, apague o exemplo).
 
-<!-- ============ SOBRE (resumo) ============
-     Versão curta. A história completa mora em sobre.html. -->
-<section id="sobre" class="sobre-curto">
-  <div class="wrap sc-grid reveal">
-    <div class="sc-foto">
-      <img src="img/sobre-lorena.jpg"
-           alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time"
-           width="800" height="1071" loading="lazy" />
+<section id="depoimentos">
+  <div class="wrap">
+    <div class="svc-head reveal">
+      <span class="label label-rule">Depoimentos</span>
+      <h2 class="display h2">Quem já trabalhou comigo, conta.</h2>
     </div>
-    <div class="sc-texto">
-      <span class="label label-rule">Quem está por trás</span>
-      <p>
-        Sou a Lorena. Cheguei de fora do futebol, me apaixonei, e é justamente
-        por ter chegado de fora que eu sei traduzir um time em marca.
-      </p>
-      <a class="sc-link" href="sobre.html">Ler a história completa</a>
+    <div class="testi-grid">
+      <article class="testimonial reveal">
+        <p class="testi-quote">"Texto do depoimento aqui."</p>
+        <span class="testi-nome">Nome da pessoa</span>
+        <span class="testi-cargo">Time / função</span>
+      </article>
     </div>
   </div>
 </section>
-<!-- ============ CONTATO ============ -->
-<section id="contato">
+-->
+
+<!-- ============ MONTE SEU PROJETO ============
+     Configurador em etapas: um briefing comercial guiado, não uma
+     calculadora de preço. Serviços e valores ficam em
+     js/projeto-config.js — edite ali para trocar preços ou
+     adicionar/remover itens, sem mexer neste arquivo. -->
+<section id="monte-seu-projeto" class="msp-section">
   <div class="wrap">
-    <div class="panel reveal">
-      <div>
-        <h2 class="display h2">Vamos colocar a sua marca no <span class="hl">padrão?</span></h2>
-        <p class="lead">
-          Preencha aqui do lado. Ao enviar, abre o WhatsApp com tudo já escrito.
-          É só apertar o botão de mandar.
-        </p>
-      </div>
+    <div class="svc-head reveal">
+      <span class="label label-rule">Ferramenta interativa</span>
+      <h2 class="display h2">Tem um projeto esportivo?</h2>
+      <p class="lead">Selecione o que você precisa e receba uma estimativa personalizada.</p>
+    </div>
 
-      <form class="form" id="briefForm" novalidate>
-        <div class="field">
-          <label for="bf-nome">Seu nome</label>
-          <input type="text" id="bf-nome" name="nome" placeholder="Como posso te chamar?"
-                 autocomplete="name" required aria-describedby="err-nome" />
-          <p class="field-error" id="err-nome" role="status"></p>
-        </div>
+    <div class="msp-card reveal" id="mspCard">
+      <ol class="msp-steps" id="mspStepsNav" aria-label="Progresso do briefing">
+        <li data-step="1" aria-current="step">Quem é você</li>
+        <li data-step="2">O que precisa</li>
+        <li data-step="3">Sua demanda</li>
+        <li data-step="4">Estimativa</li>
+      </ol>
+      <p class="visually-hidden" id="mspLiveRegion" aria-live="polite"></p>
 
-        <div class="field">
-          <label for="bf-time">Time, arena ou atleta</label>
-          <input type="text" id="bf-time" name="time" placeholder="Nome do projeto ou seu @"
-                 autocomplete="organization" required aria-describedby="err-time" />
-          <p class="field-error" id="err-time" role="status"></p>
-        </div>
-
-        <div class="field field-full">
-          <span class="flabel" id="lbl-servico">O que você precisa?</span>
-          <div class="chips" id="bf-servico" role="group" aria-labelledby="lbl-servico">
-            <button type="button" class="chip-btn" aria-pressed="false" data-value="Identidade visual">Identidade visual</button>
-            <button type="button" class="chip-btn" aria-pressed="false" data-value="Design de conteúdo">Design de conteúdo</button>
-            <button type="button" class="chip-btn" aria-pressed="false" data-value="Dia de jogo">Dia de jogo</button>
-            <button type="button" class="chip-btn" aria-pressed="false" data-value="Apoio a patrocínio">Apoio a patrocínio</button>
-            <button type="button" class="chip-btn" aria-pressed="false" data-value="Ainda não sei, quero ajuda">Ainda não sei</button>
-          </div>
-        </div>
-
-        <div class="field field-full">
-          <label for="bf-prazo">Para quando?</label>
-          <select id="bf-prazo" name="prazo">
-            <option value="Sem pressa, quero planejar">Sem pressa, quero planejar</option>
-            <option value="Esse mês">Esse mês</option>
-            <option value="Essa semana">Essa semana</option>
-            <option value="É urgente, tenho jogo chegando">É urgente, tenho jogo chegando</option>
-          </select>
-        </div>
-
-        <div class="field field-full">
-          <label for="bf-msg">Conta mais (opcional)</label>
-          <textarea id="bf-msg" name="mensagem" rows="3"
-                    placeholder="O que você tem em mente, o que já tentou, o que te incomoda hoje."></textarea>
-        </div>
-
-        <div class="field field-full">
-          <button type="submit" class="btn btn-primary form-submit">
-            Enviar no WhatsApp
+      <!-- ETAPA 1 -->
+      <div class="msp-step" data-step="1">
+        <span class="msp-eyebrow">Etapa 1 de 3</span>
+        <h3 class="msp-question" id="mspQ1">Quem é você?</h3>
+        <div class="msp-options" id="mspQuem" role="group" aria-labelledby="mspQ1"></div>
+        <p class="field-error" id="mspErr1" role="status"></p>
+        <div class="msp-actions">
+          <span></span>
+          <button type="button" class="btn btn-primary msp-next" data-next="2">
+            Continuar
             <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
           </button>
-          <p class="form-note">Sem compromisso. A conversa continua direto comigo.</p>
         </div>
-      </form>
+      </div>
+
+      <!-- ETAPA 2 -->
+      <div class="msp-step" data-step="2" hidden>
+        <span class="msp-eyebrow">Etapa 2 de 3</span>
+        <h3 class="msp-question" id="mspQ2">O que você precisa?</h3>
+        <p class="msp-hint">Pode selecionar mais de um item — combine o que fizer sentido para o seu projeto.</p>
+        <div class="msp-options" id="mspServicos" role="group" aria-labelledby="mspQ2"></div>
+        <p class="field-error" id="mspErr2" role="status"></p>
+        <div class="msp-actions">
+          <button type="button" class="btn btn-ghost msp-back" data-back="1">
+            <span class="ico ico-back" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+            Voltar
+          </button>
+          <button type="button" class="btn btn-primary msp-next" data-next="3">
+            Continuar
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ETAPA 3 -->
+      <div class="msp-step" data-step="3" hidden>
+        <span class="msp-eyebrow">Etapa 3 de 3</span>
+        <h3 class="msp-question" id="mspQ3">Como é sua demanda?</h3>
+        <div class="msp-options" id="mspFrequencia" role="group" aria-labelledby="mspQ3"></div>
+        <p class="field-error" id="mspErr3" role="status"></p>
+        <div class="msp-actions">
+          <button type="button" class="btn btn-ghost msp-back" data-back="2">
+            <span class="ico ico-back" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+            Voltar
+          </button>
+          <button type="button" class="btn btn-primary msp-next" data-next="4">
+            Ver minha estimativa
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- RESULTADO -->
+      <div class="msp-step" data-step="4" hidden>
+        <span class="msp-eyebrow">Seu diagnóstico</span>
+        <h3 class="msp-question" id="mspQ4">Aqui está a sua estimativa.</h3>
+        <p class="msp-context" id="mspContexto"></p>
+
+        <div class="msp-estimate" id="mspEstimateBox"></div>
+
+        <!-- Só aparece quando a frequência é "Mensal": em vez de somar
+             item por item, mostra os 3 planos fechados e sugere um com
+             base no que foi marcado. A pessoa pode clicar em outro. -->
+        <div class="msp-plans" id="mspPlansBox" role="radiogroup" aria-label="Planos mensais"></div>
+        <div class="msp-setup-note" id="mspForaBox" hidden></div>
+
+        <div class="msp-recap" id="mspRecap" aria-label="Itens selecionados no briefing"></div>
+
+        <p class="msp-disclaimer">
+          Valor estimado a partir do que você nos contou aqui. Prazo, quantidade
+          e formato final a gente ajusta junto, direto na conversa.
+        </p>
+
+        <div class="msp-actions msp-actions-result">
+          <button type="button" class="btn btn-ghost msp-restart">Recomeçar</button>
+          <button type="button" class="btn btn-primary" id="mspWhats">
+            Falar comigo no WhatsApp
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL / CONTATO ============
+     Sem formulário genérico: o "Monte seu projeto" já pergunta o que a
+     pessoa precisa e devolve uma estimativa, então pedir de novo aqui
+     (nome, o que precisa, prazo...) seria repetir a mesma coisa duas
+     vezes. Em vez disso, um encerramento direto — WhatsApp com mensagem
+     simples já preenchida, mais os canais de contato. -->
+<section id="contato" class="cta-final">
+  <div class="wrap cta-final-wrap reveal">
+    <h2 class="display h2 cta-final-h">
+      Seu time já tem uma história.<br />Agora precisa ter uma <span class="hl">presença</span> à altura.
+    </h2>
+    <div class="cta-final-actions">
+      <a id="ctaFinalWhats" href="#" class="btn btn-primary" target="_blank" rel="noopener">
+        Vamos trabalhar juntos
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+      </a>
+    </div>
+    <div class="cta-final-channels">
+      <a href="https://wa.me/5544999707173" target="_blank" rel="noopener">(44) 99970-7173</a>
+      <a href="mailto:lohlarrosa@gmail.com">lohlarrosa@gmail.com</a>
+      <a href="https://instagram.com/lorenamariano" target="_blank" rel="noopener">@lorenamariano</a>
+      <span>Maringá, PR</span>
     </div>
   </div>
 </section>
@@ -346,7 +540,7 @@
           <img src="logo/logo.png" alt="Lorena Mariano" width="170" height="34" loading="lazy" />
         </a>
         <p class="foot-sobre">
-          Marketing esportivo que coloca marcas, times e atletas em movimento.
+          Design, conteúdo e presença digital para times, atletas e projetos esportivos.
         </p>
         <!-- Behance: descomente e troque o href quando a página estiver no ar. -->
         <div class="foot-social">
@@ -362,10 +556,11 @@
       <div class="foot-col">
         <h3 class="label">Navegação</h3>
         <a href="#top">Início</a>
-        <a href="#sobre">Sobre</a>
+        <a href="#cases">Cases</a>
         <a href="#servicos">Serviços</a>
-        <a href="#marcas">Marcas</a>
-        <a href="#contato">Falar comigo</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+        <a href="#monte-seu-projeto">Monte seu projeto</a>
       </div>
 
       <div class="foot-col">
@@ -392,22 +587,7 @@
   </div>
 </footer>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Lorena Mariano",
-  "description": "Marketing esportivo que coloca marcas, times e atletas em movimento.",
-  "url": "https://lorenadesign.com.br/",
-  "image": "https://lorenadesign.com.br/img/hero/01-prancheta.jpg",
-  "areaServed": "Brasil",
-  "address": { "@type": "PostalAddress", "addressLocality": "Maringá", "addressRegion": "PR", "addressCountry": "BR" },
-  "sameAs": ["https://instagram.com/lorenamariano"],
-  "email": "lohlarrosa@gmail.com",
-  "telephone": "+5544999707173"
-}
-</script>
-
+<script src="js/projeto-config.js"></script>
 <script>
 (function(){
   'use strict';
@@ -460,6 +640,39 @@
     });
   }
 
+  /* Vitrine de fotos: "embaralhada" parada (cada uma com sua rotação de
+     data-rotate) e paralaxe seguindo o mouse por cima.
+     A rotação é parte do MESMO transform que o paralaxe usa (translate
+     + rotate juntos na mesma string) — se fossem dois transforms
+     separados um apagaria o outro, por isso monta tudo aqui dentro,
+     inclusive no estado de repouso. O hover-scale de cada foto é só CSS
+     e mora na <img>, não nesta div, então não briga com nada disso.
+     Sem mouse (celular) isso simplesmente não dispara; o CSS já vira
+     grade estática sem rotação nesse caso (ver responsivo). */
+  var floatingWrap = document.getElementById('floatingWrap');
+  if (floatingWrap) {
+    var floatEls = Array.prototype.slice.call(floatingWrap.querySelectorAll('.float-el'));
+    var setFloatTransform = function(el, mx, my){
+      var rot = el.dataset.rotate || 0;
+      el.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0) rotate(' + rot + 'deg)';
+    };
+    floatEls.forEach(function(el){ setFloatTransform(el, 0, 0); });
+    if (!reduce) {
+      floatingWrap.addEventListener('mousemove', function(e){
+        var rect = floatingWrap.getBoundingClientRect();
+        var cx = (e.clientX - rect.left) / rect.width - 0.5;
+        var cy = (e.clientY - rect.top) / rect.height - 0.5;
+        floatEls.forEach(function(el){
+          var depth = parseFloat(el.dataset.depth) || 1;
+          setFloatTransform(el, (cx * depth * 46).toFixed(1), (cy * depth * 46).toFixed(1));
+        });
+      });
+      floatingWrap.addEventListener('mouseleave', function(){
+        floatEls.forEach(function(el){ setFloatTransform(el, 0, 0); });
+      });
+    }
+  }
+
   /* Contagem dos indicadores.
      Motivo: feedback, o número cresce quando entra em cena e fixa a leitura. */
   if (!reduce && 'IntersectionObserver' in window) {
@@ -482,49 +695,323 @@
     document.querySelectorAll('.stat .num').forEach(function(el){ countObs.observe(el); });
   }
 
-  /* Briefing para o WhatsApp */
-  var form = document.getElementById('briefForm');
-  if (!form) return;
-  var WHATS = '5544999707173';
-  var chipsBox = document.getElementById('bf-servico');
-  var servico = '';
+  /* CTA final: WhatsApp com mensagem simples (sem repetir as perguntas do
+     Monte seu projeto — quem já sabe o que quer, fala direto). */
+  var ctaFinalWhats = document.getElementById('ctaFinalWhats');
+  if (ctaFinalWhats) {
+    var msgFinal = 'Oi, Lorena! Vim pelo site e quero conversar sobre um projeto.';
+    ctaFinalWhats.href = 'https://wa.me/5544999707173?text=' + encodeURIComponent(msgFinal);
+  }
 
-  chipsBox.querySelectorAll('.chip-btn').forEach(function(chip){
-    chip.addEventListener('click', function(){
-      chipsBox.querySelectorAll('.chip-btn').forEach(function(c){ c.setAttribute('aria-pressed', 'false'); });
-      chip.setAttribute('aria-pressed', 'true');
-      servico = chip.dataset.value;
+  /* Monte seu projeto: configurador em etapas.
+     Estado só em memória (sem localStorage) porque é um formulário
+     de uma visita só; se a página recarregar, começa do zero.
+     Serviços e valores vêm de window.PROJETO_CONFIG, definido em
+     js/projeto-config.js, carregado antes deste script. */
+  var mspCard = document.getElementById('mspCard');
+  if (mspCard && window.PROJETO_CONFIG) {
+    var CFG = window.PROJETO_CONFIG;
+    var mspSteps = Array.prototype.slice.call(mspCard.querySelectorAll('.msp-step'));
+    var mspNavItems = Array.prototype.slice.call(mspCard.querySelectorAll('#mspStepsNav li'));
+    var mspLive = document.getElementById('mspLiveRegion');
+    var mspCurrent = 1;
+    var mspEstado = { quem: null, servicos: [], frequencia: null };
+
+    var CHECK_SVG = '<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>';
+
+    function mspFormatBRL(n){
+      return 'R$ ' + Math.round(n).toLocaleString('pt-BR');
+    }
+
+    function mspMontarOpcoes(container, lista, multi, onToggle){
+      lista.forEach(function(item){
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'msp-opt' + (multi ? ' is-check' : ' is-radio');
+        btn.setAttribute('aria-pressed', 'false');
+        btn.dataset.id = item.id;
+
+        var label = document.createElement('span');
+        label.textContent = item.label;
+
+        var check = document.createElement('span');
+        check.className = 'msp-check';
+        check.innerHTML = CHECK_SVG;
+
+        btn.appendChild(label);
+        btn.appendChild(check);
+        btn.addEventListener('click', function(){ onToggle(item, btn); });
+        container.appendChild(btn);
+      });
+    }
+
+    var mspBoxQuem = document.getElementById('mspQuem');
+    mspMontarOpcoes(mspBoxQuem, CFG.quemEVoce, false, function(item, btn){
+      mspEstado.quem = item;
+      mspBoxQuem.querySelectorAll('.msp-opt').forEach(function(b){ b.setAttribute('aria-pressed', String(b === btn)); });
+      document.getElementById('mspErr1').textContent = '';
     });
-  });
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var campos = [
-      { el: document.getElementById('bf-nome'), err: document.getElementById('err-nome'), msg: 'Preencha o seu nome.' },
-      { el: document.getElementById('bf-time'), err: document.getElementById('err-time'), msg: 'Preencha o time, arena ou atleta.' }
-    ];
-    var ok = true;
-    campos.forEach(function(c){
-      var vazio = !c.el.value.trim();
-      c.el.setAttribute('aria-invalid', String(vazio));
-      c.err.textContent = vazio ? c.msg : '';
-      if (vazio) { if (ok) { c.el.focus(); } ok = false; }
+    var mspBoxServicos = document.getElementById('mspServicos');
+    mspMontarOpcoes(mspBoxServicos, CFG.servicos, true, function(item, btn){
+      var pressed = btn.getAttribute('aria-pressed') === 'true';
+      btn.setAttribute('aria-pressed', String(!pressed));
+      if (!pressed) {
+        mspEstado.servicos.push(item);
+      } else {
+        mspEstado.servicos = mspEstado.servicos.filter(function(s){ return s.id !== item.id; });
+      }
+      if (mspEstado.servicos.length) document.getElementById('mspErr2').textContent = '';
     });
-    if (!ok) return;
 
-    var msg = document.getElementById('bf-msg').value.trim();
-    var linhas = [
-      'Oi, Lorena! Vim pelo seu site e quero um orçamento.',
-      '',
-      '*Nome:* ' + document.getElementById('bf-nome').value.trim(),
-      '*Time/Arena/Atleta:* ' + document.getElementById('bf-time').value.trim(),
-      '*Preciso de:* ' + (servico || 'Ainda não defini'),
-      '*Prazo:* ' + document.getElementById('bf-prazo').value
-    ];
-    if (msg) linhas.push('*Detalhes:* ' + msg);
+    var mspBoxFreq = document.getElementById('mspFrequencia');
+    mspMontarOpcoes(mspBoxFreq, CFG.frequencia, false, function(item, btn){
+      mspEstado.frequencia = item;
+      mspBoxFreq.querySelectorAll('.msp-opt').forEach(function(b){ b.setAttribute('aria-pressed', String(b === btn)); });
+      document.getElementById('mspErr3').textContent = '';
+    });
 
-    window.open('https://wa.me/' + WHATS + '?text=' + encodeURIComponent(linhas.join('\n')), '_blank', 'noopener');
-  });
+    function mspIrPara(n, moverFoco){
+      mspCurrent = n;
+      mspSteps.forEach(function(s){ s.hidden = (parseInt(s.dataset.step, 10) !== n); });
+      mspNavItems.forEach(function(li){
+        var num = parseInt(li.dataset.step, 10);
+        li.removeAttribute('aria-current');
+        li.classList.toggle('is-done', num < n);
+        if (num === n) li.setAttribute('aria-current', 'step');
+      });
+      var activeStep = mspCard.querySelector('.msp-step[data-step="' + n + '"]');
+      var heading = activeStep.querySelector('.msp-question');
+      if (moverFoco && heading) {
+        heading.setAttribute('tabindex', '-1');
+        heading.focus({ preventScroll: true });
+      }
+      if (mspLive && heading) mspLive.textContent = 'Etapa ' + n + ' de 4: ' + heading.textContent;
+      if (n === 4) mspRenderResultado();
+    }
+
+    mspCard.querySelectorAll('.msp-next').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var alvo = parseInt(btn.dataset.next, 10);
+        if (mspCurrent === 1 && !mspEstado.quem) {
+          document.getElementById('mspErr1').textContent = 'Escolha uma opção para continuar.';
+          return;
+        }
+        if (mspCurrent === 2 && !mspEstado.servicos.length) {
+          document.getElementById('mspErr2').textContent = 'Selecione ao menos um item.';
+          return;
+        }
+        if (mspCurrent === 3 && !mspEstado.frequencia) {
+          document.getElementById('mspErr3').textContent = 'Escolha uma opção para continuar.';
+          return;
+        }
+        mspIrPara(alvo, true);
+      });
+    });
+    mspCard.querySelectorAll('.msp-back').forEach(function(btn){
+      btn.addEventListener('click', function(){ mspIrPara(parseInt(btn.dataset.back, 10), true); });
+    });
+    var mspRestartBtn = mspCard.querySelector('.msp-restart');
+    if (mspRestartBtn) {
+      mspRestartBtn.addEventListener('click', function(){
+        mspEstado = { quem: null, servicos: [], frequencia: null };
+        mspCard.querySelectorAll('.msp-opt').forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
+        ['mspErr1', 'mspErr2', 'mspErr3'].forEach(function(id){ document.getElementById(id).textContent = ''; });
+        mspIrPara(1, true);
+      });
+    }
+
+    /* Soma dos itens avulsos marcados — usada quando o projeto é pontual
+       ou quando a frequência ainda não foi definida. "Outro" (pontual
+       null) não entra na soma, vira "personalizado". */
+    function mspCalcularAvulso(){
+      var min = 0, max = 0, personalizado = false;
+      mspEstado.servicos.forEach(function(s){
+        if (!s.pontual) { personalizado = true; return; }
+        min += s.pontual[0]; max += s.pontual[1];
+      });
+      return { min: min, max: max, personalizado: personalizado };
+    }
+
+    /* Itens que NUNCA entram em plano mensal (foraDoPlano:true), somados
+       à parte — essa é a regra que a Lorena definiu pra proteger a
+       margem: cobertura presencial, escudo, campeonato e kit de
+       patrocinador ficam sempre fora do valor fechado do plano. */
+    function mspCalcularForaDoPlano(){
+      var min = 0, max = 0, personalizado = false;
+      mspEstado.servicos.forEach(function(s){
+        if (!s.foraDoPlano) return;
+        if (!s.pontual) { personalizado = true; return; }
+        min += s.pontual[0]; max += s.pontual[1];
+      });
+      return { min: min, max: max, personalizado: personalizado };
+    }
+
+    /* Sugestão inicial de plano — NÃO é regra rígida, é só o card que
+       começa marcado. Os 3 planos aparecem sempre e a pessoa pode
+       escolher outro. Só conta sinal de itens que fazem parte do
+       escopo de algum plano (foraDoPlano:false) — Kit Rodada não conta
+       aqui porque ele é o produto avulso alternativo ao plano, não um
+       ingrediente dele. */
+    function mspSugerirPlano(){
+      /* Só os 2 itens que fazem parte do escopo de algum plano contam
+         aqui (redes sociais + vídeo) — um item sempre-avulso (escudo,
+         cobertura presencial etc.) não deveria empurrar a sugestão pra
+         um plano maior, já que ele é cobrado à parte de qualquer jeito.
+         Sem um jeito de perguntar volume/prioridade no wizard, não dá
+         pra sugerir o Clube Pro com segurança — ele fica sempre visível
+         e escolhível, só não é o card que já vem marcado. */
+      var elegiveis = mspEstado.servicos.filter(function(s){ return s.foraDoPlano === false; });
+      return elegiveis.length >= 2 ? 'clube' : 'base';
+    }
+
+    var MSP_SEGMENTO_TXT = { time: 'o seu time', atleta: 'a sua carreira', outro: 'o seu projeto' };
+    var mspPlanoEscolhido = null;
+
+    function mspRenderPlanos(sugerido){
+      var CFG = window.PROJETO_CONFIG;
+      var box = document.getElementById('mspPlansBox');
+      box.innerHTML = '';
+      CFG.planos.forEach(function(plano){
+        var card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'msp-plan';
+        card.setAttribute('role', 'radio');
+        card.setAttribute('aria-checked', String(plano.id === mspPlanoEscolhido));
+        card.dataset.id = plano.id;
+
+        var head = document.createElement('div');
+        head.className = 'msp-plan-head';
+        var nome = document.createElement('span');
+        nome.className = 'msp-plan-nome';
+        nome.textContent = plano.nome;
+        head.appendChild(nome);
+        if (plano.destaque) {
+          var tag = document.createElement('span');
+          tag.className = 'msp-plan-tag';
+          tag.textContent = 'Mais pedido';
+          head.appendChild(tag);
+        }
+        card.appendChild(head);
+
+        var preco = document.createElement('div');
+        preco.className = 'msp-plan-preco';
+        preco.textContent = mspFormatBRL(plano.preco) + '/mês';
+        card.appendChild(preco);
+
+        var lista = document.createElement('ul');
+        lista.className = 'msp-plan-lista';
+        plano.resumo.forEach(function(linha){
+          var li = document.createElement('li');
+          li.textContent = linha;
+          lista.appendChild(li);
+        });
+        card.appendChild(lista);
+
+        card.addEventListener('click', function(){
+          mspPlanoEscolhido = plano.id;
+          box.querySelectorAll('.msp-plan').forEach(function(c){
+            c.setAttribute('aria-checked', String(c.dataset.id === mspPlanoEscolhido));
+          });
+        });
+        box.appendChild(card);
+      });
+    }
+
+    function mspRenderResultado(){
+      var segLabel = mspEstado.quem ? (MSP_SEGMENTO_TXT[mspEstado.quem.id] || 'o seu projeto') : 'o seu projeto';
+      var mensal = mspEstado.frequencia && mspEstado.frequencia.id === 'mensal';
+      var estimateBox = document.getElementById('mspEstimateBox');
+      var plansBox = document.getElementById('mspPlansBox');
+      var foraBox = document.getElementById('mspForaBox');
+      estimateBox.innerHTML = '';
+      plansBox.innerHTML = '';
+      foraBox.innerHTML = '';
+      foraBox.hidden = true;
+      estimateBox.hidden = mensal;
+      plansBox.hidden = !mensal;
+
+      if (mensal) {
+        /* Mensal: planos fechados, não soma de item — regra da Lorena. */
+        document.getElementById('mspContexto').textContent =
+          'Baseado no que você nos contou sobre ' + segLabel + ', esses são os planos mensais que fazem sentido:';
+
+        var fora = mspCalcularForaDoPlano();
+        mspPlanoEscolhido = mspSugerirPlano();
+        mspRenderPlanos(mspPlanoEscolhido);
+
+        if (fora.max > 0 || fora.personalizado) {
+          var txt = '';
+          if (fora.max > 0) txt += '+ ' + mspFormatBRL(fora.min) + ' – ' + mspFormatBRL(fora.max) + ' em itens à parte (fora do plano, cobrados avulso).';
+          if (fora.personalizado) txt += (txt ? ' ' : '') + 'Item personalizado incluído — valor definido na conversa.';
+          foraBox.textContent = txt;
+          foraBox.hidden = false;
+        }
+      } else {
+        /* Pontual ou "ainda não sei": soma dos itens avulsos, como antes. */
+        var r = mspCalcularAvulso();
+        document.getElementById('mspContexto').textContent =
+          'Baseado no que você nos contou sobre ' + segLabel + ', veja como fica o investimento:';
+
+        var val = document.createElement('div');
+        val.className = 'msp-value';
+        var lbl = document.createElement('div');
+        lbl.className = 'msp-value-label';
+
+        if (r.min === 0 && r.max === 0 && !r.personalizado) {
+          val.textContent = 'A combinar';
+          lbl.textContent = 'nenhum item com valor de referência selecionado';
+        } else if (r.min === 0 && r.max === 0 && r.personalizado) {
+          val.textContent = 'Sob consulta';
+          lbl.textContent = 'projeto personalizado';
+        } else {
+          val.textContent = r.min === r.max ? mspFormatBRL(r.min) : mspFormatBRL(r.min) + ' – ' + mspFormatBRL(r.max);
+          lbl.textContent = mspEstado.frequencia && mspEstado.frequencia.id === 'nao-sei' ? 'faixa de referência inicial' : 'investimento do projeto pontual';
+        }
+        estimateBox.appendChild(val);
+        estimateBox.appendChild(lbl);
+
+        if (r.personalizado) {
+          var custom = document.createElement('div');
+          custom.className = 'msp-setup-note';
+          custom.textContent = 'Você incluiu um item personalizado — o valor dele a gente define junto, na conversa.';
+          estimateBox.appendChild(custom);
+        }
+      }
+
+      var recap = document.getElementById('mspRecap');
+      recap.innerHTML = '';
+      mspEstado.servicos.forEach(function(s){
+        var pill = document.createElement('span');
+        pill.textContent = s.label;
+        recap.appendChild(pill);
+      });
+
+      var whats = document.getElementById('mspWhats');
+      whats.onclick = function(){
+        var linhas = [
+          'Oi, Lorena! Montei meu projeto no site e quero saber mais.',
+          '',
+          '*Quem sou:* ' + (mspEstado.quem ? mspEstado.quem.label : '-'),
+          '*Preciso de:* ' + mspEstado.servicos.map(function(s){ return s.label; }).join(', '),
+          '*Frequência:* ' + (mspEstado.frequencia ? mspEstado.frequencia.label : '-')
+        ];
+        if (mensal) {
+          var planoEscolhido = window.PROJETO_CONFIG.planos.filter(function(p){ return p.id === mspPlanoEscolhido; })[0];
+          if (planoEscolhido) linhas.push('*Plano de interesse:* ' + planoEscolhido.nome + ' (' + mspFormatBRL(planoEscolhido.preco) + '/mês)');
+          var fora2 = mspCalcularForaDoPlano();
+          if (fora2.max > 0) linhas.push('*+ itens à parte:* ' + mspFormatBRL(fora2.min) + ' – ' + mspFormatBRL(fora2.max));
+        } else {
+          var r2 = mspCalcularAvulso();
+          if (r2.min || r2.max) linhas.push('*Estimativa que vi no site:* ' + (r2.min === r2.max ? mspFormatBRL(r2.min) : mspFormatBRL(r2.min) + ' – ' + mspFormatBRL(r2.max)));
+        }
+        linhas.push('', 'Quero entender melhor e fechar os detalhes.');
+        window.open('https://wa.me/5544999707173?text=' + encodeURIComponent(linhas.join('\n')), '_blank', 'noopener');
+      };
+    }
+
+    mspIrPara(1, false);
+  }
 })();
 </script>
 </body>
