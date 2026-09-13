@@ -47,7 +47,7 @@
   }
 
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
   body{
     background:var(--bg);color:var(--ink);
     font-family:'Inter',system-ui,sans-serif;font-weight:400;
@@ -165,9 +165,27 @@
   .hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
   /* Slideshow do hero: as fotos são todas 3:4 e ocupam a MESMA moldura,
      então trocam sem nenhum salto de layout. Empilhadas em absoluto e
-     alternadas só por opacity, que é barato para a GPU. */
-  .hero-art{
-    position:relative;aspect-ratio:3/4;
+     alternadas por opacity, que é barato para a GPU.
+     .hero-art virou só um contêiner de posição: hospeda o brilho (::before)
+     que precisa vazar para fora do quadro, e por isso não pode ter
+     overflow:hidden. Quem recorta a foto nos cantos arredondados é o
+     .hero-frame por dentro. */
+  /* width:100% explícito é necessário aqui: sem overflow:hidden (que agora
+     mora no .hero-frame), o aspect-ratio sozinho não força mais a largura
+     do item de grid, e a caixa colapsava para 0x0 no celular. */
+  .hero-art{position:relative;aspect-ratio:3/4;width:100%}
+  .hero-art::before{
+    content:"";position:absolute;inset:-14%;z-index:0;
+    background:radial-gradient(circle,rgba(246,213,18,.30) 0%,rgba(246,213,18,0) 68%);
+    filter:blur(38px);pointer-events:none;
+    animation:heroGlowBreathe 8s ease-in-out infinite alternate;
+  }
+  @keyframes heroGlowBreathe{
+    0%{opacity:.5;transform:scale(1)}
+    100%{opacity:1;transform:scale(1.08)}
+  }
+  .hero-frame{
+    position:relative;z-index:1;width:100%;height:100%;
     border-radius:var(--radius-lg);overflow:hidden;
     background:var(--surface);
     box-shadow:0 24px 60px rgba(16,16,17,.14);
@@ -193,9 +211,18 @@
   .hero-slide:nth-of-type(15){animation-delay:41.5s}
   /* 15 fotos x 3s = 45s de ciclo. As janelas se SOBREPOEM por 0,5s:
      a foto que sai so chega a zero depois que a proxima ja esta em 1.
-     Sem essa sobreposicao o card pisca vazio a cada troca. */
+     Sem essa sobreposicao o card pisca vazio a cada troca.
+     O scale soma um Ken Burns discreto: cada foto entra em 1.0 e cresce
+     ate 1.06 ao longo da propria janela visivel, um leve empurrao de
+     camera em vez de so aparecer parada. Como e a MESMA transform em
+     todas as 15 (só o delay muda), cada uma reinicia o proprio zoom
+     do zero quando chega a sua vez, 45s depois. */
   @keyframes heroFade{
-    0%{opacity:0} 1.111%{opacity:1} 6.667%{opacity:1} 7.778%{opacity:0} 100%{opacity:0}
+    0%{opacity:0;transform:scale(1)}
+    1.111%{opacity:1}
+    6.667%{opacity:1;transform:scale(1.06)}
+    7.778%{opacity:0;transform:scale(1.06)}
+    100%{opacity:0;transform:scale(1.06)}
   }
 
   /* ============ NÚMEROS ============ */
@@ -399,6 +426,10 @@
   @media(max-width:700px){
     .foot-grid{grid-template-columns:1fr;gap:36px}
     .wrap{padding:0 20px}
+    /* No celular o quadro da foto ocupa quase a tela inteira, sem sobra
+       lateral para o brilho vazar 14% como no desktop: encolhe o vazamento
+       para não bater na borda da tela. */
+    .hero-art::before{inset:-5%}
     /* Hero centralizado no celular: as quebras do desktop desmontam (cada
        .ln vira texto corrido, o navegador quebra a linha onde couber) e o
        bloco inteiro (rótulo, título, texto, botões) centraliza junto. */

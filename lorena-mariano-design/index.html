@@ -88,9 +88,11 @@
       </div>
     </div>
     <!-- Rodízio do hero. Para trocar ou acrescentar: exporte em 3:4 (720x960)
-         dentro de img/hero/, acrescente a <img class="hero-slide"> aqui e
-         atualize os nth-of-type e o animation-delay no CSS para o novo total. -->
+         dentro de img/hero/, acrescente a <img class="hero-slide"> dentro do
+         .hero-frame e atualize os nth-of-type e o animation-delay no CSS
+         para o novo total. -->
     <div class="hero-art reveal">
+      <div class="hero-frame">
       <img class="hero-slide" src="img/hero/01-prancheta.jpg"
            alt="Prancheta tática com a escalação montada, apoiada na grama"
            width="720" height="960" fetchpriority="high" />
@@ -136,6 +138,7 @@
       <img class="hero-slide" src="img/hero/15-treinador-recompensa.jpg"
            alt="Peça com depoimento do treinador do Atlético Maringaense"
            width="720" height="960" loading="lazy" />
+      </div>
     </div>
   </div>
 </section>
