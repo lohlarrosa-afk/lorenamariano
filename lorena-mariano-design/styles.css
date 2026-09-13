@@ -295,19 +295,17 @@
   }
 
   /* ============ EU VIVO O ESPORTE ============
-     Evolução do antigo "Sobre (resumo)": além do retrato, uma segunda foto
-     menor de bastidor/campo, empilhada, pra mostrar que a relação dela com
-     o esporte não é só a mesa de trabalho. A história completa fica em
-     sobre.html. */
+     Evolução do antigo "Sobre (resumo)": mesmo retrato de sempre, headline
+     pessoal nova. Chegou a ter uma segunda foto de bastidor ao lado, mas
+     ela pediu pra tirar (15/09) — só a foto dela. A história completa fica
+     em sobre.html. */
   .sobre-curto{padding:clamp(56px,7vw,88px) 0}
   .sc-grid{
     display:grid;grid-template-columns:220px 1fr;
     gap:clamp(24px,4vw,48px);align-items:center;
   }
-  .sc-foto-group{display:flex;flex-direction:column;gap:14px}
   .sc-foto{border-radius:var(--radius);overflow:hidden;background:var(--surface);line-height:0}
   .sc-foto img{width:100%;height:auto}
-  .sc-foto-extra{max-width:76%;align-self:flex-end}
   .sc-h{font-size:clamp(28px,3.4vw,42px);margin-bottom:16px}
   .sc-texto p{color:var(--muted);font-size:17px;line-height:1.7;max-width:52ch;margin-bottom:18px}
   .sc-link{
@@ -574,8 +572,7 @@
   @media(max-width:960px){
     .foot-grid{grid-template-columns:1fr 1fr;gap:40px 32px}
     .sc-grid{grid-template-columns:1fr;gap:24px}
-    .sc-foto-group{flex-direction:row;max-width:320px;margin:0 auto}
-    .sc-foto-extra{max-width:44%;align-self:flex-end}
+    .sc-foto{max-width:220px;margin:0 auto}
     .hero{padding:118px 0 60px;min-height:88vh;min-height:88svh}
     .floating-gallery{height:clamp(360px,72vw,520px)}
     .size-c{width:130px;height:180px}
@@ -616,7 +613,6 @@
     .svc-big{border-left:0;border-top:1px solid var(--line);padding:32px 4px}
     .svc-big:first-child{border-top:0}
     .case-grid{grid-template-columns:1fr}
-    .sc-foto-group{max-width:260px}
     .msp-options{grid-template-columns:1fr}
     .msp-steps li{font-size:9px;letter-spacing:.04em}
     .msp-actions{flex-wrap:wrap}
