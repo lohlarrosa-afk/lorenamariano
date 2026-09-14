@@ -179,17 +179,49 @@
 <!-- ============ POSICIONAMENTO ============
      Só tipografia sobre o fundo escuro com grão — sem foto, sem ícone.
      É a seção conceitual, o "porquê" antes do "o quê" (Serviços). -->
+<!-- ============ POSICIONAMENTO ============
+     Ideia dela (15/09/2026): fotos em cima do texto, que se espalham
+     conforme rola a página, revelando a frase por baixo. Só roda em
+     desktop com mouse (ver JS: pointer:fine + min-width) — no celular e
+     em quem já tinha isso antes de eu mexer, fica exatamente a versão só
+     de tipografia de sempre. Nada aqui quebra se o JS não rodar: as fotos
+     começam com "display:none" no CSS e só aparecem quando o próprio JS
+     confirma que vai controlar a posição delas (classe "js-scrub"). -->
 <section id="posicionamento" class="stance">
-  <div class="wrap stance-wrap reveal">
-    <span class="label label-rule stance-label">Por que presença</span>
-    <h2 class="display h2 stance-h">
-      Seu time não precisa de<br />mais uma arte. Precisa de <span class="hl">presença</span>.
-    </h2>
-    <p class="lead stance-p">
-      Um time é mais do que 11 jogadores em campo. É comunidade, identidade,
-      torcida e história. Meu trabalho é transformar tudo isso em uma
-      presença visual que as pessoas reconhecem, acompanham e querem vestir.
-    </p>
+  <div class="stance-scroll" id="stanceScroll">
+    <div class="stance-stage">
+      <div class="stance-photos" id="stancePhotos" aria-hidden="true">
+        <div class="stance-photo" data-sx="-3" data-sy="-2" data-srot="-8" data-sscale="0.4" data-ex="-32" data-ey="-20" data-erot="-3" data-escale="0.85">
+          <img src="img/hero/01-prancheta.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="stance-photo" data-sx="2" data-sy="-3" data-srot="10" data-sscale="0.42" data-ex="30" data-ey="-22" data-erot="4" data-escale="0.9">
+          <img src="img/hero/04-goleiro.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="stance-photo" data-sx="-2" data-sy="3" data-srot="-6" data-sscale="0.4" data-ex="-36" data-ey="18" data-erot="5" data-escale="0.8">
+          <img src="img/hero/05-banco.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="stance-photo" data-sx="3" data-sy="2" data-srot="7" data-sscale="0.42" data-ex="34" data-ey="20" data-erot="-5" data-escale="0.85">
+          <img src="img/hero/08-base.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="stance-photo" data-sx="0" data-sy="-4" data-srot="3" data-sscale="0.45" data-ex="-6" data-ey="-34" data-erot="2" data-escale="0.7">
+          <img src="img/hero/10-elenco.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="stance-photo" data-sx="0" data-sy="4" data-srot="-3" data-sscale="0.45" data-ex="8" data-ey="34" data-erot="-2" data-escale="0.7">
+          <img src="img/hero/13-perfil-noite.jpg" alt="" loading="lazy" />
+        </div>
+      </div>
+      <div class="wrap stance-wrap reveal" id="stanceText">
+        <span class="label label-rule stance-label">Por que presença</span>
+        <h2 class="display h2 stance-h">
+          Seu time não precisa de<br />mais uma arte. Precisa de <span class="hl">presença</span>.
+        </h2>
+        <p class="lead stance-p">
+          Um time é mais do que 11 jogadores em campo. É comunidade, identidade,
+          torcida e história. Meu trabalho é transformar tudo isso em uma
+          presença visual que as pessoas reconhecem, acompanham e querem vestir.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -640,7 +672,12 @@
      inclusive no estado de repouso. O hover-scale de cada foto é só CSS
      e mora na <img>, não nesta div, então não briga com nada disso.
      Sem mouse (celular) isso simplesmente não dispara; o CSS já vira
-     grade estática sem rotação nesse caso (ver responsivo). */
+     grade estática sem rotação nesse caso (ver responsivo).
+     Chegou a rodar na Motion (physics de mola) — voltou pra cá em
+     15/09/2026 porque não deu pra confirmar de forma confiável que
+     animate() repetido no mesmo elemento se comporta bem (testes deram
+     resultado inconsistente; pode ser só limitação do ambiente de teste
+     automatizado, mas não valia arriscar uma vitrine que já funcionava). */
   var floatingWrap = document.getElementById('floatingWrap');
   if (floatingWrap) {
     var floatEls = Array.prototype.slice.call(floatingWrap.querySelectorAll('.float-el'));
@@ -1003,6 +1040,62 @@
     }
 
     mspIrPara(1, false);
+  }
+})();
+</script>
+
+<script>
+/* Posicionamento: fotos que cobrem o texto e se espalham conforme rola,
+   revelando a frase por baixo. Tentei usar a Motion (motiondivision/motion,
+   o antigo "Framer Motion", CDN, sem npm/build — ver conversa) tanto pro
+   paralaxe da vitrine quanto pra isso aqui, mas não deu pra confirmar de
+   forma confiável nenhum dos dois: o motor de animação dela depende de
+   requestAnimationFrame, que o Chrome pausa em aba sem foco, e não tive
+   como garantir (nem reproduzir de forma estável) que funciona fora
+   dessa situação específica de teste. Pra não arriscar publicar um efeito
+   que não consigo verificar, isto aqui é JavaScript puro — o mesmo cálculo
+   de posição de scroll usado em qualquer parallax "scroll-linked" comum
+   (getBoundingClientRect a cada evento de scroll), sem terceiro por baixo. */
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isDesktopMouse = window.matchMedia('(pointer:fine) and (min-width:961px)').matches;
+  var stanceScroll = document.getElementById('stanceScroll');
+
+  if (stanceScroll && !reduce && isDesktopMouse) {
+    var photos = Array.prototype.slice.call(stanceScroll.querySelectorAll('.stance-photo'));
+    var textEl = document.getElementById('stanceText');
+    var lerp = function(a, b, t){ return a + (b - a) * t; };
+
+    var aplicar = function(t){
+      photos.forEach(function(el){
+        var d = el.dataset;
+        var x = lerp(parseFloat(d.sx), parseFloat(d.ex), t);
+        var y = lerp(parseFloat(d.sy), parseFloat(d.ey), t);
+        var rot = lerp(parseFloat(d.srot), parseFloat(d.erot), t);
+        var scale = lerp(parseFloat(d.sscale), parseFloat(d.escale), t);
+        el.style.transform = 'translate(-50%,-50%) translate(' + x.toFixed(2) + 'vw,' + y.toFixed(2) + 'vh) rotate(' + rot.toFixed(1) + 'deg) scale(' + scale.toFixed(3) + ')';
+      });
+      if (textEl) textEl.style.opacity = String(Math.min(t / 0.55, 1));
+    };
+
+    var atualizar = function(){
+      var rect = stanceScroll.getBoundingClientRect();
+      /* progresso 0→1 ao longo da altura extra da seção (altura total
+         menos uma tela cheia, que é o trecho que fica "grudado"). */
+      var percorrivel = rect.height - window.innerHeight;
+      var p = percorrivel > 0 ? (-rect.top) / percorrivel : 0;
+      p = Math.min(Math.max(p, 0), 1);
+      /* segura um pouco no início e no fim: não começa a espalhar assim
+         que a seção entra na tela, nem termina cedo demais. */
+      var t = Math.min(Math.max((p - 0.08) / 0.8, 0), 1);
+      aplicar(t);
+    };
+
+    stanceScroll.classList.add('js-scrub');
+    window.addEventListener('scroll', atualizar, { passive: true });
+    window.addEventListener('resize', atualizar);
+    atualizar();
   }
 })();
 </script>
