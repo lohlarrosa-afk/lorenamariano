@@ -628,12 +628,34 @@
   .reveal.in{opacity:1;transform:none}
 
   /* ============ RESPONSIVO ============
-     Abaixo de 961px o hero fica empilhado (texto centralizado em cima,
-     fotos embaixo) — a versão lado a lado só liga a partir de 961px, ver
-     a media query logo depois de ".hero-actions" acima. */
+     Abaixo de 961px a versão lado a lado desliga (só a partir de 961px,
+     ver a media query logo depois de ".hero-actions" acima). Decisão
+     dela em 15/09/2026: nesse intervalo as fotos NÃO ficam empilhadas
+     embaixo do texto — viram fundo, sobrepostas ao texto (".hero-grid"
+     vira position:relative, ".hero-photos" cobre o mesmo espaço do texto
+     via inset:0), do mesmo jeito "embaralhado" de sempre (mesmo
+     .floating-wrap/.float-el, sem paralaxe porque não tem mouse). Pra
+     dar contraste pro texto por cima: opacidade reduzida nas fotos +
+     gradiente escuro (".hero-photos::after") + text-shadow no texto.
+     Isso é diferente do que ela pediu pra tirar em 14/09 (fundo cheio
+     rotativo cobrindo a seção inteira) — aqui é a mesma pilha de fotos
+     pequenas e giradas que já existe no desktop, só que atrás do texto
+     em vez de do lado. */
   @media(max-width:960px){
     .foot-grid{grid-template-columns:1fr 1fr;gap:40px 32px}
     .hero{padding:118px 0 60px;min-height:88vh;min-height:88svh}
+    .hero-grid{display:block;position:relative}
+    .hero-content{position:relative;z-index:2}
+    .hero-photos{
+      position:absolute;inset:0;height:auto;z-index:1;pointer-events:none;
+    }
+    .hero-photos::after{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(ellipse 85% 65% at 50% 45%,
+        rgba(11,11,12,.5) 0%, rgba(11,11,12,.82) 55%, rgba(11,11,12,.95) 100%);
+    }
+    .floating-wrap{position:absolute;inset:0;opacity:.55}
+    .hero .label,.hero-h1,.hero .lead{text-shadow:0 2px 22px rgba(0,0,0,.85)}
     .size-c{width:130px;height:180px}
     .svc-big-grid{grid-template-columns:repeat(3,1fr)}
     .svc-big{padding:32px 20px}
@@ -654,15 +676,10 @@
     .foot-grid{grid-template-columns:1fr;gap:36px}
     .wrap{padding:0 20px}
     .hero{min-height:82vh;min-height:82svh}
-    /* Sem mouse pra paralaxe fazer sentido, e posição espalhada em %
-       fica apertada em tela estreita: no celular vira grade simples,
-       o JS de paralaxe continua registrado mas não muda nada sem ponteiro. */
-    .hero-photos{height:auto}
-    .floating-wrap{
-      position:static;display:flex;flex-wrap:wrap;
-      justify-content:center;gap:12px;padding:32px 20px;
-    }
-    .float-el{position:static !important;transform:none !important}
+    /* Sem mouse pra paralaxe fazer sentido, mas as fotos continuam
+       espalhadas/giradas atrás do texto (herdado do breakpoint de 960px
+       acima) — só encolhe o tamanho delas pra caber melhor numa tela
+       estreita. */
     .size-a,.size-b{width:104px;height:104px}
     .size-c{width:104px;height:140px}
     .stats{grid-template-columns:1fr}
