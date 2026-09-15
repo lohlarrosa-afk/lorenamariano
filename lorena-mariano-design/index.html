@@ -351,14 +351,31 @@
 
 <!-- ============ EU VIVO O ESPORTE ============
      Evolução da antiga seção "Sobre (resumo)": mesmo link pra história
-     completa em sobre.html, com o headline pessoal que ela pediu. Só a
-     foto dela (pediu pra tirar a segunda foto, de bastidor, em 15/09). -->
+     completa em sobre.html, com o headline pessoal que ela pediu.
+     Atualizado em 15/09/2026: em vez de só a foto ao lado do texto (como
+     ficou depois de tirar a segunda foto de bastidor), ela mandou uma
+     referência (componente "portfolio-hero", React) com o nome em letras
+     gigantes e a foto redonda encaixada no meio, entre as duas linhas —
+     tipo uma assinatura. Perguntei se era pra isso SUBSTITUIR o título
+     "Eu vivo o esporte..." ou ENTRAR como peça nova antes dele — ela
+     escolheu manter o título e o parágrafo como estão, com a assinatura
+     acima. Recriado em CSS puro (sem React): ".sc-signature" é só duas
+     linhas de texto com a foto em "position:absolute" centralizada entre
+     elas — o "encaixe" é a foto sobrepondo o espaço entre as duas linhas,
+     não um recorte real da letra.
+     "img/sobre-lorena-assinatura.jpg" é um recorte fechado no rosto/ombro
+     de "img/sobre-lorena.jpg" (a foto original, de corpo inteiro em
+     contraluz) — só pra essa moldura oval pequena; o retrato original
+     inteiro continua sem uso neste momento, mas não foi apagado. -->
 <section id="sobre" class="sobre-curto">
-  <div class="wrap sc-grid reveal">
-    <div class="sc-foto">
-      <img class="vintage-photo" src="img/sobre-lorena.jpg"
-           alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time"
-           width="800" height="1071" loading="lazy" />
+  <div class="wrap reveal">
+    <div class="sc-signature">
+      <span class="sc-sig-line">Lorena</span>
+      <span class="sc-sig-photo">
+        <img class="vintage-photo" src="img/sobre-lorena-assinatura.jpg"
+             alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time" loading="lazy" />
+      </span>
+      <span class="sc-sig-line">Mariano</span>
     </div>
     <div class="sc-texto">
       <span class="label label-rule">Quem está por trás</span>
