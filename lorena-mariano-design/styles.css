@@ -323,7 +323,7 @@
   .svc-cta{margin-top:48px;display:flex;justify-content:center}
 
   /* ============ CASES ============ */
-  .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:8px}
+  .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:8px}
   .case{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-2)}
   .case-img{aspect-ratio:4/3;background:var(--surface)}
   .case-img img{width:100%;height:100%;object-fit:cover}
