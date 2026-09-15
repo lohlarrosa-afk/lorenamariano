@@ -88,64 +88,66 @@
 
 <!-- ============ HERO ============
      Decisão da Lorena (14/09/2026): tirar as fotos do fundo do hero — não
-     queria mais "fotos passando de fundo". O hero agora é só tipografia,
-     centralizada, sobre o fundo escuro com grão. As fotos reais dela
-     ganharam a própria vitrine logo abaixo (ver ".floating-gallery"). -->
+     queria mais "fotos passando de fundo". Virou só tipografia por um
+     tempo, com as fotos reais numa vitrine própria logo abaixo.
+     Atualizado em 15/09/2026: a pedido dela, a vitrine (mesmas fotos,
+     mesmo mecanismo de paralaxe/"embaralhado") voltou pra dentro do hero
+     — mas como coluna ao lado do texto (".hero-photos"), não como fundo.
+     Em telas grandes vira duas colunas lado a lado; no celular e tablet
+     (abaixo de 961px) continua empilhado, texto centralizado em cima e
+     fotos como grade simples embaixo — mesmo comportamento de sempre. -->
 <section class="hero">
-  <div class="wrap hero-content">
-    <span class="label reveal">Marketing esportivo</span>
-    <h1 class="display hero-h1 reveal">Marketing esportivo<br />para quem vive o jogo.</h1>
-    <p class="lead reveal">
-      Design, conteúdo e presença digital para times, atletas e projetos esportivos.
-    </p>
-    <div class="hero-actions reveal">
-      <a href="#cases" class="btn btn-primary">
-        Conheça meu trabalho
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-      </a>
-      <a href="#monte-seu-projeto" class="btn btn-ghost">
-        Monte seu projeto
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-      </a>
+  <div class="wrap hero-grid">
+    <div class="hero-content">
+      <span class="label reveal">Marketing esportivo</span>
+      <h1 class="display hero-h1 reveal">Marketing esportivo<br />para quem vive o jogo.</h1>
+      <p class="lead reveal">
+        Design, conteúdo e presença digital para times, atletas e projetos esportivos.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#cases" class="btn btn-primary">
+          Conheça meu trabalho
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </a>
+        <a href="#monte-seu-projeto" class="btn btn-ghost">
+          Monte seu projeto
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </a>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- ============ VITRINE (fotos flutuantes) ============
-     Decisão da Lorena (14/09/2026): fotos mais juntas e "embaralhadas"
-     (cada uma com uma leve rotação, tipo pilha de fotos jogada na mesa),
-     que se mexem quando o mouse passa por cima (paralaxe — "depth" maior
-     se move mais). Tudo real, nada de banco de imagem.
-     A rotação de repouso mora em data-rotate (o JS lê e recompõe o
-     transform a cada movimento de mouse, sem apagar a rotação) — troque
-     ali se quiser outro ângulo. No celular, sem mouse fazendo sentido,
-     vira grade simples sem rotação (ver breakpoint em styles.css).
-     Pra trocar uma foto: troque o src/alt do <img>; pra mudar o tamanho,
-     troque a classe size-a/size-b/size-c; pra reordenar quem fica por
-     cima na pilha, mude a ordem dos blocos (o de baixo no HTML fica por
-     cima visualmente). -->
-<section class="floating-gallery" aria-label="Trabalhos em destaque">
-  <div class="floating-wrap" id="floatingWrap">
-    <div class="float-el size-b reveal" style="top:20%;left:24%" data-depth="0.6" data-rotate="-7">
-      <img class="vintage-photo" src="img/hero/02-comemoracao-gol.jpg" alt="Jogador comemorando de braços abertos em frente ao gol" loading="lazy" />
-    </div>
-    <div class="float-el size-c reveal" style="top:8%;left:38%" data-depth="1" data-rotate="5">
-      <img class="vintage-photo" src="img/hero/03-abraco-time.jpg" alt="Time reunido em abraço antes da partida" loading="lazy" />
-    </div>
-    <div class="float-el size-a reveal" style="top:14%;left:58%" data-depth="0.5" data-rotate="-11">
-      <img class="vintage-photo" src="img/hero/07-quarteto.jpg" alt="Quatro jogadores abraçados comemorando a vitória" loading="lazy" />
-    </div>
-    <div class="float-el size-b reveal" style="top:6%;left:64%" data-depth="1.2" data-rotate="9">
-      <img class="vintage-photo" src="img/hero/09-craque-da-bola.jpg" alt="Jogador premiado como craque da bola com o troféu nas mãos" loading="lazy" />
-    </div>
-    <div class="float-el size-a reveal" style="top:58%;left:34%" data-depth="0.7" data-rotate="10">
-      <img class="vintage-photo" src="img/hero/06-treinador.jpg" alt="Treinador de boné acompanhando o jogo de perfil" loading="lazy" />
-    </div>
-    <div class="float-el size-b reveal" style="top:46%;left:22%" data-depth="1.1" data-rotate="-6">
-      <img class="vintage-photo" src="img/hero/12-comemora-preto.jpg" alt="Jogador de uniforme preto e amarelo comemorando em campo" loading="lazy" />
-    </div>
-    <div class="float-el size-c reveal" style="top:32%;left:52%" data-depth="0.8" data-rotate="-4">
-      <img class="vintage-photo" src="img/hero/14-qualidade-4-anos.jpg" alt="Peça de aniversário de quatro anos do Qualidade Fut7" loading="lazy" />
+    <!-- Fotos reais espalhadas, cada uma numa <div class="float-el"> que o
+         JS translada em paralaxe conforme o mouse se move (mais "depth" =
+         mais movimento) — a translação mora na div, o hover-scale mora só
+         na <img>, pra não brigarem pelo mesmo transform.
+         Pra trocar uma foto: troque o src/alt do <img>; pra mudar o
+         tamanho, troque a classe size-a/size-b/size-c; pra reordenar quem
+         fica por cima na pilha, mude a ordem dos blocos (o de baixo no
+         HTML fica por cima visualmente). -->
+    <div class="hero-photos" aria-label="Trabalhos em destaque">
+      <div class="floating-wrap" id="floatingWrap">
+        <div class="float-el size-b reveal" style="top:20%;left:24%" data-depth="0.6" data-rotate="-7">
+          <img class="vintage-photo" src="img/hero/02-comemoracao-gol.jpg" alt="Jogador comemorando de braços abertos em frente ao gol" loading="lazy" />
+        </div>
+        <div class="float-el size-c reveal" style="top:8%;left:38%" data-depth="1" data-rotate="5">
+          <img class="vintage-photo" src="img/hero/03-abraco-time.jpg" alt="Time reunido em abraço antes da partida" loading="lazy" />
+        </div>
+        <div class="float-el size-a reveal" style="top:14%;left:58%" data-depth="0.5" data-rotate="-11">
+          <img class="vintage-photo" src="img/hero/07-quarteto.jpg" alt="Quatro jogadores abraçados comemorando a vitória" loading="lazy" />
+        </div>
+        <div class="float-el size-b reveal" style="top:6%;left:64%" data-depth="1.2" data-rotate="9">
+          <img class="vintage-photo" src="img/hero/09-craque-da-bola.jpg" alt="Jogador premiado como craque da bola com o troféu nas mãos" loading="lazy" />
+        </div>
+        <div class="float-el size-a reveal" style="top:58%;left:34%" data-depth="0.7" data-rotate="10">
+          <img class="vintage-photo" src="img/hero/06-treinador.jpg" alt="Treinador de boné acompanhando o jogo de perfil" loading="lazy" />
+        </div>
+        <div class="float-el size-b reveal" style="top:46%;left:22%" data-depth="1.1" data-rotate="-6">
+          <img class="vintage-photo" src="img/hero/12-comemora-preto.jpg" alt="Jogador de uniforme preto e amarelo comemorando em campo" loading="lazy" />
+        </div>
+        <div class="float-el size-c reveal" style="top:32%;left:52%" data-depth="0.8" data-rotate="-4">
+          <img class="vintage-photo" src="img/hero/14-qualidade-4-anos.jpg" alt="Peça de aniversário de quatro anos do Qualidade Fut7" loading="lazy" />
+        </div>
+      </div>
     </div>
   </div>
 </section>
