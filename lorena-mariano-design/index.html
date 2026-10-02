@@ -87,67 +87,67 @@
 <main>
 
 <!-- ============ HERO ============
-     Decisão da Lorena (14/09/2026): tirar as fotos do fundo do hero — não
-     queria mais "fotos passando de fundo". Virou só tipografia por um
-     tempo, com as fotos reais numa vitrine própria logo abaixo.
-     Atualizado em 15/09/2026: a pedido dela, a vitrine (mesmas fotos,
-     mesmo mecanismo de paralaxe/"embaralhado") voltou pra dentro do hero
-     — mas como coluna ao lado do texto (".hero-photos"), não como fundo.
-     Em telas grandes vira duas colunas lado a lado; no celular e tablet
-     (abaixo de 961px) continua empilhado, texto centralizado em cima e
-     fotos como grade simples embaixo — mesmo comportamento de sempre. -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-content">
-      <span class="label reveal">Marketing esportivo</span>
-      <h1 class="display hero-h1 reveal">Marketing esportivo<br />para quem vive o jogo.</h1>
-      <p class="lead reveal">
-        Design, conteúdo e presença digital para times, atletas e projetos esportivos.
-      </p>
-      <div class="hero-actions reveal">
-        <a href="#cases" class="btn btn-primary">
-          Conheça meu trabalho
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        </a>
-        <a href="#monte-seu-projeto" class="btn btn-ghost">
-          Monte seu projeto
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        </a>
-      </div>
-    </div>
+     Reconstruída em 01/10/2026 a pedido dela: virou foto cheia de fundo
+     (holofotes/torcida em P&B, img/hero/hero-holofotes.jpg) com a marca
+     centralizada por cima e um link "vamos trabalhar" embaixo, no estilo
+     do site de referência (alturas® — texto sublinhado + seta, sem
+     botão). A marca usada aqui é só o símbolo (estrela amarela, sem
+     nome/tagline) — passou por uma versão com "Quatro Linhas" e depois
+     "Lorena Mariano" por extenso no mesmo dia antes dela decidir deixar
+     só o ícone, maior. Texto/CTAs antigos e a vitrine de fotos saíram do
+     hero (continuam acessíveis pelo menu). -->
+<section class="hero hero-image">
+  <div class="hero-bg">
+    <img src="img/hero/hero-holofotes.jpg" alt="Silhueta de torre de holofotes e torcida em um estádio, em preto e branco" />
+  </div>
+  <div class="hero-brand reveal">
+    <img class="hero-logo" src="logo/estrela-marca.png" alt="Lorena Mariano" />
+    <a href="#contato" class="hero-work-link">
+      Vamos trabalhar
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+    </a>
+  </div>
+</section>
 
-    <!-- Fotos reais espalhadas, cada uma numa <div class="float-el"> que o
-         JS translada em paralaxe conforme o mouse se move (mais "depth" =
-         mais movimento) — a translação mora na div, o hover-scale mora só
-         na <img>, pra não brigarem pelo mesmo transform.
-         Pra trocar uma foto: troque o src/alt do <img>; pra mudar o
-         tamanho, troque a classe size-a/size-b/size-c; pra reordenar quem
-         fica por cima na pilha, mude a ordem dos blocos (o de baixo no
-         HTML fica por cima visualmente). -->
-    <div class="hero-photos" aria-label="Trabalhos em destaque">
-      <div class="floating-wrap" id="floatingWrap">
-        <div class="float-el size-b reveal" style="top:20%;left:24%" data-depth="0.6" data-rotate="-7">
-          <img class="vintage-photo" src="img/hero/02-comemoracao-gol.jpg" alt="Jogador comemorando de braços abertos em frente ao gol" loading="lazy" />
-        </div>
-        <div class="float-el size-c reveal" style="top:8%;left:38%" data-depth="1" data-rotate="5">
-          <img class="vintage-photo" src="img/hero/03-abraco-time.jpg" alt="Time reunido em abraço antes da partida" loading="lazy" />
-        </div>
-        <div class="float-el size-a reveal" style="top:14%;left:58%" data-depth="0.5" data-rotate="-11">
-          <img class="vintage-photo" src="img/hero/07-quarteto.jpg" alt="Quatro jogadores abraçados comemorando a vitória" loading="lazy" />
-        </div>
-        <div class="float-el size-b reveal" style="top:6%;left:64%" data-depth="1.2" data-rotate="9">
-          <img class="vintage-photo" src="img/hero/09-craque-da-bola.jpg" alt="Jogador premiado como craque da bola com o troféu nas mãos" loading="lazy" />
-        </div>
-        <div class="float-el size-a reveal" style="top:58%;left:34%" data-depth="0.7" data-rotate="10">
-          <img class="vintage-photo" src="img/hero/06-treinador.jpg" alt="Treinador de boné acompanhando o jogo de perfil" loading="lazy" />
-        </div>
-        <div class="float-el size-b reveal" style="top:46%;left:22%" data-depth="1.1" data-rotate="-6">
-          <img class="vintage-photo" src="img/hero/12-comemora-preto.jpg" alt="Jogador de uniforme preto e amarelo comemorando em campo" loading="lazy" />
-        </div>
-        <div class="float-el size-c reveal" style="top:32%;left:52%" data-depth="0.8" data-rotate="-4">
-          <img class="vintage-photo" src="img/hero/14-qualidade-4-anos.jpg" alt="Peça de aniversário de quatro anos do Qualidade Fut7" loading="lazy" />
-        </div>
-      </div>
+<!-- ============ EU VIVO O ESPORTE ============
+     Evolução da antiga seção "Sobre (resumo)": mesmo link pra história
+     completa em sobre.html, com o headline pessoal que ela pediu.
+     Atualizado em 15/09/2026: em vez de só a foto ao lado do texto (como
+     ficou depois de tirar a segunda foto de bastidor), ela mandou uma
+     referência (componente "portfolio-hero", React) com o nome em letras
+     gigantes e a foto redonda encaixada no meio, entre as duas linhas —
+     tipo uma assinatura. Perguntei se era pra isso SUBSTITUIR o título
+     "Eu vivo o esporte..." ou ENTRAR como peça nova antes dele — ela
+     escolheu manter o título e o parágrafo como estão, com a assinatura
+     acima. Recriado em CSS puro (sem React): ".sc-signature" é só duas
+     linhas de texto com a foto em "position:absolute" centralizada entre
+     elas — o "encaixe" é a foto sobrepondo o espaço entre as duas linhas,
+     não um recorte real da letra.
+     "img/sobre-lorena-assinatura.jpg" é um recorte fechado no rosto/ombro
+     de "img/sobre-lorena.jpg" (a foto original, de corpo inteiro em
+     contraluz) — só pra essa moldura oval pequena; o retrato original
+     inteiro continua sem uso neste momento, mas não foi apagado.
+     Reposicionada em 02/10/2026 pra logo abaixo da hero, a pedido dela
+     (antes ficava entre Cases e Quem já confiou). -->
+<section id="sobre" class="sobre-curto">
+  <div class="wrap reveal">
+    <div class="sc-signature">
+      <span class="sc-sig-line">Lorena</span>
+      <span class="sc-sig-photo">
+        <img class="vintage-photo" src="img/sobre-lorena-assinatura.jpg"
+             alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time" loading="lazy" />
+      </span>
+      <span class="sc-sig-line">Mariano</span>
+    </div>
+    <div class="sc-texto">
+      <span class="label label-rule">Quem está por trás</span>
+      <h2 class="display h2 sc-h">Eu vivo o esporte.<br />Não só trabalho com ele.</h2>
+      <p>
+        Minha relação com o esporte foi acontecendo na prática. Entre times,
+        jogos, campeonatos, bastidores e projetos, fui percebendo que existia
+        muito mais por trás de uma partida do que os 90 minutos dentro de campo.
+      </p>
+      <a class="sc-link" href="sobre.html">Ler a história completa →</a>
     </div>
   </div>
 </section>
@@ -177,55 +177,6 @@
     -->
   </div>
 </div>
-
-<!-- ============ POSICIONAMENTO ============
-     Só tipografia sobre o fundo escuro com grão — sem foto, sem ícone.
-     É a seção conceitual, o "porquê" antes do "o quê" (Serviços). -->
-<!-- ============ POSICIONAMENTO ============
-     Ideia dela (15/09/2026): fotos em cima do texto, que se espalham
-     conforme rola a página, revelando a frase por baixo. Só roda em
-     desktop com mouse (ver JS: pointer:fine + min-width) — no celular e
-     em quem já tinha isso antes de eu mexer, fica exatamente a versão só
-     de tipografia de sempre. Nada aqui quebra se o JS não rodar: as fotos
-     começam com "display:none" no CSS e só aparecem quando o próprio JS
-     confirma que vai controlar a posição delas (classe "js-scrub"). -->
-<section id="posicionamento" class="stance">
-  <div class="stance-scroll" id="stanceScroll">
-    <div class="stance-stage">
-      <div class="stance-photos" id="stancePhotos" aria-hidden="true">
-        <div class="stance-photo" data-sx="-3" data-sy="-2" data-srot="-8" data-sscale="0.4" data-ex="-32" data-ey="-20" data-erot="-3" data-escale="0.85">
-          <img src="img/hero/01-prancheta.jpg" alt="" loading="lazy" />
-        </div>
-        <div class="stance-photo" data-sx="2" data-sy="-3" data-srot="10" data-sscale="0.42" data-ex="30" data-ey="-22" data-erot="4" data-escale="0.9">
-          <img src="img/hero/04-goleiro.jpg" alt="" loading="lazy" />
-        </div>
-        <div class="stance-photo" data-sx="-2" data-sy="3" data-srot="-6" data-sscale="0.4" data-ex="-36" data-ey="18" data-erot="5" data-escale="0.8">
-          <img src="img/hero/05-banco.jpg" alt="" loading="lazy" />
-        </div>
-        <div class="stance-photo" data-sx="3" data-sy="2" data-srot="7" data-sscale="0.42" data-ex="34" data-ey="20" data-erot="-5" data-escale="0.85">
-          <img src="img/hero/08-base.jpg" alt="" loading="lazy" />
-        </div>
-        <div class="stance-photo" data-sx="0" data-sy="-4" data-srot="3" data-sscale="0.45" data-ex="-6" data-ey="-34" data-erot="2" data-escale="0.7">
-          <img src="img/hero/10-elenco.jpg" alt="" loading="lazy" />
-        </div>
-        <div class="stance-photo" data-sx="0" data-sy="4" data-srot="-3" data-sscale="0.45" data-ex="8" data-ey="34" data-erot="-2" data-escale="0.7">
-          <img src="img/hero/13-perfil-noite.jpg" alt="" loading="lazy" />
-        </div>
-      </div>
-      <div class="wrap stance-wrap reveal" id="stanceText">
-        <span class="label label-rule stance-label">Por que presença</span>
-        <h2 class="display h2 stance-h">
-          Seu time não precisa de<br />mais uma arte. Precisa de <span class="hl">presença</span>.
-        </h2>
-        <p class="lead stance-p">
-          Um time é mais do que 11 jogadores em campo. É comunidade, identidade,
-          torcida e história. Meu trabalho é transformar tudo isso em uma
-          presença visual que as pessoas reconhecem, acompanham e querem vestir.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ SERVIÇOS ============
      Três frentes, não uma lista de peças. Numeração em vez de ícone —
@@ -345,47 +296,6 @@
 
     <div class="svc-cta reveal">
       <a href="cases.html" class="sc-link">Ver todos os cases →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ EU VIVO O ESPORTE ============
-     Evolução da antiga seção "Sobre (resumo)": mesmo link pra história
-     completa em sobre.html, com o headline pessoal que ela pediu.
-     Atualizado em 15/09/2026: em vez de só a foto ao lado do texto (como
-     ficou depois de tirar a segunda foto de bastidor), ela mandou uma
-     referência (componente "portfolio-hero", React) com o nome em letras
-     gigantes e a foto redonda encaixada no meio, entre as duas linhas —
-     tipo uma assinatura. Perguntei se era pra isso SUBSTITUIR o título
-     "Eu vivo o esporte..." ou ENTRAR como peça nova antes dele — ela
-     escolheu manter o título e o parágrafo como estão, com a assinatura
-     acima. Recriado em CSS puro (sem React): ".sc-signature" é só duas
-     linhas de texto com a foto em "position:absolute" centralizada entre
-     elas — o "encaixe" é a foto sobrepondo o espaço entre as duas linhas,
-     não um recorte real da letra.
-     "img/sobre-lorena-assinatura.jpg" é um recorte fechado no rosto/ombro
-     de "img/sobre-lorena.jpg" (a foto original, de corpo inteiro em
-     contraluz) — só pra essa moldura oval pequena; o retrato original
-     inteiro continua sem uso neste momento, mas não foi apagado. -->
-<section id="sobre" class="sobre-curto">
-  <div class="wrap reveal">
-    <div class="sc-signature">
-      <span class="sc-sig-line">Lorena</span>
-      <span class="sc-sig-photo">
-        <img class="vintage-photo" src="img/sobre-lorena-assinatura.jpg"
-             alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time" loading="lazy" />
-      </span>
-      <span class="sc-sig-line">Mariano</span>
-    </div>
-    <div class="sc-texto">
-      <span class="label label-rule">Quem está por trás</span>
-      <h2 class="display h2 sc-h">Eu vivo o esporte.<br />Não só trabalho com ele.</h2>
-      <p>
-        Minha relação com o esporte foi acontecendo na prática. Entre times,
-        jogos, campeonatos, bastidores e projetos, fui percebendo que existia
-        muito mais por trás de uma partida do que os 90 minutos dentro de campo.
-      </p>
-      <a class="sc-link" href="sobre.html">Ler a história completa →</a>
     </div>
   </div>
 </section>
@@ -696,44 +606,6 @@
       el.style.transitionDelay = ((i % 3) * 0.07) + 's';
       io.observe(el);
     });
-  }
-
-  /* Vitrine de fotos: "embaralhada" parada (cada uma com sua rotação de
-     data-rotate) e paralaxe seguindo o mouse por cima.
-     A rotação é parte do MESMO transform que o paralaxe usa (translate
-     + rotate juntos na mesma string) — se fossem dois transforms
-     separados um apagaria o outro, por isso monta tudo aqui dentro,
-     inclusive no estado de repouso. O hover-scale de cada foto é só CSS
-     e mora na <img>, não nesta div, então não briga com nada disso.
-     Sem mouse (celular) isso simplesmente não dispara; o CSS já vira
-     grade estática sem rotação nesse caso (ver responsivo).
-     Chegou a rodar na Motion (physics de mola) — voltou pra cá em
-     15/09/2026 porque não deu pra confirmar de forma confiável que
-     animate() repetido no mesmo elemento se comporta bem (testes deram
-     resultado inconsistente; pode ser só limitação do ambiente de teste
-     automatizado, mas não valia arriscar uma vitrine que já funcionava). */
-  var floatingWrap = document.getElementById('floatingWrap');
-  if (floatingWrap) {
-    var floatEls = Array.prototype.slice.call(floatingWrap.querySelectorAll('.float-el'));
-    var setFloatTransform = function(el, mx, my){
-      var rot = el.dataset.rotate || 0;
-      el.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0) rotate(' + rot + 'deg)';
-    };
-    floatEls.forEach(function(el){ setFloatTransform(el, 0, 0); });
-    if (!reduce) {
-      floatingWrap.addEventListener('mousemove', function(e){
-        var rect = floatingWrap.getBoundingClientRect();
-        var cx = (e.clientX - rect.left) / rect.width - 0.5;
-        var cy = (e.clientY - rect.top) / rect.height - 0.5;
-        floatEls.forEach(function(el){
-          var depth = parseFloat(el.dataset.depth) || 1;
-          setFloatTransform(el, (cx * depth * 46).toFixed(1), (cy * depth * 46).toFixed(1));
-        });
-      });
-      floatingWrap.addEventListener('mouseleave', function(){
-        floatEls.forEach(function(el){ setFloatTransform(el, 0, 0); });
-      });
-    }
   }
 
   /* Contagem dos indicadores.
@@ -1078,60 +950,5 @@
 })();
 </script>
 
-<script>
-/* Posicionamento: fotos que cobrem o texto e se espalham conforme rola,
-   revelando a frase por baixo. Tentei usar a Motion (motiondivision/motion,
-   o antigo "Framer Motion", CDN, sem npm/build — ver conversa) tanto pro
-   paralaxe da vitrine quanto pra isso aqui, mas não deu pra confirmar de
-   forma confiável nenhum dos dois: o motor de animação dela depende de
-   requestAnimationFrame, que o Chrome pausa em aba sem foco, e não tive
-   como garantir (nem reproduzir de forma estável) que funciona fora
-   dessa situação específica de teste. Pra não arriscar publicar um efeito
-   que não consigo verificar, isto aqui é JavaScript puro — o mesmo cálculo
-   de posição de scroll usado em qualquer parallax "scroll-linked" comum
-   (getBoundingClientRect a cada evento de scroll), sem terceiro por baixo. */
-(function(){
-  'use strict';
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var isDesktopMouse = window.matchMedia('(pointer:fine) and (min-width:961px)').matches;
-  var stanceScroll = document.getElementById('stanceScroll');
-
-  if (stanceScroll && !reduce && isDesktopMouse) {
-    var photos = Array.prototype.slice.call(stanceScroll.querySelectorAll('.stance-photo'));
-    var textEl = document.getElementById('stanceText');
-    var lerp = function(a, b, t){ return a + (b - a) * t; };
-
-    var aplicar = function(t){
-      photos.forEach(function(el){
-        var d = el.dataset;
-        var x = lerp(parseFloat(d.sx), parseFloat(d.ex), t);
-        var y = lerp(parseFloat(d.sy), parseFloat(d.ey), t);
-        var rot = lerp(parseFloat(d.srot), parseFloat(d.erot), t);
-        var scale = lerp(parseFloat(d.sscale), parseFloat(d.escale), t);
-        el.style.transform = 'translate(-50%,-50%) translate(' + x.toFixed(2) + 'vw,' + y.toFixed(2) + 'vh) rotate(' + rot.toFixed(1) + 'deg) scale(' + scale.toFixed(3) + ')';
-      });
-      if (textEl) textEl.style.opacity = String(Math.min(t / 0.55, 1));
-    };
-
-    var atualizar = function(){
-      var rect = stanceScroll.getBoundingClientRect();
-      /* progresso 0→1 ao longo da altura extra da seção (altura total
-         menos uma tela cheia, que é o trecho que fica "grudado"). */
-      var percorrivel = rect.height - window.innerHeight;
-      var p = percorrivel > 0 ? (-rect.top) / percorrivel : 0;
-      p = Math.min(Math.max(p, 0), 1);
-      /* segura um pouco no início e no fim: não começa a espalhar assim
-         que a seção entra na tela, nem termina cedo demais. */
-      var t = Math.min(Math.max((p - 0.08) / 0.8, 0), 1);
-      aplicar(t);
-    };
-
-    stanceScroll.classList.add('js-scrub');
-    window.addEventListener('scroll', atualizar, { passive: true });
-    window.addEventListener('resize', atualizar);
-    atualizar();
-  }
-})();
-</script>
 </body>
 </html>
