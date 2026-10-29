@@ -1,44 +1,66 @@
   /* ============ TOKENS ============
-     Site sempre escuro, por decisão da Lorena (13/09/2026) — não depende
-     mais do prefers-color-scheme do sistema. Mesma paleta de sempre
-     (preto, cinza, branco, amarelo #f6d512), só que o preto agora é o
-     fundo permanente, não uma variação de modo escuro do sistema.
-     O amarelo nunca é texto sobre fundo claro. Ele é fundo de botão,
-     marcador e filete, sempre com texto preto por cima.
-     --font-display: fonte dos títulos. Trocar aqui troca a página
-     inteira — hoje é a Bootzy (fonte grunge, ver @font-face abaixo). */
+     Reconstrução em 29/10/2026: identidade nova inspirada em
+     barbarafroes.com, a pedido dela — paleta, fonte, layout e animação
+     seguindo essa referência (ver memória do projeto). Saiu o preto/cinza
+     neutro + Bootzy grunge; entrou um preto mais frio com texto creme e
+     título em serifa fina editorial (Fraunces, via Google Fonts — a
+     fonte da referência, "PP Editorial Old", é paga, então troquei por
+     uma gratuita de espírito parecido). O rosa vibrante da referência foi
+     testado e trocado de volta pelo amarelo da marca (pedido dela em
+     29/10/2026) — então o acento de botão/link voltou a ser o mesmo
+     amarelo de sempre, só que agora sobre o preto mais frio.
+     --light-bg/--light-ink: seções claras alternadas (igual à
+     referência, que intercala preto e cinza-claro entre hero e serviços). */
   :root{
     color-scheme: dark;
-    --bg:#0B0B0C;
-    --surface:#141416;
-    --surface-2:#141416;
-    --ink:#F2F2F3;
-    --muted:#9C9CA3;
-    --line:rgba(242,242,243,.15);
+    --bg:#050508;
+    --surface:#0D0D11;
+    --surface-2:#111115;
+    --ink:#D8D5CC;
+    --muted:#8C8A82;
+    --line:rgba(216,213,204,.14);
     --accent:#f6d512;
     --accent-ink:#101011;
 
-    --band-bg:#141416;
-    --band-ink:#F2F2F3;
-    --band-muted:#9C9CA3;
+    --light-bg:#EBE9E3;
+    --light-surface:#DFDCD4;
+    --light-ink:#0A0A0A;
+    --light-muted:#6B695F;
+    --light-line:rgba(10,10,10,.12);
+    /* amarelo puro (--accent) não tem contraste o suficiente como TEXTO
+       sobre o fundo claro das seções "svc-light" — essa versão mais
+       escura (dourado) é só pra link/texto em cima de --light-bg;
+       --accent continua o amarelo puro em botão preenchido e sobre o
+       fundo escuro, onde o contraste não é problema. */
+    --accent-on-light:#8A6D08;
 
-    --field-bg:#0B0B0C;
-    --field-line:rgba(242,242,243,.22);
-    --field-placeholder:#9C9CA3;
+    --band-bg:#0D0D11;
+    --band-ink:#D8D5CC;
+    --band-muted:#8C8A82;
 
-    --header-bg:rgba(11,11,12,.90);
+    --field-bg:#050508;
+    --field-line:rgba(216,213,204,.22);
+    --field-placeholder:#8C8A82;
+
+    --header-bg:rgba(5,5,8,.88);
     --radius:18px;
     --radius-lg:24px;
     --maxw:1240px;
 
-    --font-display:'Bootzy','Archivo',sans-serif;
+    --font-display:'Fraunces','Georgia',serif;
+    --font-sans:'Archivo','Inter',sans-serif;
   }
 
-  /* Fonte grunge dos títulos. Arquivo local em fonts/BootzyTM.ttf —
-     única variação (normal/normal), sem pesos ou itálico. */
+  /* Furuko: só no nome da hero (".hero-name"), a pedido dela em
+     29/10/2026 — não é o --font-display geral, o resto do site
+     continua em Fraunces. ATENÇÃO: o arquivo (fonts/Furuko.ttf) tem
+     licença SÓ PARA USO PESSOAL (ver README da Funtype Foundry) — ela
+     decidiu aplicar mesmo assim por enquanto e resolver a licença
+     comercial depois. Não esquecer isso se for perguntada sobre a fonte
+     do nome, ou se for reaproveitar esse arquivo em outro lugar. */
   @font-face{
-    font-family:'Bootzy';
-    src:url('fonts/BootzyTM.ttf') format('truetype');
+    font-family:'Furuko';
+    src:url('fonts/Furuko.ttf') format('truetype');
     font-weight:normal;font-style:normal;font-display:swap;
   }
 
@@ -90,6 +112,12 @@
   .display{
     font-family:var(--font-display);font-weight:400;
     text-transform:uppercase;letter-spacing:-.01em;line-height:.9;
+    /* Rede de segurança: em telas estreitas, um título grande pode ficar
+       maior que a viewport por pouco (alguns px) e cortar na borda em
+       vez de quebrar linha. Já resolvemos isso antes (era problema com
+       a fonte Moderniz) e a regra se perdeu numa reconstrução grande do
+       CSS — repondo aqui pra não voltar a acontecer com nenhuma fonte. */
+    overflow-wrap:break-word;word-break:break-word;
   }
   .h2{font-size:clamp(40px,5.6vw,78px)}
   .lead{color:var(--muted);font-size:16.5px;line-height:1.7;max-width:56ch}
@@ -174,46 +202,55 @@
   @media(max-width:1180px){ .rail{display:none} }
 
   /* ============ HERO ============
-     Reconstruída em 01/10/2026: foto cheia de fundo (.hero-bg), marca
-     centralizada por cima (.hero-brand > .hero-logo) e um link "vamos
-     trabalhar" embaixo dela, no estilo do site de referência (texto
-     sublinhado + seta, sem botão). A logo é só o símbolo da estrela
-     (sem nome/tagline) — decisão dela em 02/10/2026, depois de testar
-     versões com texto embaixo. Uma única camada — não tem mais variante
-     empilhada/separada pra mobile, só object-position ajustando o
-     enquadramento da foto. */
+     Reconstruída em 29/10/2026 inspirada em barbarafroes.com: nome
+     gigante em serifa fina (Fraunces) partido em duas linhas, retrato
+     dela sobreposto no meio, linhas finas verticais de grid por trás de
+     tudo. Nas telas estreitas (ver RESPONSIVO) isso vira empilhado e
+     estático — os cantos absolutos só fazem sentido com espaço sobrando
+     ao redor, que não existe no celular. */
   .hero{
     position:relative;min-height:100vh;min-height:100svh;
     display:flex;align-items:center;justify-content:center;
-    overflow:hidden;
+    padding:130px 40px 60px;overflow:hidden;
   }
-  .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-bg img{
-    display:block;width:100%;height:100%;object-fit:cover;
-    object-position:78% 35%;
+  .hero-grid-lines{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:calc(100% / 4) 100%;
   }
-  /* Escurece o centro (onde a marca fica) e as bordas, sem depender só da
-     vinheta global do .grain-overlay — essa foto tem céu claro no meio
-     que, sem isso, deixaria a logo e o link difíceis de ler. */
-  .hero-bg::after{
-    content:"";position:absolute;inset:0;
-    background:
-      radial-gradient(ellipse 65% 55% at 50% 58%, rgba(11,11,12,.55) 0%, transparent 70%),
-      linear-gradient(180deg, rgba(11,11,12,.55) 0%, transparent 28%, transparent 72%, rgba(11,11,12,.6) 100%);
+  .hero-kicker{
+    position:absolute;top:clamp(96px,15vh,150px);left:40px;z-index:2;
+    font-family:var(--font-sans);font-weight:600;font-size:12.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
   }
-  .hero-brand{
-    position:relative;z-index:1;display:flex;flex-direction:column;
-    align-items:center;gap:28px;text-align:center;
+  .hero-name-stack{position:relative;z-index:1;width:100%}
+  .hero-name{
+    font-family:'Furuko','Archivo',sans-serif;font-weight:normal;font-style:normal;
+    font-size:clamp(48px,10vw,155px);line-height:.95;letter-spacing:.01em;
+    text-transform:uppercase;color:var(--ink);
   }
-  .hero-logo{height:clamp(130px,22vw,220px);width:auto;filter:drop-shadow(0 6px 24px rgba(0,0,0,.6))}
+  .hero-name-l{display:block;text-align:left}
+  .hero-name-r{display:block;text-align:right}
+  .hero-photo{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:clamp(170px,18vw,300px);aspect-ratio:3/4;z-index:2;
+    box-shadow:0 30px 80px rgba(0,0,0,.65);
+  }
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-quote{
+    position:absolute;right:40px;bottom:clamp(92px,17vh,170px);z-index:2;
+    max-width:280px;text-align:right;font-family:var(--font-sans);
+    font-size:15px;line-height:1.5;color:var(--muted);
+  }
   .hero-work-link{
+    position:absolute;left:40px;bottom:clamp(56px,10vh,100px);z-index:2;
     display:inline-flex;align-items:center;gap:10px;
-    font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
+    font-family:var(--font-sans);font-weight:700;font-size:13px;
     letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
-    padding-bottom:10px;border-bottom:1px solid var(--ink);
-    text-shadow:0 2px 16px rgba(0,0,0,.7);transition:color .25s ease, border-color .25s ease;
+    padding-bottom:8px;border-bottom:1px solid var(--ink);
+    transition:color .25s ease, border-color .25s ease;
   }
-  .hero-work-link .ico{width:15px;height:15px;transition:transform .25s ease}
+  .hero-work-link .ico{width:14px;height:14px;transition:transform .25s ease}
   .hero-work-link:hover{color:var(--accent);border-color:var(--accent)}
   .hero-work-link:hover .ico{transform:translateX(4px)}
 
@@ -241,26 +278,65 @@
   /* ============ SEÇÕES ============ */
   section{padding:clamp(72px,9vw,116px) 0}
 
-  /* SERVIÇOS: três frentes grandes, divididas por filete — sem ícone, sem
-     cartão arredondado, mais editorial que a versão anterior de 5 chips. */
+  /* .svc-head: cabeçalho compartilhado (label + h2 + lead) usado em Cases,
+     Depoimentos e Monte seu projeto — não é exclusivo da seção Serviços,
+     não remover junto se a seção Serviços mudar de novo. */
   .svc-head{margin-bottom:44px;max-width:62ch}
   .svc-head .lead{margin-top:16px}
-  .svc-big-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+
+  /* SERVIÇOS: reconstruída em 29/10/2026 no formato da referência —
+     seção clara, cabeçalho em duas colunas, lista numerada de linhas
+     (não mais grid de 3 cartões). Ver nota no HTML sobre --accent-on-light. */
+  .svc-light{background:var(--light-bg);color:var(--light-ink)}
+  .svc-head-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    flex-wrap:wrap;gap:8px;margin-bottom:28px;
   }
-  .svc-big{padding:44px 32px;border-left:1px solid var(--line)}
-  .svc-big:first-child{border-left:0}
-  .svc-big-num{
-    font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;
-    letter-spacing:.06em;color:var(--accent);display:block;margin-bottom:18px;
+  .svc-eyebrow,.svc-subeyebrow{
+    font-family:var(--font-sans);font-size:13px;color:var(--light-muted);
   }
-  .svc-big h3{
-    font-family:var(--font-display);font-weight:400;text-transform:uppercase;
-    letter-spacing:0;line-height:1;font-size:clamp(23px,2.4vw,30px);margin-bottom:14px;
+  .svc-headline{
+    font-family:var(--font-sans);font-weight:500;color:var(--light-ink);
+    font-size:clamp(28px,3.6vw,46px);line-height:1.15;letter-spacing:-.01em;
+    margin-bottom:40px;
   }
-  .svc-big p{color:var(--muted);font-size:15px;line-height:1.65;max-width:36ch}
+  .svc-headline .dim{color:var(--light-muted)}
+  .svc-list{border-top:1px solid var(--light-line)}
+  .svc-row{border-bottom:1px solid var(--light-line)}
+  .svc-row-grid{
+    display:grid;grid-template-columns:60px 1fr;row-gap:18px;
+    align-items:start;padding:40px 0;
+  }
+  .svc-row-num{
+    font-family:var(--font-sans);font-size:13px;color:var(--light-muted);
+    grid-column:1;grid-row:1;
+  }
+  .svc-row-title{
+    grid-column:1 / -1;grid-row:2;
+    font-family:var(--font-sans);font-weight:500;color:var(--light-ink);
+    font-size:clamp(22px,2.6vw,30px);letter-spacing:-.01em;
+  }
+  .svc-row-desc{grid-column:1 / -1;grid-row:3}
+  .svc-row-desc p{color:var(--light-muted);font-size:15px;line-height:1.65;max-width:42ch;margin-bottom:14px}
+  .svc-row-link{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--font-sans);font-weight:600;font-size:14px;
+    color:var(--accent-on-light);border-bottom:1px solid var(--accent-on-light);
+    padding-bottom:2px;transition:opacity .2s ease;
+  }
+  .svc-row-link .ico{width:13px;height:13px}
+  .svc-row-link:hover{opacity:.7}
   .svc-cta{margin-top:48px;display:flex;justify-content:center}
+  /* A partir de 641px cabe lado a lado: número+título numa coluna,
+     descrição+link em outra, como na referência. */
+  @media(min-width:641px){
+    .svc-row-grid{
+      grid-template-columns:60px minmax(200px,420px) 1fr;
+      column-gap:32px;row-gap:0;
+    }
+    .svc-row-title{grid-column:2;grid-row:1}
+    .svc-row-desc{grid-column:3;grid-row:1}
+  }
 
   /* ============ CASES ============ */
   .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:8px}
@@ -296,13 +372,19 @@
     line-height:.86;
   }
   .sc-sig-line{
-    display:block;font-family:var(--font-display);font-weight:400;
-    text-transform:uppercase;letter-spacing:0;color:var(--accent);
-    font-size:clamp(56px,12vw,160px);
+    display:block;font-family:'Furuko','Archivo',sans-serif;font-weight:normal;
+    text-transform:uppercase;letter-spacing:.01em;color:var(--accent);
+    font-size:clamp(85px,16vw,190px);
   }
+  /* A Furuko é bem mais condensada que a Fraunces (usada aqui antes) —
+     com o mesmo tamanho de foto de antes, "Lorena"/"Mariano" ficavam
+     inteiros escondidos atrás do círculo. Aumentei o piso da fonte e
+     diminuí o da foto (medido de verdade via getBoundingClientRect em
+     430px de viewport, não só no olho) até sobrar nome visível dos dois
+     lados de novo, em qualquer largura de tela. */
   .sc-sig-photo{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    display:block;width:min(22vw,180px);aspect-ratio:3/5;
+    display:block;width:clamp(40px,10vw,125px);aspect-ratio:3/5;
     border-radius:50%;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.55);
     background:var(--surface);
   }
@@ -396,72 +478,11 @@
   .msp-actions-result{justify-content:flex-end;flex-wrap:wrap}
   .btn .ico-back{transform:scaleX(-1)}
 
-  /* Resultado: mesma linguagem visual dos indicadores do topo da página
-     (número grande em Archivo 800 com o filete amarelo por baixo), para
-     que a estimativa pareça um dado editorial, não o total de um carrinho. */
+  /* Resumo: sem valor nenhum desde 29/10/2026 — só o contexto em texto
+     e os itens marcados viram pills (.msp-recap), igual a antes. */
   .msp-context{color:var(--muted);font-size:15.5px;margin-top:14px;max-width:60ch}
-  .msp-estimate{
-    border:1px solid var(--line);border-radius:var(--radius);
-    padding:28px 26px;margin:24px 0 22px;
-  }
-  .msp-estimate .msp-value{
-    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.03em;
-    font-size:clamp(30px,4vw,46px);line-height:1;position:relative;display:inline-block;
-  }
-  .msp-estimate .msp-value::after{
-    content:"";position:absolute;left:-3px;right:-3px;bottom:4px;height:9px;
-    background:var(--accent);z-index:-1;
-  }
-  .msp-estimate .msp-value-label{
-    font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:700;
-    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:10px;
-  }
-  .msp-setup-note{color:var(--muted);font-size:14px;line-height:1.55;margin-top:12px;margin-bottom:8px}
 
-  /* ============ PLANOS MENSAIS ============
-     3 cartões de escopo fechado (não é soma de item) — clicáveis, só um
-     ativo por vez, o sugerido já vem marcado mas a pessoa pode trocar.
-     Mesma lógica visual do .msp-opt (amarelo sólido quando ativo). */
-  .msp-plans{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 8px;
-  }
-  .msp-plan{
-    text-align:left;border:1px solid var(--field-line);border-radius:var(--radius);
-    background:var(--field-bg);padding:22px 20px;cursor:pointer;
-    display:flex;flex-direction:column;gap:14px;
-    transition:border-color .2s, background .2s, color .2s;
-  }
-  .msp-plan:hover{border-color:var(--ink)}
-  .msp-plan-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
-  .msp-plan-nome{
-    font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
-    letter-spacing:.02em;color:var(--ink);
-  }
-  .msp-plan-tag{
-    font-family:'Archivo',sans-serif;font-weight:700;font-size:9.5px;
-    letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);
-    background:var(--accent);border-radius:100px;padding:3px 9px;white-space:nowrap;
-  }
-  .msp-plan-preco{
-    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
-    font-size:26px;color:var(--ink);
-  }
-  .msp-plan-lista{list-style:none;display:flex;flex-direction:column;gap:8px}
-  .msp-plan-lista li{
-    font-size:13px;line-height:1.5;color:var(--muted);padding-left:16px;position:relative;
-  }
-  .msp-plan-lista li::before{
-    content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;
-    border-radius:50%;background:var(--muted);
-  }
-  .msp-plan[aria-checked="true"]{background:var(--accent);border-color:var(--accent)}
-  .msp-plan[aria-checked="true"] .msp-plan-nome,
-  .msp-plan[aria-checked="true"] .msp-plan-preco{color:var(--accent-ink)}
-  .msp-plan[aria-checked="true"] .msp-plan-tag{background:var(--accent-ink);color:var(--accent)}
-  .msp-plan[aria-checked="true"] .msp-plan-lista li{color:rgba(16,16,17,.75)}
-  .msp-plan[aria-checked="true"] .msp-plan-lista li::before{background:var(--accent-ink)}
-
-  .msp-recap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .msp-recap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;margin-top:20px}
   .msp-recap span{
     border:1px solid var(--field-line);border-radius:100px;padding:7px 14px;
     font-size:13px;color:var(--muted);
@@ -570,12 +591,35 @@
   /* ============ RESPONSIVO ============ */
   @media(max-width:960px){
     .foot-grid{grid-template-columns:1fr 1fr;gap:40px 32px}
-    .hero-logo{height:clamp(110px,28vw,160px)}
-    .svc-big-grid{grid-template-columns:repeat(3,1fr)}
-    .svc-big{padding:32px 20px}
+    /* Abaixo de 961px os cantos absolutos da hero não cabem mais —
+       empilha tudo centralizado, na ordem: nome, foto, texto, link. */
+    .hero{
+      padding:130px 24px 60px;flex-direction:column;
+      align-items:center;justify-content:center;gap:28px;
+    }
+    .hero-kicker{position:static;text-align:center}
+    /* No desktop a foto fica absoluta, centralizada por cima do vão entre
+       as duas linhas do nome. No celular isso não cabe — "Lorena", foto
+       e "Mariano" viram 3 blocos empilhados em sequência normal, a foto
+       com position:static no meio do fluxo. */
+    .hero-name-stack{
+      order:2;display:flex;flex-direction:column;align-items:center;
+      gap:18px;padding:0;
+    }
+    .hero-name{display:contents}
+    .hero-name-l,.hero-name-r{text-align:center;order:1}
+    .hero-name-r{order:3}
+    .hero-photo{
+      position:static;transform:none;order:2;
+      width:clamp(170px,52vw,260px);
+    }
+    .hero-quote{
+      position:static;order:3;max-width:40ch;text-align:center;
+      margin:0 auto;
+    }
+    .hero-work-link{position:static;order:4}
     .case-grid{grid-template-columns:1fr 1fr}
     .msp-options{grid-template-columns:repeat(2,1fr)}
-    .msp-plans{grid-template-columns:1fr}
     .nav-links{
       position:fixed;top:0;right:0;height:100dvh;width:78%;max-width:320px;
       background:var(--bg);border-left:1px solid var(--line);
@@ -592,9 +636,6 @@
     .stats{grid-template-columns:1fr}
     .stat{border-left:0;border-top:1px solid var(--line);padding:26px 20px}
     .stat:first-child{border-top:0}
-    .svc-big-grid{grid-template-columns:1fr}
-    .svc-big{border-left:0;border-top:1px solid var(--line);padding:32px 4px}
-    .svc-big:first-child{border-top:0}
     .case-grid{grid-template-columns:1fr}
     .msp-options{grid-template-columns:1fr}
     .msp-steps li{font-size:9px;letter-spacing:.04em}

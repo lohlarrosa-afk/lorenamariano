@@ -13,15 +13,15 @@
 <meta property="og:description" content="Design, conteúdo e presença digital para times, atletas e projetos esportivos." />
 <meta property="og:image" content="https://lorenadesign.com.br/img/hero/01-prancheta.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="theme-color" content="#0B0B0C" />
+<meta name="theme-color" content="#050508" />
 
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="apple-touch-icon" href="favicon.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<link rel="preload" as="font" type="font/ttf" href="fonts/BootzyTM.ttf" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+<link rel="preload" as="font" type="font/ttf" href="fonts/Furuko.ttf" crossorigin />
 
 <link rel="stylesheet" href="styles.css" />
 
@@ -52,7 +52,7 @@
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Principal">
       <a href="#top">Início</a>
-      <a href="#cases">Cases</a>
+      <a href="cases.html">Cases</a>
       <a href="#servicos">Serviços</a>
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
@@ -87,224 +87,42 @@
 <main>
 
 <!-- ============ HERO ============
-     Reconstruída em 01/10/2026 a pedido dela: virou foto cheia de fundo
-     (holofotes/torcida em P&B, img/hero/hero-holofotes.jpg) com a marca
-     centralizada por cima e um link "vamos trabalhar" embaixo, no estilo
-     do site de referência (alturas® — texto sublinhado + seta, sem
-     botão). A marca usada aqui é só o símbolo (estrela amarela, sem
-     nome/tagline) — passou por uma versão com "Quatro Linhas" e depois
-     "Lorena Mariano" por extenso no mesmo dia antes dela decidir deixar
-     só o ícone, maior. Texto/CTAs antigos e a vitrine de fotos saíram do
-     hero (continuam acessíveis pelo menu). -->
-<section class="hero hero-image">
-  <div class="hero-bg">
-    <img src="img/hero/hero-holofotes.jpg" alt="Silhueta de torre de holofotes e torcida em um estádio, em preto e branco" />
-  </div>
-  <div class="hero-brand reveal">
-    <img class="hero-logo" src="logo/estrela-marca.png" alt="Lorena Mariano" />
-    <a href="#contato" class="hero-work-link">
-      Vamos trabalhar
-      <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-    </a>
-  </div>
-</section>
-
-<!-- ============ EU VIVO O ESPORTE ============
-     Evolução da antiga seção "Sobre (resumo)": mesmo link pra história
-     completa em sobre.html, com o headline pessoal que ela pediu.
-     Atualizado em 15/09/2026: em vez de só a foto ao lado do texto (como
-     ficou depois de tirar a segunda foto de bastidor), ela mandou uma
-     referência (componente "portfolio-hero", React) com o nome em letras
-     gigantes e a foto redonda encaixada no meio, entre as duas linhas —
-     tipo uma assinatura. Perguntei se era pra isso SUBSTITUIR o título
-     "Eu vivo o esporte..." ou ENTRAR como peça nova antes dele — ela
-     escolheu manter o título e o parágrafo como estão, com a assinatura
-     acima. Recriado em CSS puro (sem React): ".sc-signature" é só duas
-     linhas de texto com a foto em "position:absolute" centralizada entre
-     elas — o "encaixe" é a foto sobrepondo o espaço entre as duas linhas,
-     não um recorte real da letra.
-     "img/sobre-lorena-assinatura.jpg" é um recorte fechado no rosto/ombro
-     de "img/sobre-lorena.jpg" (a foto original, de corpo inteiro em
-     contraluz) — só pra essa moldura oval pequena; o retrato original
-     inteiro continua sem uso neste momento, mas não foi apagado.
-     Reposicionada em 02/10/2026 pra logo abaixo da hero, a pedido dela
-     (antes ficava entre Cases e Quem já confiou). -->
-<section id="sobre" class="sobre-curto">
-  <div class="wrap reveal">
-    <div class="sc-signature">
-      <span class="sc-sig-line">Lorena</span>
-      <span class="sc-sig-photo">
-        <img class="vintage-photo" src="img/sobre-lorena-assinatura.jpg"
-             alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time" loading="lazy" />
-      </span>
-      <span class="sc-sig-line">Mariano</span>
-    </div>
-    <div class="sc-texto">
-      <span class="label label-rule">Quem está por trás</span>
-      <h2 class="display h2 sc-h">Eu vivo o esporte.<br />Não só trabalho com ele.</h2>
-      <p>
-        Minha relação com o esporte foi acontecendo na prática. Entre times,
-        jogos, campeonatos, bastidores e projetos, fui percebendo que existia
-        muito mais por trás de uma partida do que os 90 minutos dentro de campo.
-      </p>
-      <a class="sc-link" href="sobre.html">Ler a história completa →</a>
+     Reconstruída em 29/10/2026, inspirada em barbarafroes.com (pedido
+     dela): nome gigante em serifa fina, partido em duas linhas, com o
+     retrato dela (img/sobre-lorena.jpg, mesma foto da seção "Eu vivo o
+     esporte") sobreposto bem no meio — a foto fica por cima do espaço
+     entre as duas linhas, como na referência. Linhas finas verticais
+     (".hero-grid-lines") dividem a tela em colunas, igual à referência.
+     Saiu a foto cheia de fundo + símbolo da estrela centralizado (versão
+     de 01/10) — essa reconstrução troca o formato inteiro, não só a cor. -->
+<section class="hero">
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <span class="hero-kicker reveal">Marketing esportivo &amp; design</span>
+  <div class="hero-name-stack reveal">
+    <h1 class="hero-name">
+      <span class="hero-name-l">Lorena</span>
+      <span class="hero-name-l hero-name-r">Mariano</span>
+    </h1>
+    <div class="hero-photo">
+      <img src="img/sobre-lorena.jpg" alt="Retrato de Lorena Mariano, em contraluz" />
     </div>
   </div>
-</section>
-
-<!-- ============ PROVA / AUTORIDADE ============
-     Números reais, dados por ela em 14/09/2026. O terceiro indicador fica
-     de fora até ela decidir qual usar — grid em 2 colunas até lá. Pra
-     acrescentar o terceiro: copie um .stat, cole como 3º filho, e troque
-     .stats-2 por .stats-3 no CSS (ou remova a classe, o grid já assume 3
-     por padrão). -->
-<div class="wrap">
-  <div class="stats reveal">
-    <div class="stat">
-      <div class="num">+500</div>
-      <div class="label lbl">projetos entregues</div>
-    </div>
-    <div class="stat">
-      <div class="num">+5</div>
-      <div class="label lbl">times atendidos</div>
-    </div>
-    <!-- Terceiro indicador: a Lorena vai definir depois. Exemplo de bloco
-         pronto pra colar aqui quando tiver o número:
-    <div class="stat">
-      <div class="num">+NÚMERO</div>
-      <div class="label lbl">texto do indicador</div>
-    </div>
-    -->
-  </div>
-</div>
-
-<!-- ============ SERVIÇOS ============
-     Três frentes, não uma lista de peças. Numeração em vez de ícone —
-     menos decorativo, mais editorial. -->
-<section id="servicos">
-  <div class="wrap">
-    <div class="svc-head reveal">
-      <span class="label label-rule">O que eu faço</span>
-      <h2 class="display h2">Do posicionamento ao dia de jogo.</h2>
-      <p class="lead">
-        Estratégia de marca e execução das peças com a mesma pessoa, sem ficar
-        traduzindo briefing entre o time e o designer.
-      </p>
-    </div>
-
-    <div class="svc-big-grid">
-      <article class="svc-big reveal">
-        <span class="svc-big-num">01</span>
-        <h3>Design esportivo</h3>
-        <p>Artes para redes sociais, jogos, campeonatos, anúncios e materiais de comunicação.</p>
-      </article>
-
-      <article class="svc-big reveal">
-        <span class="svc-big-num">02</span>
-        <h3>Conteúdo &amp; cobertura</h3>
-        <p>Cobertura de partidas, stories, vídeos e conteúdos pra manter o projeto ativo dentro e fora de campo.</p>
-      </article>
-
-      <article class="svc-big reveal">
-        <span class="svc-big-num">03</span>
-        <h3>Marketing esportivo</h3>
-        <p>Estratégia e construção de presença digital pra times, atletas e projetos esportivos.</p>
-      </article>
-    </div>
-
-    <div class="svc-cta reveal">
-      <a href="#monte-seu-projeto" class="btn btn-primary">
-        Monte seu projeto
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CASES ============
-     Cada case só entra com o que é REAL e verificável — cliente, imagem
-     entregue, o que foi feito. "O desafio" e "Resultado/impacto" ficam de
-     fora quando não há essa informação (nunca invento), em vez de mostrar
-     um placeholder pro visitante do site. O comentário abaixo de cada case
-     diz exatamente o que falta.
-
-     Pra adicionar um case novo: duplique um <article class="case">
-     inteiro, troque a imagem, o nome do cliente e o texto. Os campos
-     "O desafio" e "Resultado" são <p class="case-field"> com um <span
-     class="case-label"> na frente — inclua só os que você tiver. -->
-<section id="cases">
-  <div class="wrap">
-    <div class="svc-head reveal">
-      <span class="label label-rule">Cases</span>
-      <h2 class="display h2">Presença que já rodou o campo.</h2>
-      <p class="lead">
-        Uma seleção do que já virou identidade visual pra time e atleta de
-        verdade — não é banco de imagem, é trabalho entregue.
-      </p>
-    </div>
-
-    <div class="case-grid">
-      <article class="case reveal">
-        <div class="case-img">
-          <img class="vintage-photo" src="img/hero/14-qualidade-4-anos.jpg"
-               alt="Peça de aniversário de quatro anos do Qualidade Fut7"
-               width="720" height="960" loading="lazy" />
-        </div>
-        <div class="case-body">
-          <h3 class="case-client">Qualidade Fut7</h3>
-          <p class="case-field"><span class="case-label">O que foi feito</span>Peça comemorativa para os 4 anos do projeto.</p>
-        </div>
-      </article>
-      <!-- Faltam "O desafio" e "Resultado/impacto" deste case — quando
-           tiver essa informação, acrescente:
-      <p class="case-field"><span class="case-label">O desafio</span>...</p>
-      <p class="case-field"><span class="case-label">Resultado</span>...</p>
-      -->
-
-      <article class="case reveal">
-        <div class="case-img">
-          <img class="vintage-photo" src="img/hero/15-treinador-recompensa.jpg"
-               alt="Peça com depoimento do treinador do Atlético Maringaense"
-               width="720" height="960" loading="lazy" />
-        </div>
-        <div class="case-body">
-          <h3 class="case-client">Atlético Maringaense</h3>
-          <p class="case-field"><span class="case-label">O que foi feito</span>Peça de depoimento do treinador, celebrando a evolução do elenco.</p>
-        </div>
-      </article>
-      <!-- Mesma coisa aqui: falta "O desafio" e "Resultado/impacto". -->
-
-      <article class="case reveal">
-        <div class="case-img">
-          <img class="vintage-photo" src="img/cases/atletico-maringaense-novo-manto-2026.jpg"
-               alt="Anúncio do novo uniforme 2026 do Atlético Maringaense de Fut7, com o patrocinador Nova Arena"
-               width="720" height="960" loading="lazy" />
-        </div>
-        <div class="case-body">
-          <h3 class="case-client">Atlético Maringaense</h3>
-          <p class="case-field"><span class="case-label">O que foi feito</span>Peça de anúncio do novo manto (uniforme) 2026 do clube.</p>
-        </div>
-      </article>
-      <!-- Terceiro case, mesmo cliente do segundo (Atlético Maringaense),
-           peça diferente (anúncio do uniforme, não a de depoimento).
-           Falta "O desafio" e "Resultado/impacto" aqui também. -->
-
-      <!-- Espaço pronto para o próximo case (ex.: Nova Arena, Full7) assim
-           que você tiver uma peça pra mostrar — duplique um <article
-           class="case"> acima e preencha. -->
-    </div>
-
-    <div class="svc-cta reveal">
-      <a href="cases.html" class="sc-link">Ver todos os cases →</a>
-    </div>
-  </div>
+  <p class="hero-quote reveal">
+    O esporte já tem a atenção.<br />A gente dá direção.
+  </p>
+  <a href="#contato" class="hero-work-link reveal">
+    Vamos trabalhar
+    <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+  </a>
 </section>
 
 <!-- ============ QUEM JÁ CONFIOU ============
-     Antiga seção "Marcas atendidas", só com o título que ela pediu agora.
-     Pra acrescentar uma marca: exporte a logo em PNG com fundo transparente,
-     altura 160px, salve em img/marcas/ e repita o bloco <img> nos DOIS
-     .marquee-set (os dois precisam ser idênticos para o loop não pular). -->
+     Reposicionada em 29/10/2026 pra logo abaixo da hero, a pedido dela
+     (antes ficava entre Cases e Depoimentos). Antiga seção "Marcas
+     atendidas", só com o título que ela pediu antes. Pra acrescentar uma
+     marca: exporte a logo em PNG com fundo transparente, altura 160px,
+     salve em img/marcas/ e repita o bloco <img> nos DOIS .marquee-set
+     (os dois precisam ser idênticos para o loop não pular). -->
 <section id="marcas" class="brands">
   <div class="wrap">
     <span class="label">Quem já confiou no meu trabalho</span>
@@ -339,6 +157,106 @@
   </div>
 </section>
 
+<!-- ============ SERVIÇOS ============
+     Reposicionada em 29/10/2026 pra logo abaixo de "Quem já confiou", a
+     pedido dela (antes ficava depois de Sobre/Números). Formato da
+     referência (barbarafroes.com): seção clara (fundo --light-bg) em vez
+     de escura, cabeçalho em duas colunas (eyebrow + subtítulo) com a
+     manchete grande embaixo, depois uma lista de linhas numeradas (não
+     mais grid de 3 cartões) — cada linha com filete separando da
+     próxima. O link de cada serviço usa --accent-on-light (dourado
+     escuro), não o amarelo puro: amarelo puro como texto sobre fundo
+     claro não tem contraste suficiente (ver nota no token, em
+     styles.css). Mesmas 3 frentes de sempre, só reformatadas. -->
+<section id="servicos" class="svc-light">
+  <div class="wrap svc-head-row reveal">
+    <span class="svc-eyebrow">// Serviços</span>
+    <span class="svc-subeyebrow">Vamos fazer um projeto juntos?</span>
+  </div>
+  <div class="wrap">
+    <h2 class="svc-headline reveal">
+      Do posicionamento ao<br />dia de jogo<span class="dim">, do zero ao pronto.</span>
+    </h2>
+  </div>
+
+  <div class="svc-list">
+    <article class="svc-row reveal">
+      <div class="wrap svc-row-grid">
+        <span class="svc-row-num">01</span>
+        <h3 class="svc-row-title">Design esportivo</h3>
+        <div class="svc-row-desc">
+          <p>Artes para redes sociais, jogos, campeonatos, anúncios e materiais de comunicação.</p>
+          <a href="#contato" class="svc-row-link">
+            Faça um orçamento
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <article class="svc-row reveal">
+      <div class="wrap svc-row-grid">
+        <span class="svc-row-num">02</span>
+        <h3 class="svc-row-title">Conteúdo &amp; cobertura</h3>
+        <div class="svc-row-desc">
+          <p>Cobertura de partidas, stories, vídeos e conteúdos pra manter o projeto ativo dentro e fora de campo.</p>
+          <a href="#contato" class="svc-row-link">
+            Faça um orçamento
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <article class="svc-row reveal">
+      <div class="wrap svc-row-grid">
+        <span class="svc-row-num">03</span>
+        <h3 class="svc-row-title">Marketing esportivo</h3>
+        <div class="svc-row-desc">
+          <p>Estratégia e construção de presença digital pra times, atletas e projetos esportivos.</p>
+          <a href="#contato" class="svc-row-link">
+            Faça um orçamento
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="wrap svc-cta reveal">
+    <a href="#monte-seu-projeto" class="btn btn-primary">
+      Monte seu projeto
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ PROVA / AUTORIDADE ============
+     Números reais, dados por ela em 14/09/2026. O terceiro indicador fica
+     de fora até ela decidir qual usar — grid em 2 colunas até lá. Pra
+     acrescentar o terceiro: copie um .stat, cole como 3º filho, e troque
+     .stats-2 por .stats-3 no CSS (ou remova a classe, o grid já assume 3
+     por padrão). -->
+<div class="wrap">
+  <div class="stats reveal">
+    <div class="stat">
+      <div class="num">+500</div>
+      <div class="label lbl">projetos entregues</div>
+    </div>
+    <div class="stat">
+      <div class="num">+5</div>
+      <div class="label lbl">times atendidos</div>
+    </div>
+    <!-- Terceiro indicador: a Lorena vai definir depois. Exemplo de bloco
+         pronto pra colar aqui quando tiver o número:
+    <div class="stat">
+      <div class="num">+NÚMERO</div>
+      <div class="label lbl">texto do indicador</div>
+    </div>
+    -->
+  </div>
+</div>
+
 <!-- ============ DEPOIMENTOS ============
      Componente pronto, mas OCULTO: hoje não existe nenhum depoimento real,
      e ela pediu explicitamente pra não inventar. Assim que tiver o
@@ -364,16 +282,18 @@
 -->
 
 <!-- ============ MONTE SEU PROJETO ============
-     Configurador em etapas: um briefing comercial guiado, não uma
-     calculadora de preço. Serviços e valores ficam em
-     js/projeto-config.js — edite ali para trocar preços ou
-     adicionar/remover itens, sem mexer neste arquivo. -->
+     Reconstruído em 29/10/2026: saiu o cálculo de preço (planos e
+     valores saíram do site inteiro, pedido dela) — virou um briefing
+     guiado que termina numa mensagem pronta pro WhatsApp, onde os
+     valores são consultados direto na conversa. Opções ficam em
+     js/projeto-config.js — edite ali pra trocar ou adicionar itens,
+     sem mexer neste arquivo. -->
 <section id="monte-seu-projeto" class="msp-section">
   <div class="wrap">
     <div class="svc-head reveal">
       <span class="label label-rule">Ferramenta interativa</span>
       <h2 class="display h2">Tem um projeto esportivo?</h2>
-      <p class="lead">Selecione o que você precisa e receba uma estimativa personalizada.</p>
+      <p class="lead">Conte o que você precisa e fale comigo no WhatsApp pra consultar os valores.</p>
     </div>
 
     <div class="msp-card reveal" id="mspCard">
@@ -381,7 +301,7 @@
         <li data-step="1" aria-current="step">Quem é você</li>
         <li data-step="2">O que precisa</li>
         <li data-step="3">Sua demanda</li>
-        <li data-step="4">Estimativa</li>
+        <li data-step="4">Enviar</li>
       </ol>
       <p class="visually-hidden" id="mspLiveRegion" aria-live="polite"></p>
 
@@ -431,41 +351,68 @@
             Voltar
           </button>
           <button type="button" class="btn btn-primary msp-next" data-next="4">
-            Ver minha estimativa
+            Revisar e enviar
             <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
           </button>
         </div>
       </div>
 
-      <!-- RESULTADO -->
+      <!-- RESUMO / ENVIO -->
       <div class="msp-step" data-step="4" hidden>
-        <span class="msp-eyebrow">Seu diagnóstico</span>
-        <h3 class="msp-question" id="mspQ4">Aqui está a sua estimativa.</h3>
+        <span class="msp-eyebrow">Resumo do pedido</span>
+        <h3 class="msp-question" id="mspQ4">Confirme e fale comigo no WhatsApp.</h3>
         <p class="msp-context" id="mspContexto"></p>
-
-        <div class="msp-estimate" id="mspEstimateBox"></div>
-
-        <!-- Só aparece quando a frequência é "Mensal": em vez de somar
-             item por item, mostra os 3 planos fechados e sugere um com
-             base no que foi marcado. A pessoa pode clicar em outro. -->
-        <div class="msp-plans" id="mspPlansBox" role="radiogroup" aria-label="Planos mensais"></div>
-        <div class="msp-setup-note" id="mspForaBox" hidden></div>
 
         <div class="msp-recap" id="mspRecap" aria-label="Itens selecionados no briefing"></div>
 
         <p class="msp-disclaimer">
-          Valor estimado a partir do que você nos contou aqui. Prazo, quantidade
-          e formato final a gente ajusta junto, direto na conversa.
+          Sem valores por aqui — a gente consulta os valores certinhos direto
+          na conversa, olhando com calma o que o seu projeto precisa.
         </p>
 
         <div class="msp-actions msp-actions-result">
           <button type="button" class="btn btn-ghost msp-restart">Recomeçar</button>
           <button type="button" class="btn btn-primary" id="mspWhats">
-            Falar comigo no WhatsApp
+            Consultar valores no WhatsApp
             <span class="ico" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
           </button>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EU VIVO O ESPORTE ============
+     Reposicionada em 29/10/2026 pra logo abaixo de "Monte seu projeto",
+     a pedido dela (antes ficava entre Serviços e Números). Evolução da
+     antiga seção "Sobre (resumo)": mesmo link pra história completa em
+     sobre.html, com o headline pessoal que ela pediu. ".sc-signature" é
+     duas linhas de texto com a foto em "position:absolute" centralizada
+     entre elas — o "encaixe" é a foto sobrepondo o espaço entre as duas
+     linhas, não um recorte real da letra.
+     "img/sobre-lorena-assinatura.jpg" é um recorte fechado no rosto/ombro
+     de "img/sobre-lorena.jpg" (a foto original, de corpo inteiro em
+     contraluz, também usada na hero desde 29/10/2026) — só pra essa
+     moldura oval pequena. -->
+<section id="sobre" class="sobre-curto">
+  <div class="wrap reveal">
+    <div class="sc-signature">
+      <span class="sc-sig-line">Lorena</span>
+      <span class="sc-sig-photo">
+        <img class="vintage-photo" src="img/sobre-lorena-assinatura.jpg"
+             alt="Lorena Mariano de perfil em contraluz, vestindo camisa de time" loading="lazy" />
+      </span>
+      <span class="sc-sig-line">Mariano</span>
+    </div>
+    <div class="sc-texto">
+      <span class="label label-rule">Quem está por trás</span>
+      <h2 class="display h2 sc-h">Eu vivo o esporte.<br />Não só trabalho com ele.</h2>
+      <p>
+        Minha relação com o esporte foi acontecendo na prática. Entre times,
+        jogos, campeonatos, bastidores e projetos, fui percebendo que existia
+        muito mais por trás de uma partida do que os 90 minutos dentro de campo.
+      </p>
+      <a class="sc-link" href="sobre.html">Ler a história completa →</a>
     </div>
   </div>
 </section>
@@ -524,7 +471,7 @@
       <div class="foot-col">
         <h3 class="label">Navegação</h3>
         <a href="#top">Início</a>
-        <a href="#cases">Cases</a>
+        <a href="cases.html">Cases</a>
         <a href="#servicos">Serviços</a>
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
@@ -654,10 +601,6 @@
 
     var CHECK_SVG = '<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>';
 
-    function mspFormatBRL(n){
-      return 'R$ ' + Math.round(n).toLocaleString('pt-BR');
-    }
-
     function mspMontarOpcoes(container, lista, multi, onToggle){
       lista.forEach(function(item){
         var btn = document.createElement('button');
@@ -756,163 +699,16 @@
       });
     }
 
-    /* Soma dos itens avulsos marcados — usada quando o projeto é pontual
-       ou quando a frequência ainda não foi definida. "Outro" (pontual
-       null) não entra na soma, vira "personalizado". */
-    function mspCalcularAvulso(){
-      var min = 0, max = 0, personalizado = false;
-      mspEstado.servicos.forEach(function(s){
-        if (!s.pontual) { personalizado = true; return; }
-        min += s.pontual[0]; max += s.pontual[1];
-      });
-      return { min: min, max: max, personalizado: personalizado };
-    }
-
-    /* Itens que NUNCA entram em plano mensal (foraDoPlano:true), somados
-       à parte — essa é a regra que a Lorena definiu pra proteger a
-       margem: cobertura presencial, escudo, campeonato e kit de
-       patrocinador ficam sempre fora do valor fechado do plano. */
-    function mspCalcularForaDoPlano(){
-      var min = 0, max = 0, personalizado = false;
-      mspEstado.servicos.forEach(function(s){
-        if (!s.foraDoPlano) return;
-        if (!s.pontual) { personalizado = true; return; }
-        min += s.pontual[0]; max += s.pontual[1];
-      });
-      return { min: min, max: max, personalizado: personalizado };
-    }
-
-    /* Sugestão inicial de plano — NÃO é regra rígida, é só o card que
-       começa marcado. Os 3 planos aparecem sempre e a pessoa pode
-       escolher outro. Só conta sinal de itens que fazem parte do
-       escopo de algum plano (foraDoPlano:false) — Kit Rodada não conta
-       aqui porque ele é o produto avulso alternativo ao plano, não um
-       ingrediente dele. */
-    function mspSugerirPlano(){
-      /* Só os 2 itens que fazem parte do escopo de algum plano contam
-         aqui (redes sociais + vídeo) — um item sempre-avulso (escudo,
-         cobertura presencial etc.) não deveria empurrar a sugestão pra
-         um plano maior, já que ele é cobrado à parte de qualquer jeito.
-         Sem um jeito de perguntar volume/prioridade no wizard, não dá
-         pra sugerir o Clube Pro com segurança — ele fica sempre visível
-         e escolhível, só não é o card que já vem marcado. */
-      var elegiveis = mspEstado.servicos.filter(function(s){ return s.foraDoPlano === false; });
-      return elegiveis.length >= 2 ? 'clube' : 'base';
-    }
-
     var MSP_SEGMENTO_TXT = { time: 'o seu time', atleta: 'a sua carreira', outro: 'o seu projeto' };
-    var mspPlanoEscolhido = null;
 
-    function mspRenderPlanos(sugerido){
-      var CFG = window.PROJETO_CONFIG;
-      var box = document.getElementById('mspPlansBox');
-      box.innerHTML = '';
-      CFG.planos.forEach(function(plano){
-        var card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'msp-plan';
-        card.setAttribute('role', 'radio');
-        card.setAttribute('aria-checked', String(plano.id === mspPlanoEscolhido));
-        card.dataset.id = plano.id;
-
-        var head = document.createElement('div');
-        head.className = 'msp-plan-head';
-        var nome = document.createElement('span');
-        nome.className = 'msp-plan-nome';
-        nome.textContent = plano.nome;
-        head.appendChild(nome);
-        if (plano.destaque) {
-          var tag = document.createElement('span');
-          tag.className = 'msp-plan-tag';
-          tag.textContent = 'Mais pedido';
-          head.appendChild(tag);
-        }
-        card.appendChild(head);
-
-        var preco = document.createElement('div');
-        preco.className = 'msp-plan-preco';
-        preco.textContent = mspFormatBRL(plano.preco) + '/mês';
-        card.appendChild(preco);
-
-        var lista = document.createElement('ul');
-        lista.className = 'msp-plan-lista';
-        plano.resumo.forEach(function(linha){
-          var li = document.createElement('li');
-          li.textContent = linha;
-          lista.appendChild(li);
-        });
-        card.appendChild(lista);
-
-        card.addEventListener('click', function(){
-          mspPlanoEscolhido = plano.id;
-          box.querySelectorAll('.msp-plan').forEach(function(c){
-            c.setAttribute('aria-checked', String(c.dataset.id === mspPlanoEscolhido));
-          });
-        });
-        box.appendChild(card);
-      });
-    }
-
+    /* Monta o resumo (pills) e a mensagem do WhatsApp — sem preço
+       nenhum, só o briefing que a pessoa preencheu. Quem consulta os
+       valores é ela, direto na conversa. */
     function mspRenderResultado(){
       var segLabel = mspEstado.quem ? (MSP_SEGMENTO_TXT[mspEstado.quem.id] || 'o seu projeto') : 'o seu projeto';
-      var mensal = mspEstado.frequencia && mspEstado.frequencia.id === 'mensal';
-      var estimateBox = document.getElementById('mspEstimateBox');
-      var plansBox = document.getElementById('mspPlansBox');
-      var foraBox = document.getElementById('mspForaBox');
-      estimateBox.innerHTML = '';
-      plansBox.innerHTML = '';
-      foraBox.innerHTML = '';
-      foraBox.hidden = true;
-      estimateBox.hidden = mensal;
-      plansBox.hidden = !mensal;
 
-      if (mensal) {
-        /* Mensal: planos fechados, não soma de item — regra da Lorena. */
-        document.getElementById('mspContexto').textContent =
-          'Baseado no que você nos contou sobre ' + segLabel + ', esses são os planos mensais que fazem sentido:';
-
-        var fora = mspCalcularForaDoPlano();
-        mspPlanoEscolhido = mspSugerirPlano();
-        mspRenderPlanos(mspPlanoEscolhido);
-
-        if (fora.max > 0 || fora.personalizado) {
-          var txt = '';
-          if (fora.max > 0) txt += '+ ' + mspFormatBRL(fora.min) + ' – ' + mspFormatBRL(fora.max) + ' em itens à parte (fora do plano, cobrados avulso).';
-          if (fora.personalizado) txt += (txt ? ' ' : '') + 'Item personalizado incluído — valor definido na conversa.';
-          foraBox.textContent = txt;
-          foraBox.hidden = false;
-        }
-      } else {
-        /* Pontual ou "ainda não sei": soma dos itens avulsos, como antes. */
-        var r = mspCalcularAvulso();
-        document.getElementById('mspContexto').textContent =
-          'Baseado no que você nos contou sobre ' + segLabel + ', veja como fica o investimento:';
-
-        var val = document.createElement('div');
-        val.className = 'msp-value';
-        var lbl = document.createElement('div');
-        lbl.className = 'msp-value-label';
-
-        if (r.min === 0 && r.max === 0 && !r.personalizado) {
-          val.textContent = 'A combinar';
-          lbl.textContent = 'nenhum item com valor de referência selecionado';
-        } else if (r.min === 0 && r.max === 0 && r.personalizado) {
-          val.textContent = 'Sob consulta';
-          lbl.textContent = 'projeto personalizado';
-        } else {
-          val.textContent = r.min === r.max ? mspFormatBRL(r.min) : mspFormatBRL(r.min) + ' – ' + mspFormatBRL(r.max);
-          lbl.textContent = mspEstado.frequencia && mspEstado.frequencia.id === 'nao-sei' ? 'faixa de referência inicial' : 'investimento do projeto pontual';
-        }
-        estimateBox.appendChild(val);
-        estimateBox.appendChild(lbl);
-
-        if (r.personalizado) {
-          var custom = document.createElement('div');
-          custom.className = 'msp-setup-note';
-          custom.textContent = 'Você incluiu um item personalizado — o valor dele a gente define junto, na conversa.';
-          estimateBox.appendChild(custom);
-        }
-      }
+      document.getElementById('mspContexto').textContent =
+        'Baseado no que você nos contou sobre ' + segLabel + ', é isso que vai pro WhatsApp:';
 
       var recap = document.getElementById('mspRecap');
       recap.innerHTML = '';
@@ -925,22 +721,14 @@
       var whats = document.getElementById('mspWhats');
       whats.onclick = function(){
         var linhas = [
-          'Oi, Lorena! Montei meu projeto no site e quero saber mais.',
+          'Oi, Lorena! Montei meu projeto no site e quero consultar os valores.',
           '',
           '*Quem sou:* ' + (mspEstado.quem ? mspEstado.quem.label : '-'),
           '*Preciso de:* ' + mspEstado.servicos.map(function(s){ return s.label; }).join(', '),
-          '*Frequência:* ' + (mspEstado.frequencia ? mspEstado.frequencia.label : '-')
+          '*Frequência:* ' + (mspEstado.frequencia ? mspEstado.frequencia.label : '-'),
+          '',
+          'Quero entender os valores e fechar os detalhes.'
         ];
-        if (mensal) {
-          var planoEscolhido = window.PROJETO_CONFIG.planos.filter(function(p){ return p.id === mspPlanoEscolhido; })[0];
-          if (planoEscolhido) linhas.push('*Plano de interesse:* ' + planoEscolhido.nome + ' (' + mspFormatBRL(planoEscolhido.preco) + '/mês)');
-          var fora2 = mspCalcularForaDoPlano();
-          if (fora2.max > 0) linhas.push('*+ itens à parte:* ' + mspFormatBRL(fora2.min) + ' – ' + mspFormatBRL(fora2.max));
-        } else {
-          var r2 = mspCalcularAvulso();
-          if (r2.min || r2.max) linhas.push('*Estimativa que vi no site:* ' + (r2.min === r2.max ? mspFormatBRL(r2.min) : mspFormatBRL(r2.min) + ' – ' + mspFormatBRL(r2.max)));
-        }
-        linhas.push('', 'Quero entender melhor e fechar os detalhes.');
         window.open('https://wa.me/5544999707173?text=' + encodeURIComponent(linhas.join('\n')), '_blank', 'noopener');
       };
     }
